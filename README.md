@@ -29,8 +29,8 @@ python3 scripts/validar.py
 
 **Firebase** (console.firebase.google.com)
 1. Criar um projeto (o Google Analytics pode ficar desligado).
-2. Authentication › Começar › Método de login › Google › Ativar.
-3. Authentication › Configurações › Domínios autorizados › adicionar `SEU-USUARIO.github.io`.
+2. Segurança › Authentication › Vamos começar › Método de login › Google › Ativar.
+3. Segurança › Authentication › Configurações › Domínios autorizados › adicionar `SEU-USUARIO.github.io`.
 4. Firestore Database › Criar banco de dados › modo de produção › região `southamerica-east1` (São Paulo).
 5. Firestore › Regras: colar o conteúdo de `firestore.rules`, trocar o e-mail pelo seu e publicar.
 6. Configurações do projeto › Seus apps › Web (`</>`) › registrar o app (sem Hosting) e copiar `apiKey`, `authDomain`, `projectId` e `appId` para `firebase-config.js`.
@@ -45,4 +45,4 @@ No primeiro acesso, entre com a conta Google liberada nas regras e cole o plano 
 python3 -m http.server 8000
 ```
 
-Abra http://localhost:8000. Para o login funcionar em `localhost`, ele precisa estar entre os domínios autorizados do Firebase (vem liberado por padrão).
+Abra http://localhost:8000. Para o login funcionar em `localhost`, adicione `localhost` aos domínios autorizados do Firebase (Segurança › Authentication › Configurações › Domínios autorizados). Em projetos criados depois de abril de 2025 ele não vem liberado.
