@@ -1,0 +1,196 @@
+{
+ "atualizadoEm": "2026-11-07T01:45:00-03:00",
+ "itens": [
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": true,
+   "contraponto": "regras claras de segurança, concorrência e privacidade dão previsibilidade, e o mercado costuma exagerar na reação a eleições.",
+   "data": "2026-11-06",
+   "fonte": "Campo Grande News",
+   "id": "2026-11-06-tech-ia",
+   "leituras": [
+    {
+     "diz": "Regra pesada encarece a inovação e acaba favorecendo só as gigantes que conseguem pagar o custo de cumprir a lei.",
+     "quem": "Contra a regulação"
+    },
+    {
+     "diz": "Sem regras, o risco fica com o consumidor; uma lei clara reduz a incerteza para quem investe no longo prazo.",
+     "quem": "A favor da regulação"
+    }
+   ],
+   "nota": "Para as meninas o horizonte é longo; um tombo de um dia não muda a decisão do aporte.",
+   "resumo": "Papéis ligados à inteligência artificial caíram forte na quinta (Nasdaq −5,5%) com o temor de que a maioria democrata no Congresso, saída das eleições de meio de mandato, aperte as regras do setor. Parte da queda voltou na sexta.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Ações de tecnologia caem com medo de regras mais duras para IA nos EUA",
+   "url": "https://www.campograndenews.com.br/economia/dolar-encerra-semana-a-r-5-50-com-mercado-atento-a-economia-dos-eua"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-06",
+   "fonte": "Campo Grande News",
+   "id": "2026-11-06-payroll",
+   "resumo": "Os EUA criaram 165 mil vagas em outubro, contra 59 mil esperadas, e o desemprego caiu para 4,1%. O dólar fechou a R$ 5,5082 (+0,36%) e o Ibovespa subiu 1,39%, a 168.498 pontos.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Emprego forte nos EUA reforça juros altos por lá e empurra o dólar",
+   "url": "https://www.campograndenews.com.br/economia/dolar-encerra-semana-a-r-5-50-com-mercado-atento-a-economia-dos-eua"
+  },
+  {
+   "ativos": [
+    "BBAS3",
+    "BBSE3",
+    "CXSE3"
+   ],
+   "confirma": true,
+   "contraponto": "o governo diz que vai cumprir os compromissos fiscais e sociais, e o pessimismo do mercado depois de eleições costuma diminuir quando as medidas saem do papel.",
+   "data": "2026-11-06",
+   "fonte": "InfoMoney",
+   "id": "2026-11-06-fiscal",
+   "leituras": [
+    {
+     "diz": "Com as medidas ainda indefinidas, o risco é mais gasto público e juros altos por mais tempo.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "O ajuste está em negociação, e manter os programas sociais sustenta o consumo e a economia.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "nota": "BBAS3, BBSE3 e CXSE3 têm controle estatal: decisões do governo pesam direto nelas.",
+   "resumo": "O ministro da Fazenda, Dario Durigan, disse que Lula pediu aos ministros que enxuguem as propostas, a serem validadas depois da viagem do presidente. A bolsa vinha de seis quedas seguidas com dúvidas sobre a política econômica do novo mandato.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Governo negocia ajuste fiscal sob pressão do mercado",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-06112026/"
+  },
+  {
+   "ativos": [],
+   "confirma": true,
+   "contraponto": "com o diesel em risco, uma taxa temporária evita falta do produto e alta de preço dentro do país.",
+   "data": "2026-11-06",
+   "fonte": "InfoMoney",
+   "id": "2026-11-06-petroleo",
+   "leituras": [
+    {
+     "diz": "Imposto sobre exportação tira competitividade, afasta investimento e muda a regra no meio do jogo.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "É temporário e protege o abastecimento interno de diesel.",
+     "quem": "Governo"
+    }
+   ],
+   "resumo": "A Camex estendeu o imposto. O governo diz que a medida serve para manter o abastecimento de diesel no país estável.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Taxa de 12% sobre exportação de petróleo é prorrogada até 31/12",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-06112026/"
+  },
+  {
+   "ativos": [
+    "KNCR11",
+    "KNSC11"
+   ],
+   "confirma": false,
+   "data": "2026-11-04",
+   "fonte": "Seu Dinheiro",
+   "id": "2026-11-04-copom",
+   "nota": "CDI alto mantém o rendimento dos FIIs de papel (KNCR11, KNSC11) e do colchão em renda fixa.",
+   "resumo": "Depois de cinco cortes seguidos desde março, o Banco Central parou. O comunicado não diz se volta a cortar na reunião de 8 e 9 de dezembro; o Focus espera 13,50% no fim do ano e inflação de 5,2% em 2026.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Copom mantém a Selic em 13,75% e interrompe os cortes",
+   "url": "https://www.seudinheiro.com/2026/economia/copom-segura-selic-em-1375-e-interrompe-ciclo-de-cortes-nos-juros-mlim/"
+  },
+  {
+   "ativos": [
+    "KNCR11",
+    "KNSC11"
+   ],
+   "confirma": true,
+   "contraponto": "um juro real perto de 9% encarece a dívida pública e trava crédito e investimento; para quem defende a ideia, o custo do aperto cai sobre quem produz.",
+   "data": "2026-11-03",
+   "fonte": "Times Brasil",
+   "id": "2026-11-03-tabelamento",
+   "leituras": [
+    {
+     "diz": "Tabelar juro é controle de preço: tira a credibilidade do Banco Central e tende a trazer mais inflação.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "Juro real tão alto drena o orçamento com a dívida e sufoca a economia; o Banco Central exagera na dose.",
+     "quem": "Defensores de juros menores"
+    }
+   ],
+   "resumo": "Circularam rumores de que Lula se reuniria com o economista André Lara Resende para discutir uma proposta de tabelar a Selic. Nada foi confirmado, mas o boato pesou nos juros futuros e no dólar, que fechou a R$ 5,4872.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "rumor",
+   "titulo": "Boato de limite para a Selic assusta o mercado",
+   "url": "https://timesbrasil.com.br/investimentos/bolsa/ibovespa-cai-pela-sexta-sessao-seguida-com-incertezas-sobre-lula-4-dolar-sobe-a-r-548-com-proposta-de-lara-resende-no-radar/"
+  },
+  {
+   "ativos": [
+    "ITUB4"
+   ],
+   "confirma": false,
+   "data": "2026-11-03",
+   "fonte": "Seu Dinheiro",
+   "id": "2026-11-03-itau",
+   "resumo": "O lucro recorrente subiu 6,7% em um ano e o retorno sobre o patrimônio ficou em 23,6%. Pesaram as provisões para calote (+9,6%), puxadas pelo crédito à pessoa física; a inadimplência acima de 90 dias subiu para 2,0%.",
+   "tema": "carteira",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Itaú lucra R$ 12,6 bi no 3º trimestre, em linha com o esperado",
+   "url": "https://www.seudinheiro.com/2026/empresas/itau-itub4-com-lucro-roe-rentabilidade-banco-balanco-do-3t26-miql/"
+  },
+  {
+   "ativos": [
+    "KNCR11",
+    "KNSC11",
+    "KNRI11",
+    "HGLG11",
+    "XPLG11"
+   ],
+   "confirma": false,
+   "data": "2026-10-30",
+   "fonte": "Funds Explorer",
+   "id": "2026-10-30-rendimentos",
+   "nota": "Regra 5: provento nunca vira gasto, volta para a carteira.",
+   "resumo": "KNCR11 paga R$ 1,10 e KNSC11 R$ 0,08 por cota em 13/11; KNRI11 paga R$ 1,10 e HGLG11 R$ 1,17 em 16/11; XPLG11 anunciou R$ 0,82. Quem tinha cota no fim de 30/10 recebe.",
+   "tema": "carteira",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Rendimentos de outubro dos seus FIIs",
+   "url": "https://www.fundsexplorer.com.br/funds/kncr11"
+  },
+  {
+   "ativos": [
+    "KNSC11"
+   ],
+   "confirma": false,
+   "data": "2026-10-09",
+   "fonte": "Poder360",
+   "id": "2026-10-09-ipca",
+   "resumo": "O IPCA subiu 0,82% no mês, puxado por energia elétrica e alimentos, e chegou a 4,58% em 12 meses, acima do teto de 4,5%. O dado de outubro sai em novembro.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Inflação de setembro estoura o teto da meta",
+   "url": "https://www.poder360.com.br/poder-economia/inflacao-sobe-082-em-setembro-em-12-meses-vai-a-458/"
+  }
+ ]
+}

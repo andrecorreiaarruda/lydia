@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Lydia</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F4FBF'/%3E%3Cpath d='M10 9h12l-2 4H12z' fill='white'/%3E%3Cpath d='M13 13h6l1.5 13h-9z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: painel de fim de dia — faixa de indicadores no topo, quatro abas, a escada do PLANO como peça central do robô */
+:root {
+  --bg: #F1F3F6;
+  --surface: #FFFFFF;
+  --surface-2: #E7EBF0;
+  --ink: #15202B;
+  --ink-2: #4C5967;
+  --line: #D2D9E1;
+  --accent: #1F4FBF;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #DCE5F9;
+  --good: #1D7748;
+  --good-soft: #DBF0E4;
+  --warn: #9C5D00;
+  --warn-soft: #FAEACF;
+  --bad: #B0261E;
+  --bad-soft: #F7DDD9;
+  --font-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1218; --surface: #131B23; --surface-2: #1A242F; --ink: #E3E9EF; --ink-2: #98A6B4; --line: #253240;
+    --accent: #88A9FF; --accent-ink: #0C1218; --accent-soft: #1C2946;
+    --good: #5DC88E; --good-soft: #13301F; --warn: #E7A84A; --warn-soft: #33250E; --bad: #F08B81; --bad-soft: #3A1916;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1218; --surface: #131B23; --surface-2: #1A242F; --ink: #E3E9EF; --ink-2: #98A6B4; --line: #253240;
+  --accent: #88A9FF; --accent-ink: #0C1218; --accent-soft: #1C2946;
+  --good: #5DC88E; --good-soft: #13301F; --warn: #E7A84A; --warn-soft: #33250E; --bad: #F08B81; --bad-soft: #3A1916;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 20px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 20px; }
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: 30px; font-weight: 800; }
+h2 { font-size: 19px; font-weight: 800; }
+h3 { font-size: 15px; font-weight: 600; }
+p { margin: 0; }
+.muted { color: var(--ink-2); }
+.small { font-size: 13px; }
+.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); font-weight: 600; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Cabeçalho */
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
+.top .sub { color: var(--ink-2); font-size: 14px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink); white-space: nowrap; }
+.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-2); }
+.pill.ok .dot { background: var(--good); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.warn .dot { background: var(--warn); }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.bad .dot { background: var(--bad); }
+.pill.accent { background: var(--accent-soft); color: var(--accent); }
+
+/* Faixa de indicadores */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.kpi { background: var(--surface); padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
+.kpi .v { font-family: var(--font-data); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; color: var(--ink-2); }
+.up { color: var(--good); }
+.down { color: var(--bad); }
+
+/* Abas */
+.tabs { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--line); }
+.tab { appearance: none; border: 0; background: none; font: 600 15px var(--font-body); color: var(--ink-2); padding: 10px 14px; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .count { font-family: var(--font-data); font-size: 12px; margin-left: 4px; color: var(--ink-2); }
+.view { display: grid; gap: 20px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: grid; gap: 14px; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.btn { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 14px var(--font-body); padding: 9px 14px; border-radius: 8px; cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn:disabled { opacity: .5; cursor: default; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* Escada */
+.escada { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; gap: 6px; }
+.degrau { appearance: none; text-align: left; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-2); border-radius: 8px 8px 0 0; padding: 8px; cursor: pointer; display: grid; align-content: start; gap: 2px; font: inherit; min-width: 0; }
+.degrau .n { font-family: var(--font-data); font-size: 12px; }
+.degrau .t { font-size: 12px; font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
+.degrau.passada { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.degrau.atual { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.degrau.escolhida { outline: 2px dashed var(--accent); outline-offset: 2px; }
+.confirma { border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 14px; display: grid; gap: 10px; }
+
+/* Robô */
+.robo-ativo { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: baseline; }
+.ticker-grande { font-family: var(--font-display); font-stretch: 112%; font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.02em; }
+.trava { display: grid; gap: 8px; padding: 14px; border-radius: 8px; background: var(--warn-soft); color: var(--warn); }
+.trava strong { color: var(--ink); }
+.fila { display: grid; gap: 6px; }
+.fila-item { display: grid; grid-template-columns: 64px 1fr 74px; gap: 10px; align-items: center; font-size: 13px; }
+.barra { height: 10px; background: var(--surface-2); border-radius: 5px; position: relative; overflow: hidden; }
+.barra span { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 5px; }
+.barra i { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--ink); }
+.field { display: grid; gap: 4px; }
+.field input { font: 500 16px var(--font-data); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); width: 160px; max-width: 100%; }
+
+/* Tabelas */
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); font-weight: 600; background: var(--surface-2); }
+th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: inherit; }
+tbody tr { background: var(--surface); }
+tbody tr:last-child td { border-bottom: 0; }
+td .nome { font-size: 12px; color: var(--ink-2); white-space: normal; max-width: 180px; }
+td.tk { font-weight: 600; }
+tr.grupo td { background: var(--surface-2); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); font-weight: 600; text-align: left; }
+input.qtd { width: 76px; font: 500 14px var(--font-data); text-align: right; padding: 5px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.chip.good { background: var(--good-soft); color: var(--good); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.accent { background: var(--accent-soft); color: var(--accent); }
+.spark { display: block; }
+
+/* Notícias */
+.filtros { display: flex; flex-wrap: wrap; gap: 6px; }
+.filtro { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: 600 13px var(--font-body); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.filtro[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.noticias { display: grid; gap: 12px; }
+.nota { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
+.nota.observar { border-left-color: var(--warn); }
+.nota.risco { border-left-color: var(--bad); }
+.nota .meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; color: var(--ink-2); }
+.nota h3 { font-size: 16px; }
+.lados { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+.lado { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; font-size: 13px; }
+.lado b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); margin-bottom: 2px; }
+.vies { background: var(--warn-soft); border-radius: 8px; padding: 10px 12px; font-size: 13px; color: var(--ink); }
+.vies b { color: var(--warn); }
+.aviso { padding: 12px 14px; border-radius: 8px; background: var(--surface-2); font-size: 14px; }
+.aviso.warn { background: var(--warn-soft); }
+footer { font-size: 12px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 4px; }
+@media (max-width: 520px) {
+  h1 { font-size: 26px; }
+  .ticker-grande { font-size: 34px; }
+  .degrau .t { font-size: 11px; }
+  .kpi .v { font-size: 18px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .barra span { transition: width .4s ease; }
+}
+html, body { margin: 0; }
+body { min-height: 100vh; -webkit-text-size-adjust: 100%; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+[hidden] { display: none !important; }
+code { font-family: var(--font-data); font-size: .92em; }
+.portao { max-width: 560px; width: 100%; margin: 12px auto; }
+.portao textarea { font: 13px/1.45 var(--font-data); width: 100%; min-height: 220px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); resize: vertical; }
+.erro { color: var(--bad); font-size: 14px; }
+.link-btn { appearance: none; border: 0; background: none; color: var(--accent); font: inherit; padding: 0; cursor: pointer; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Lydia</h1>
+      <p class="sub">Fim do dia: mercado, carteira-alvo e notícias que mexem no seu dinheiro.</p>
+    </div>
+    <div class="pills" id="pills"></div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="Indicadores"></section>
+
+  <nav class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" id="tab-aporte" data-v="aporte">Aporte</button>
+    <button class="tab" role="tab" id="tab-carteira" data-v="carteira">Carteira</button>
+    <button class="tab" role="tab" id="tab-renda-fixa" data-v="renda-fixa">Renda fixa</button>
+    <button class="tab" role="tab" id="tab-noticias" data-v="noticias">Notícias<span class="count" id="ncount"></span></button>
+  </nav>
+
+  <main id="view" class="view"></main>
+
+  <footer>
+    <p>Não é recomendação de investimento. Os números vêm de sites públicos, podem ter atraso ou divergir entre fontes. Confira na corretora antes de comprar.</p>
+    <p>Atualização automática nos dias úteis, às 18h43. Nenhuma conta de banco ou corretora está conectada.</p>
+    <p id="conta" hidden></p>
+  </footer>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script>
+(() => {
+  const ATIVOS = [
+    { t: 'BBAS3', nome: 'Banco do Brasil', tipo: 'acao', seg: 'Banco · controle estatal', meta: 1 },
+    { t: 'BBSE3', nome: 'BB Seguridade', tipo: 'acao', seg: 'Seguros · controle do BB', meta: 1 },
+    { t: 'BPAC11', nome: 'BTG Pactual', tipo: 'acao', seg: 'Banco de investimento', meta: 1 },
+    { t: 'CXSE3', nome: 'Caixa Seguridade', tipo: 'acao', seg: 'Seguros · controle da Caixa', meta: 1 },
+    { t: 'ITUB4', nome: 'Itaú Unibanco', tipo: 'acao', seg: 'Banco', meta: 1 },
+    { t: 'VALE3', nome: 'Vale', tipo: 'acao', seg: 'Mineração', meta: 1 },
+    { t: 'KNCR11', nome: 'Kinea Rendimentos', tipo: 'fii', seg: 'Papel · CDI', meta: 1 },
+    { t: 'KNSC11', nome: 'Kinea Securities', tipo: 'fii', seg: 'Papel · CDI e IPCA', meta: 1 },
+    { t: 'KNRI11', nome: 'Kinea Renda Imobiliária', tipo: 'fii', seg: 'Tijolo · lajes e galpões', meta: 1 },
+    { t: 'HGLG11', nome: 'Pátria Log', tipo: 'fii', seg: 'Tijolo · galpões', meta: 1 },
+    { t: 'XPLG11', nome: 'XP Log', tipo: 'fii', seg: 'Tijolo · galpões', meta: 1 },
+    { t: 'PVBI11', nome: 'VBI Prime Properties', tipo: 'fii', seg: 'Tijolo · lajes corporativas', meta: 1 },
+    { t: 'RBRP11', nome: 'RBR Properties', tipo: 'fii', seg: 'Tijolo · lajes · meta 0 até decidir', meta: 0 },
+    { t: 'QQQM', nome: 'Invesco Nasdaq 100 (EUA)', tipo: 'etf', seg: 'Para as meninas · em dólar', meta: 'meninas', usd: true },
+    { t: 'NASD11', nome: 'Trend Nasdaq 100 (B3)', tipo: 'etf', seg: 'Para as meninas · alternativa na B3', meta: 'meninas' }
+  ];
+  // As fases do PLANO são pessoais: ficam no Firestore (painel/plano), não neste arquivo público.
+  let FASES = [];
+  let PLANO = {};
+
+  const state = {
+    view: 'aporte', filtro: 'tudo',
+    mercado: null, noticias: null, carteira: null,
+    confirmed: false, slow: false, err: null, readOnly: false,
+    escolhida: null, saving: false, pendingRender: false,
+    acesso: 'iniciando', user: null, msgLogin: '', erroBanco: '',
+    planoDoc: null, planoTexto: '', planoErro: '', planoProblema: '', salvandoPlano: false, carregadoEm: 0
+  };
+  let db = null;
+  let local = { qtd: {}, fase: 0, aporte: null };
+  let saveTimer = null, saveChain = Promise.resolve();
+
+  // ---------- formatação ----------
+  const nf = (d) => new Intl.NumberFormat('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const isNum = v => typeof v === 'number' && isFinite(v);
+  const brl = v => isNum(v) ? 'R$ ' + nf(2).format(v) : '—';
+  const usd = v => isNum(v) ? 'US$ ' + nf(2).format(v) : '—';
+  const pct = (v, d = 2) => isNum(v) ? nf(d).format(v) + '%' : '—';
+  const sinal = (v, d = 2) => isNum(v) ? (v > 0 ? '+' : v < 0 ? '−' : '') + nf(d).format(Math.abs(v)) + '%' : '—';
+  const cls = v => isNum(v) ? (v > 0 ? 'up' : v < 0 ? 'down' : '') : '';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const safeUrl = u => (typeof u === 'string' && /^https:\/\//.test(u)) ? u : null;
+  const DIAS = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+  function dm(iso) { if (!iso || typeof iso !== 'string') return null; const p = iso.slice(0, 10).split('-'); return p.length === 3 ? `${p[2]}/${p[1]}` : (iso.length === 7 ? iso.slice(5, 7) + '/' + iso.slice(0, 4) : iso); }
+  function mesAno(iso) { if (!iso) return '—'; const m = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; const [y, mm] = iso.split('-'); return `${m[(+mm) - 1] || mm}/${y}`; }
+  function diaSemana(iso) { const d = new Date(iso.slice(0, 10) + 'T12:00:00'); return DIAS[d.getDay()]; }
+  function diasUteisDesde(iso) {
+    if (!iso) return 99; const d = new Date(iso.slice(0, 10) + 'T12:00:00'); const hoje = new Date(); hoje.setHours(12, 0, 0, 0);
+    let n = 0; const c = new Date(d); while (c < hoje) { c.setDate(c.getDate() + 1); const w = c.getDay(); if (w !== 0 && w !== 6 && c <= hoje) n++; } return n;
+  }
+
+  // ---------- dados derivados ----------
+  const M = () => state.mercado || {};
+  const ind = k => (M().indicadores || {})[k] || {};
+  const dadosAtivo = t => ((M().ativos || {})[t]) || null;
+  function preco(t) { const a = dadosAtivo(t); if (!a) return null; if (isNum(a.preco)) return a.preco; const h = Array.isArray(a.hist) ? a.hist.filter(x => isNum(x.p)) : []; return h.length ? h[h.length - 1].p : null; }
+  const fase = () => FASES[Math.max(0, Math.min(4, local.fase | 0))];
+  function aporteAtual() { const f = fase(); if (f.n < 2) return 0; return isNum(local.aporte) && local.aporte > 0 ? local.aporte : f.aporte; }
+
+  function robo(valorRef) {
+    const base = ATIVOS.filter(a => a.meta === 1);
+    const A = valorRef;
+    const itens = base.map((a, i) => { const p = preco(a.t); const q = +local.qtd[a.t] || 0; return { a, i, p, q, v: isNum(p) ? q * p : null }; });
+    const com = itens.filter(x => isNum(x.p));
+    const sem = itens.filter(x => !isNum(x.p));
+    const T = com.reduce((s, x) => s + x.v, 0);
+    const alvo = com.length ? (T + A) / com.length : 0;
+    com.forEach(x => { x.def = alvo - x.v; x.peso = T > 0 ? x.v / T : 0; });
+    const fila = [...com].sort((x, y) => (y.def - x.def) || (x.i - y.i));
+    const escolha = fila.find(x => x.p <= A) || null;
+    const cotas = escolha ? Math.floor(A / escolha.p) : 0;
+    return { fila, sem, T, escolha, cotas, custo: escolha ? cotas * escolha.p : 0, A, vazia: T === 0 };
+  }
+
+  // ---------- renderização ----------
+  function renderPills() {
+    const el = document.getElementById('pills');
+    const f = fase();
+    let fresc = '';
+    if (!state.mercado) fresc = state.slow ? `<span class="pill warn"><span class="dot"></span>Os dados ainda não chegaram</span>` : `<span class="pill"><span class="dot"></span>Carregando…</span>`;
+    else {
+      const fe = M().fechamento; const n = diasUteisDesde(fe);
+      const txt = `Fechamento de ${diaSemana(fe)} ${dm(fe)}`;
+      fresc = n > 2 ? `<span class="pill warn"><span class="dot"></span>${txt} · desatualizado</span>` : `<span class="pill ok"><span class="dot"></span>${txt}</span>`;
+    }
+    el.innerHTML = fresc + `<span class="pill accent">Fase ${f.n} · ${esc(f.nome)}</span>`;
+  }
+
+  function renderKpis() {
+    const el = document.getElementById('kpis');
+    const s = ind('selic'), c = ind('cdi'), i = ind('ipca12m'), u = ind('usdbrl'), b = ind('ibov'), t = ind('ust10');
+    const real = (isNum(s.valor) && isNum(i.valor)) ? ((1 + s.valor / 100) / (1 + i.valor / 100) - 1) * 100 : null;
+    const k = (lab, v, d) => `<div class="kpi"><span class="label">${lab}</span><span class="v">${v}</span><span class="d">${d}</span></div>`;
+    el.innerHTML = [
+      k('Selic', pct(s.valor), s.data ? `Copom ${dm(s.data)}` : '—'),
+      k('CDI', pct(c.valor), c.data ? `em ${dm(c.data)}` : '—'),
+      k('IPCA 12 meses', pct(i.valor), i.data ? `até ${mesAno(i.data)}` : '—'),
+      k('Juro real', pct(real), 'Selic acima do IPCA'),
+      k('Dólar', isNum(u.valor) ? 'R$ ' + nf(4).format(u.valor) : '—', isNum(u.var) ? `<span class="${cls(u.var)}">${sinal(u.var)}</span> no dia` : '—'),
+      k('Ibovespa', isNum(b.valor) ? nf(0).format(b.valor) : '—', isNum(b.var) ? `<span class="${cls(b.var)}">${sinal(b.var)}</span> no dia` : '—'),
+      k('Treasury 10 anos', pct(t.valor), t.data ? `EUA, em ${dm(t.data)}` : '—')
+    ].join('');
+  }
+
+  function escadaHTML() {
+    const f = fase();
+    return `<div class="escada" role="group" aria-label="Escada do plano">` + FASES.map(x => {
+      const c = x.n < f.n ? 'passada' : x.n === f.n ? 'atual' : '';
+      const esc2 = state.escolhida === x.n ? ' escolhida' : '';
+      return `<button class="degrau ${c}${esc2}" id="degrau-${x.n}" data-fase="${x.n}" style="min-height:${56 + x.n * 16}px" aria-pressed="${x.n === f.n}"><span class="n">Fase ${x.n}</span><span class="t">${esc(x.nome)}</span></button>`;
+    }).join('') + `</div>`;
+  }
+
+  function confirmaHTML() {
+    const alvo = state.escolhida; if (alvo === null || alvo === fase().n) return '';
+    const x = FASES[alvo]; const subindo = alvo > fase().n;
+    const portoes = FASES.slice(fase().n, alvo).map(f => f.portao);
+    const texto = subindo
+      ? `Para chegar à fase ${alvo} você precisa ter passado ${portoes.length > 1 ? 'os portões' : 'o portão'}: <strong>${portoes.map(esc).join('; ')}</strong>.`
+      : `Voltar para a fase ${alvo} não é fracasso. Regra 9: errou um mês, volta à regra no seguinte.`;
+    return `<div class="confirma"><h3>Mudar para a fase ${alvo} · ${esc(x.nome)}?</h3><p class="small">${texto}</p><p class="small muted">Nessa fase: ${esc(x.destino)}</p>
+      <div class="row"><button class="btn primary" id="btn-confirma-fase">${subindo ? 'Passei o portão, mudar' : 'Voltar para essa fase'}</button><button class="btn" id="btn-cancela-fase">Cancelar</button></div></div>`;
+  }
+
+  function filaHTML(r) {
+    if (!r.fila.length) return `<p class="muted small">Sem cotações para montar a fila.</p>`;
+    const meta = 1 / 12;
+    return `<div class="fila">` + r.fila.map(x => {
+      const w = r.T > 0 ? Math.min(100, (x.peso / (meta * 2)) * 100) : 0;
+      return `<div class="fila-item"><span class="num">${x.a.t}</span><span class="barra" title="Peso atual ${pct(x.peso * 100, 1)} · meta 8,3%"><span style="width:${w}%"></span><i style="left:50%"></i></span><span class="num small" style="text-align:right">${r.T > 0 ? pct(x.peso * 100, 1) : '0,0%'}</span></div>`;
+    }).join('') + `</div><p class="small muted">A linha preta é a meta de cada ativo (1/12, 8,3%). Quem está mais longe dela, à esquerda, é o próximo da fila.</p>` +
+      (r.sem.length ? `<p class="small muted">Fora da fila hoje por falta de cotação: ${r.sem.map(x => x.a.t).join(', ')}.</p>` : '');
+  }
+
+  function renderAporte() {
+    const f = fase(); const trav = f.n < 2;
+    const ref = trav ? FASES[2].aporte : aporteAtual();
+    const r = robo(ref);
+    const e = r.escolha;
+    let robôHTML;
+    if (!state.mercado) robôHTML = `<p class="muted">Assim que os preços chegarem, o robô mostra aqui qual ativo comprar este mês.</p>`;
+    else if (trav) {
+      robôHTML = `<div class="trava"><span class="label" style="color:inherit">Aporte travado</span>
+        <p><strong>Você está na fase ${f.n} (${esc(f.nome)}).</strong> ${esc(f.destino)}</p>
+        <p class="small">${PLANO.travaRegra ? esc(PLANO.travaRegra) + ' ' : ''}Portão para sair: ${esc(f.portao)}.</p></div>
+        ${e ? `<p class="small">Quando destravar, o primeiro da fila hoje é <strong class="num">${e.a.t}</strong>: com ${brl(ref)} dariam ${r.cotas} cotas a ${brl(e.p)}.</p>` : ''}`;
+    } else if (!e) {
+      robôHTML = `<p class="muted">Nenhum ativo da fila cabe em ${brl(r.A)}. Aumente o valor do aporte ou junte para o mês que vem.</p>`;
+    } else {
+      robôHTML = `<div class="robo-ativo"><span class="ticker-grande">${e.a.t}</span><span class="muted small">${esc(e.a.nome)}<br>${esc(e.a.seg)}</span></div>
+        <p style="font-size:17px"><span class="num">${r.cotas}</span> cotas × <span class="num">${brl(e.p)}</span> = <strong class="num">${brl(r.custo)}</strong></p>
+        <p class="small muted">Sobra ${brl(r.A - r.custo)} do aporte de ${brl(r.A)}.${r.vazia ? ' Carteira ainda vazia: o robô segue a ordem da lista.' : ''} Regra 6: compro o mais abaixo da meta.</p>`;
+    }
+    const meninas = f.n >= 2 ? f.meninas : FASES[2].meninas;
+    const pN = preco('NASD11'), pQ = preco('QQQM'), dol = ind('usdbrl').valor;
+    const cN = isNum(pN) ? Math.floor(meninas / pN) : null;
+    const meninasHTML = `<div class="card"><div class="row" style="justify-content:space-between"><h2>Para as meninas</h2><span class="chip ${f.n >= 2 ? 'accent' : 'warn'}">${f.n >= 2 ? 'ativo' : 'começa na fase 2'}</span></div>
+      <p class="small muted">${brl(meninas)} por mês${PLANO.meninasNota ? ' (' + esc(PLANO.meninasNota) + ')' : ''}. QQQM ou NASD11 ainda é ponto em aberto no PLANO.</p>
+      <div class="scroll"><table><thead><tr><th>Opção</th><th>Preço</th><th>Com ${brl(meninas)}</th></tr></thead><tbody>
+      <tr><td class="tk">NASD11<div class="nome">na B3, em reais</div></td><td class="num">${brl(pN)}</td><td class="num">${cN !== null ? cN + ' cotas (' + brl(cN * pN) + ')' : '—'}</td></tr>
+      <tr><td class="tk">QQQM<div class="nome">nos EUA, em dólar</div></td><td class="num">${usd(pQ)}</td><td class="num">${isNum(dol) ? '≈ ' + usd(meninas / dol) : '—'}</td></tr>
+      </tbody></table></div></div>`;
+    const ap = f.n >= 2 ? `<div class="field"><label class="label" for="in-aporte">Aporte da aposentadoria este mês</label><input id="in-aporte" inputmode="decimal" value="${nf(2).format(aporteAtual())}"><span class="small muted">Padrão da fase ${f.n}: ${brl(f.aporte)}. Se a sobra for menor, divida na mesma proporção.</span></div>` : '';
+    return `<div class="grid2">
+      <div class="card"><div class="row" style="justify-content:space-between"><h2>Robô do aporte</h2>${state.mercado ? `<span class="small muted">preços de ${dm(M().fechamento)}</span>` : ''}</div>${robôHTML}${ap}</div>
+      <div class="card"><h2>A escada</h2>${escadaHTML()}<p class="small"><strong>Agora:</strong> ${esc(f.destino)}</p>${f.n < 4 ? `<p class="small muted">Para subir: ${esc(f.portao)}. Toque num degrau para mudar de fase.</p>` : ''}${confirmaHTML()}</div>
+    </div>
+    <div class="grid2"><div class="card"><h2>Fila do robô</h2>${state.mercado ? filaHTML(r) : '<p class="muted small">Aguardando preços.</p>'}<p class="small muted">As quantidades vêm da aba Carteira.</p></div>${meninasHTML}</div>`;
+  }
+
+  function spark(hist) {
+    const h = (Array.isArray(hist) ? hist : []).filter(x => isNum(x.p)).slice(-30);
+    if (h.length < 2) return '<span class="small muted">—</span>';
+    const W = 72, H = 22, ps = h.map(x => x.p), mn = Math.min(...ps), mx = Math.max(...ps), rg = (mx - mn) || 1;
+    const pts = ps.map((p, i) => [(i / (ps.length - 1)) * (W - 4) + 2, H - 3 - ((p - mn) / rg) * (H - 6)]);
+    const up = ps[ps.length - 1] >= ps[0];
+    const col = up ? 'var(--good)' : 'var(--bad)';
+    const last = pts[pts.length - 1];
+    return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true"><polyline fill="none" stroke="${col}" stroke-width="1.5" points="${pts.map(p => p.map(n => n.toFixed(1)).join(',')).join(' ')}"/><circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="2.2" fill="${col}"/></svg>`;
+  }
+
+  function pvpChip(a, d) {
+    if (a.tipo !== 'fii' || !d || !isNum(d.pvp)) return isNum(d && d.pvp) ? `<span class="num">${nf(2).format(d.pvp)}</span>` : '—';
+    const v = d.pvp; const c = v < 0.95 ? 'good' : v <= 1.05 ? '' : 'warn'; const t = v < 0.95 ? 'desconto' : v <= 1.05 ? 'no valor' : 'ágio';
+    return `<span class="num">${nf(2).format(v)}</span> <span class="chip ${c}">${t}</span>`;
+  }
+
+  function renderCarteira() {
+    if (!state.mercado) return `<div class="card"><h2>Carteira-alvo</h2><p class="muted">Os 15 ativos do PLANO aparecem aqui com preço, dividend yield e P/VP assim que a primeira atualização chegar.</p></div>`;
+    const base = ATIVOS.filter(a => a.meta === 1);
+    let T = 0; base.forEach(a => { const p = preco(a.t); const q = +local.qtd[a.t] || 0; if (isNum(p)) T += p * q; });
+    const linha = a => {
+      const d = dadosAtivo(a.t) || {}; const p = preco(a.t); const q = +local.qtd[a.t] || 0;
+      const v = isNum(p) ? p * q : null; const peso = a.meta === 1 && T > 0 && isNum(v) ? v / T * 100 : null;
+      const rend = d.ultimoRend && isNum(d.ultimoRend.valor) ? `<span class="num">${brl(d.ultimoRend.valor)}</span><div class="nome">paga ${dm(d.ultimoRend.pagamento) || '—'}</div>` : '—';
+      const precoTxt = a.usd ? usd(p) : brl(p);
+      const dataTxt = d.data ? dm(d.data) : 'sem data';
+      return `<tr><td class="tk">${a.t}<div class="nome">${esc(a.nome)} · ${esc(a.seg)}</div></td>
+        <td class="num">${precoTxt}<div class="nome">${esc(dataTxt)}${d.obs ? ' · ' + esc(d.obs) : ''}</div></td>
+        <td class="num ${cls(d.var)}">${sinal(d.var)}</td>
+        <td>${spark(d.hist)}</td>
+        <td class="num">${pct(d.dy)}</td>
+        <td>${pvpChip(a, d)}</td>
+        <td class="num">${a.tipo === 'acao' && isNum(d.pl) ? nf(2).format(d.pl) : '—'}</td>
+        <td>${a.tipo === 'fii' ? rend : '—'}</td>
+        <td><input class="qtd" id="qtd-${a.t}" data-t="${a.t}" inputmode="numeric" value="${q || ''}" placeholder="0" aria-label="Quantidade de ${a.t}"${state.readOnly ? ' disabled' : ''}></td>
+        <td class="num">${q ? (a.usd ? usd(v) : brl(v)) : '—'}</td>
+        <td class="num">${isNum(peso) ? pct(peso, 1) : (a.meta === 1 ? '—' : a.meta === 0 ? 'meta 0' : '')}</td></tr>`;
+    };
+    const head = `<tr><th>Ativo</th><th>Preço</th><th>Dia</th><th>30 dias</th><th>DY 12m</th><th>P/VP</th><th>P/L</th><th>Último rend.</th><th>Qtd</th><th>Valor</th><th>Peso</th></tr>`;
+    const grupo = (t, arr) => `<tr class="grupo"><td colspan="11">${t}</td></tr>` + arr.map(linha).join('');
+    return `<div class="card"><div class="row" style="justify-content:space-between"><h2>Carteira-alvo</h2><span class="num">Total na fila: ${brl(T)}</span></div>
+      <p class="small muted">Digite quantas cotas você tem de cada ativo. Só muda quando você comprar. Nada aqui está ligado à corretora.</p>
+      ${state.readOnly ? '<p class="aviso warn small">Esta visualização não pode salvar quantidades.</p>' : ''}
+      <div class="scroll"><table><thead>${head}</thead><tbody>
+      ${grupo('Ações · meta 8,3% cada', ATIVOS.filter(a => a.tipo === 'acao'))}
+      ${grupo('Fundos imobiliários · meta 8,3% cada', ATIVOS.filter(a => a.tipo === 'fii'))}
+      ${grupo('Para as meninas', ATIVOS.filter(a => a.tipo === 'etf'))}
+      </tbody></table></div>
+      <p class="small muted">P/VP nos FIIs: abaixo de 0,95 a cota está com desconto sobre o patrimônio; acima de 1,05, com ágio. Nas ações o P/VP depende do setor e não recebe cor. DY e P/VP vêm de sites diferentes e às vezes divergem.</p>
+      <p class="small muted">${state.saving ? 'Salvando…' : 'Salva sozinho depois que você para de digitar.'}</p></div>`;
+  }
+
+  function renderRendaFixa() {
+    if (!state.mercado) return `<div class="card"><h2>Renda fixa</h2><p class="muted">CDB, LCI/LCA e Tesouro Direto aparecem aqui, já com o imposto descontado, quando a primeira atualização chegar.</p></div>`;
+    const cdi = ind('cdi').valor, ipca = ind('ipca12m').valor; const td = M().tesouro || {}; const tit = Array.isArray(td.titulos) ? td.titulos : [];
+    const ir = dias => dias <= 180 ? 0.225 : dias <= 360 ? 0.20 : dias <= 720 ? 0.175 : 0.15;
+    const liq1 = g => g * (1 - ir(365));
+    const liq2 = g => (Math.pow(1 + ((1 + g) ** 2 - 1) * (1 - 0.15), 0.5) - 1);
+    const real = n => isNum(ipca) ? (1 + n) / (1 + ipca / 100) - 1 : null;
+    const P = v => isNum(v) ? pct(v * 100) : '—';
+    const rows = [];
+    const add = (nome, obs, taxaTxt, g, isento, garantia, longo) => {
+      const n1 = isNum(g) ? (isento ? g : liq1(g)) : null; const n2 = isNum(g) ? (isento ? g : liq2(g)) : null;
+      rows.push(`<tr><td class="tk">${esc(nome)}<div class="nome">${esc(obs)}</div></td><td class="num">${taxaTxt}</td><td class="num">${longo ? '—' : P(n1)}</td><td class="num">${P(n2)}</td><td class="num">${P(real(n2))}</td><td>${esc(garantia)}</td></tr>`);
+    };
+    const c = isNum(cdi) ? cdi / 100 : null;
+    const grupo = t => rows.push(`<tr class="grupo"><td colspan="6">${t}</td></tr>`);
+    grupo('Pós-fixados · bons para o colchão');
+    add('CDB 100% do CDI', 'liquidez diária em bancos grandes', pct(cdi), c, false, 'FGC até R$ 250 mil');
+    add('CDB 110% do CDI', 'exemplo de cálculo, não é oferta', isNum(cdi) ? pct(cdi * 1.1) : '—', c && c * 1.1, false, 'FGC até R$ 250 mil');
+    add('CDB 120% do CDI', 'exemplo de cálculo, não é oferta', isNum(cdi) ? pct(cdi * 1.2) : '—', c && c * 1.2, false, 'FGC até R$ 250 mil');
+    add('LCI/LCA 90% do CDI', 'isenta de IR; exemplo de cálculo', isNum(cdi) ? pct(cdi * 0.9) : '—', c && c * 0.9, true, 'FGC até R$ 250 mil');
+    add('LCI/LCA 95% do CDI', 'isenta de IR; exemplo de cálculo', isNum(cdi) ? pct(cdi * 0.95) : '—', c && c * 0.95, true, 'FGC até R$ 250 mil');
+    tit.filter(t => t.tipo === 'selic' || t.tipo === 'selic100').forEach(t => {
+      const g = c !== null ? (1 + c) * (1 + (t.taxa || 0) / 100) - 1 : null;
+      add(t.nome, t.tipo === 'selic' ? 'Selic efetiva ≈ CDI' : '100% da Selic', t.tipo === 'selic' ? `Selic + ${nf(4).format(t.taxa || 0)}%` : '100% Selic', g, false, 'Tesouro Nacional');
+    });
+    const pre = tit.filter(t => t.tipo === 'pre'), ip = tit.filter(t => t.tipo === 'ipca');
+    if (pre.length) { grupo('Prefixados · levar até o vencimento'); pre.forEach(t => add(t.nome, 'taxa travada até o vencimento', pct(t.taxa), t.taxa / 100, false, 'Tesouro Nacional', true)); }
+    if (ip.length) { grupo('Inflação + juro real · longo prazo'); ip.forEach(t => { const g = isNum(ipca) ? (1 + ipca / 100) * (1 + t.taxa / 100) - 1 : null; add(t.nome, 'estimado com o IPCA dos últimos 12 meses', `IPCA + ${pct(t.taxa)}`, g, false, 'Tesouro Nacional', true); }); }
+    const ust = ind('ust10');
+    return `<div class="card"><h2>Renda fixa comparada</h2>
+      <p class="small muted">CDI ${pct(cdi)} (${dm(ind('cdi').data) || '—'}) · IPCA 12 meses ${pct(ipca)} · taxas do Tesouro de ${dm(td.data) || '—'}${td.fonte ? ' (' + esc(td.fonte) + ')' : ''}.</p>
+      <div class="scroll"><table><thead><tr><th>Produto</th><th>Taxa bruta</th><th>Líquido em 1 ano</th><th>Líquido ao ano, 2+ anos</th><th>Acima da inflação</th><th>Garantia</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>
+      <p class="small muted">"Líquido" já desconta o IR da tabela regressiva (17,5% entre 1 e 2 anos; 15% acima de 2 anos). Prefixados e IPCA+ vendidos antes do vencimento saem a preço de mercado e podem render menos ou até dar perda. O Tesouro cobra custódia de 0,20% ao ano (o Tesouro Selic é isento até R$ 10 mil), que não está na conta.</p></div>
+      <div class="card"><h2>Tesouro americano</h2>
+      <p>Treasury de 10 anos: <strong class="num">${pct(ust.valor)}</strong> ao ano em dólar${ust.data ? ', em ' + dm(ust.data) : ''}.</p>
+      <p class="small muted">Para quem vive em reais, o resultado também depende do câmbio. Dólar hoje: ${isNum(ind('usdbrl').valor) ? 'R$ ' + nf(4).format(ind('usdbrl').valor) : '—'}.</p></div>`;
+  }
+
+  const TEMAS = { tudo: 'Tudo', carteira: 'Minha carteira', macro: 'Juros, inflação e câmbio', politica: 'Política e economia' };
+  const TIPO = { fato: 'Fato', opiniao: 'Opinião', rumor: 'Rumor, não confirmado' };
+  const TESE = { nao: ['Não mexe na tese', ''], observar: ['Observar', 'warn'], risco: ['Tese em risco', 'bad'] };
+
+  function renderNoticias() {
+    const itens = (state.noticias && Array.isArray(state.noticias.itens)) ? state.noticias.itens : [];
+    if (!itens.length) return `<div class="card"><h2>Notícias</h2><p class="muted">As notícias do dia aparecem aqui depois da atualização das 18h43: o que mexe nos seus 15 ativos, nos juros, na inflação e no dólar, além de política e economia, sempre com os dois lados.</p></div>`;
+    const lista = itens.filter(n => state.filtro === 'tudo' || n.tema === state.filtro || (state.filtro === 'carteira' && Array.isArray(n.ativos) && n.ativos.length));
+    const chips = Object.entries(TEMAS).map(([k, v]) => `<button class="filtro" id="f-${k}" data-f="${k}" aria-pressed="${state.filtro === k}">${v}</button>`).join('');
+    const card = n => {
+      const t = TESE[n.tese] || TESE.nao; const u = safeUrl(n.url);
+      const ativos = (Array.isArray(n.ativos) ? n.ativos : []).map(a => `<span class="chip accent">${esc(a)}</span>`).join(' ');
+      const lados = Array.isArray(n.leituras) && n.leituras.length ? `<div class="lados">${n.leituras.slice(0, 2).map(l => `<div class="lado"><b>${esc(l.quem)}</b>${esc(l.diz)}</div>`).join('')}</div>` : '';
+      const vies = n.confirma ? `<div class="vies"><b>⚠ Confirma o que você já pensa.</b> ${n.contraponto ? 'O melhor argumento do outro lado: ' + esc(n.contraponto) : 'Leia o fato antes da opinião.'}</div>` : '';
+      return `<article class="nota ${n.tese === 'observar' ? 'observar' : n.tese === 'risco' ? 'risco' : ''}">
+        <div class="meta"><span class="num">${esc(dm(n.data) || '')}</span><span>·</span><span>${esc(n.fonte || '')}</span><span class="chip">${esc(TIPO[n.tipo] || 'Fato')}</span><span class="chip ${t[1]}">${t[0]}</span>${ativos}</div>
+        <h3>${esc(n.titulo)}</h3><p class="small">${esc(n.resumo)}</p>${n.nota ? `<p class="small muted">${esc(n.nota)}</p>` : ''}${lados}${vies}
+        ${u ? `<a class="small" href="${esc(u)}" target="_blank" rel="noopener">Ler na fonte</a>` : ''}</article>`;
+    };
+    return `<div class="card"><h2>Notícias</h2>
+      <p class="small muted">A sua tendência decide quais temas entram, não qual lado aparece. Quando uma notícia bate com o seu perfil político, ela vem marcada, junto com o melhor argumento de quem pensa diferente.</p>
+      <div class="filtros" role="group" aria-label="Filtrar notícias">${chips}</div></div>
+      <div class="noticias">${lista.length ? lista.map(card).join('') : '<p class="muted">Nada neste filtro hoje.</p>'}</div>
+      <p class="small muted">Atualizado em ${state.noticias.atualizadoEm ? esc(dm(state.noticias.atualizadoEm)) : '—'}. Resumos escritos pelo Claude; o texto completo está na fonte.</p>`;
+  }
+
+  function renderView() {
+    const v = document.getElementById('view');
+    if (v.contains(document.activeElement) && document.activeElement.matches('input, textarea')) { state.pendingRender = true; return; }
+    state.pendingRender = false;
+    if (state.acesso !== 'ok') { v.innerHTML = portaoHTML(); return; }
+    let html = '';
+    if (state.err) html += `<p class="aviso warn">Os dados do mercado não carregaram (${esc(state.err)}). Recarregue a página mais tarde.</p>`;
+    html += state.view === 'aporte' ? renderAporte() : state.view === 'carteira' ? renderCarteira() : state.view === 'renda-fixa' ? renderRendaFixa() : renderNoticias();
+    v.innerHTML = html;
+  }
+
+  function renderTabs() {
+    document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.v === state.view)));
+    const n = state.noticias && Array.isArray(state.noticias.itens) ? state.noticias.itens.length : 0;
+    document.getElementById('ncount').textContent = n ? String(n) : '';
+  }
+
+  function portaoHTML() {
+    const a = state.acesso;
+    const card = (titulo, corpo) => `<div class="card portao"><h2>${titulo}</h2>${corpo}</div>`;
+    if (a === 'iniciando' || a === 'carregando') return card('Abrindo o painel…', '<p class="muted">Conferindo a sua conta.</p>');
+    if (a === 'sem-sdk') return card('Não consegui carregar o Firebase', '<p class="muted">Confira a conexão e recarregue a página.</p>');
+    if (a === 'sem-config') return card('Falta ligar o Firebase', '<p class="muted">Cole a configuração do app da Web no arquivo <code>firebase-config.js</code> e publique de novo. O passo a passo está no README do repositório.</p>');
+    if (a === 'deslogado' || a === 'entrando') return card('Entrar', `<p class="muted">A carteira e o plano ficam guardados no Firebase, só para a sua conta Google.</p>
+      <div class="row"><button class="btn primary" id="btn-entrar"${a === 'entrando' ? ' disabled' : ''}>${a === 'entrando' ? 'Entrando…' : 'Entrar com Google'}</button></div>
+      ${state.msgLogin ? `<p class="erro">${esc(state.msgLogin)}</p>` : ''}`);
+    if (a === 'negado') return card('Esta conta não tem acesso', `<p class="muted">${esc((state.user && state.user.email) || 'Esta conta')} não está liberada nas regras do Firestore deste painel.</p>
+      <div class="row"><button class="btn" id="btn-sair2">Sair e entrar com outra conta</button></div>`);
+    if (a === 'sem-plano' || a === 'plano-invalido') return card(a === 'sem-plano' ? 'Configurar o plano' : 'O plano salvo está com problema', `
+      <p class="small muted">${a === 'sem-plano' ? 'Primeira vez neste banco: cole o texto do plano (o JSON das cinco fases) e salve. Ele fica só na sua conta, fora do código público.' : esc(state.planoProblema) + ' Cole o plano de novo para corrigir.'}</p>
+      <label class="label" for="in-plano">Plano (JSON)</label>
+      <textarea id="in-plano" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder='{"fases": [ … ]}'>${esc(state.planoTexto)}</textarea>
+      ${state.planoErro ? `<p class="erro">${esc(state.planoErro)}</p>` : ''}
+      <div class="row"><button class="btn primary" id="btn-salvar-plano"${state.salvandoPlano ? ' disabled' : ''}>${state.salvandoPlano ? 'Salvando…' : 'Salvar plano'}</button></div>`);
+    return card('Algo deu errado', `<p class="muted">${esc(state.erroBanco || 'Recarregue a página.')}</p>`);
+  }
+
+  function renderConta() {
+    const el = document.getElementById('conta');
+    const u = state.user;
+    el.hidden = !u;
+    el.innerHTML = u ? `Conectado como ${esc(u.email || u.displayName || 'sua conta Google')} · <button class="link-btn" id="btn-sair">Sair</button>` : '';
+  }
+
+  function renderAll() {
+    const ok = state.acesso === 'ok';
+    document.getElementById('kpis').hidden = !ok;
+    document.getElementById('tabs').hidden = !ok;
+    renderConta();
+    if (ok) { renderPills(); renderKpis(); renderTabs(); } else document.getElementById('pills').innerHTML = '';
+    renderView();
+  }
+
+  // ---------- gravação ----------
+  let dirty = 0;
+  function agendarSalvar() {
+    dirty++;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      if (!db || state.readOnly) { dirty = 0; return; }
+      const marca = dirty;
+      const body = { qtd: { ...local.qtd }, fase: local.fase, aporte: isNum(local.aporte) ? local.aporte : null, atualizadoEm: new Date().toISOString() };
+      state.saving = true;
+      saveChain = saveChain.then(() => db.doc('painel/carteira').set(body)).then(() => {
+        state.saving = false; if (dirty === marca) dirty = 0; renderView();
+      }).catch(e => {
+        state.saving = false; dirty = 0; if (e && e.code === 'permission-denied') { state.readOnly = true; } renderView();
+      });
+    }, 700);
+  }
+  function parseNum(s) { const t = String(s).replace(/\s|R\$/g, '').replace(/\./g, '').replace(',', '.'); const n = parseFloat(t); return isFinite(n) ? n : null; }
+
+  // ---------- eventos ----------
+  document.getElementById('tabs').addEventListener('click', e => {
+    const b = e.target.closest('.tab'); if (!b) return; state.view = b.dataset.v; try { history.replaceState(null, '', '#' + state.view); } catch (_) { location.hash = state.view; } renderTabs(); state.pendingRender = false; document.activeElement && document.activeElement.blur && document.activeElement.blur(); renderView();
+  });
+  document.getElementById('view').addEventListener('click', e => {
+    if (e.target.id === 'btn-entrar') { entrar(); return; }
+    if (e.target.id === 'btn-sair2') { sair(); return; }
+    if (e.target.id === 'btn-salvar-plano') { salvarPlano(); return; }
+    const d = e.target.closest('.degrau');
+    if (d) { const n = +d.dataset.fase; state.escolhida = n === fase().n ? null : n; renderView(); return; }
+    if (e.target.id === 'btn-cancela-fase') { state.escolhida = null; renderView(); return; }
+    if (e.target.id === 'btn-confirma-fase') { local.fase = state.escolhida; local.aporte = null; state.escolhida = null; agendarSalvar(); renderAll(); return; }
+    const f = e.target.closest('.filtro'); if (f) { state.filtro = f.dataset.f; renderView(); }
+  });
+  document.getElementById('view').addEventListener('input', e => {
+    const i = e.target;
+    if (i.id === 'in-plano') { state.planoTexto = i.value; return; }
+    if (i.matches('input.qtd')) { const n = parseNum(i.value); local.qtd[i.dataset.t] = n && n > 0 ? n : 0; agendarSalvar(); }
+    if (i.id === 'in-aporte') { const n = parseNum(i.value); local.aporte = n && n > 0 ? n : null; agendarSalvar(); }
+  });
+  document.getElementById('view').addEventListener('focusout', e => {
+    const prox = e.relatedTarget;
+    if (prox && prox.closest && prox.closest('#view button')) return;
+    setTimeout(renderView, 0);
+  });
+  function lerHash() { const h = (location.hash || '').replace('#', ''); if (['aporte', 'carteira', 'renda-fixa', 'noticias'].includes(h)) state.view = h; }
+  window.addEventListener('hashchange', () => { lerHash(); renderTabs(); renderView(); });
+
+  // ---------- dados do mercado: arquivos públicos gravados pela tarefa agendada ----------
+  async function lerJSON(nome) {
+    const r = await fetch(`data/${nome}.json`, { cache: 'no-cache' });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const j = await r.json();
+    if (!j || typeof j !== 'object' || Array.isArray(j)) throw new Error('formato inválido');
+    return j;
+  }
+  let slowTimer = null;
+  async function carregarDados() {
+    clearTimeout(slowTimer);
+    slowTimer = setTimeout(() => { if (!state.confirmed) { state.slow = true; renderAll(); } }, 10000);
+    const [m, n] = await Promise.allSettled([lerJSON('mercado'), lerJSON('noticias')]);
+    clearTimeout(slowTimer);
+    if (m.status === 'fulfilled') { state.mercado = m.value; state.confirmed = true; state.slow = false; }
+    if (n.status === 'fulfilled') state.noticias = n.value;
+    state.err = (m.status === 'rejected' && !state.mercado) ? 'não consegui ler data/mercado.json' : null;
+    state.carregadoEm = Date.now();
+    renderAll();
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && Date.now() - state.carregadoEm > 20 * 60 * 1000) carregarDados();
+  });
+
+  // ---------- plano: fases pessoais guardadas no Firestore ----------
+  function validarPlano(p) {
+    if (!p || typeof p !== 'object' || Array.isArray(p)) return 'O plano precisa ser um objeto JSON.';
+    const f = p.fases;
+    if (!Array.isArray(f) || f.length !== 5) return 'O plano precisa ter exatamente 5 fases (0 a 4).';
+    for (let i = 0; i < 5; i++) {
+      const x = f[i];
+      if (!x || typeof x !== 'object' || x.n !== i) return `A fase na posição ${i} precisa ter "n": ${i}.`;
+      for (const k of ['nome', 'destino', 'portao']) if (typeof x[k] !== 'string' || !x[k].trim()) return `Fase ${i}: falta o texto "${k}".`;
+      for (const k of ['aporte', 'meninas']) if (!isNum(x[k]) || x[k] < 0) return `Fase ${i}: "${k}" precisa ser um número.`;
+    }
+    for (const k of ['travaRegra', 'meninasNota']) if (p[k] != null && typeof p[k] !== 'string') return `"${k}" precisa ser texto.`;
+    return null;
+  }
+  async function salvarPlano() {
+    if (!db || state.salvandoPlano) return;
+    let p;
+    try { p = JSON.parse(state.planoTexto); }
+    catch (_) { state.planoErro = 'Esse texto não é um JSON válido. Copie o plano inteiro, da primeira { até a última }.'; renderAll(); return; }
+    const prob = validarPlano(p);
+    if (prob) { state.planoErro = prob; renderAll(); return; }
+    const body = {
+      fases: p.fases.map(x => ({ n: x.n, nome: x.nome.trim(), destino: x.destino.trim(), portao: x.portao.trim(), aporte: x.aporte, meninas: x.meninas })),
+      travaRegra: p.travaRegra || null, meninasNota: p.meninasNota || null, atualizadoEm: new Date().toISOString()
+    };
+    state.salvandoPlano = true; state.planoErro = ''; renderAll();
+    try { await db.doc('painel/plano').set(body); state.planoTexto = ''; }
+    catch (e) { state.planoErro = (e && e.code === 'permission-denied') ? 'O Firestore recusou a gravação. Confira o e-mail nas regras do banco.' : 'Não consegui salvar. Tente de novo.'; }
+    state.salvandoPlano = false; renderAll();
+  }
+
+  // ---------- conta Google e banco (Firebase) ----------
+  let auth = null, desligar = [], got = {};
+  const MSG_LOGIN = {
+    'auth/unauthorized-domain': 'Este endereço ainda não está autorizado no Firebase (Authentication › Configurações › Domínios autorizados).',
+    'auth/operation-not-allowed': 'O login com Google não está ativado no Firebase (Authentication › Método de login).',
+    'auth/network-request-failed': 'Sem conexão com o Google. Confira a internet e tente de novo.',
+    'auth/too-many-requests': 'Muitas tentativas seguidas. Espere um pouco e tente de novo.'
+  };
+  async function entrar() {
+    if (!auth || state.acesso === 'entrando') return;
+    state.acesso = 'entrando'; state.msgLogin = ''; renderAll();
+    const prov = new firebase.auth.GoogleAuthProvider();
+    prov.setCustomParameters({ prompt: 'select_account' });
+    try { await auth.signInWithPopup(prov); }
+    catch (e) {
+      let erro = e;
+      const c = e && e.code;
+      if (c === 'auth/popup-blocked' || c === 'auth/operation-not-supported-in-this-environment') {
+        try { await auth.signInWithRedirect(prov); return; } catch (e2) { erro = e2; }
+      }
+      if (!state.user) state.acesso = 'deslogado';
+      const ec = erro && erro.code;
+      state.msgLogin = (ec === 'auth/popup-closed-by-user' || ec === 'auth/cancelled-popup-request') ? '' : (MSG_LOGIN[ec] || 'Não consegui entrar. Tente de novo.');
+      renderAll();
+    }
+  }
+  function sair() { if (auth) auth.signOut().catch(() => {}); }
+  function desligarBanco() { desligar.forEach(f => { try { f(); } catch (_) {} }); desligar = []; got = {}; }
+  function decidir() {
+    if (state.acesso === 'negado' || state.acesso === 'erro') return renderAll();
+    if (!got.plano || !got.carteira) return renderAll();
+    const pd = state.planoDoc;
+    if (!pd.exists) { state.acesso = 'sem-plano'; FASES = []; PLANO = {}; }
+    else {
+      const prob = validarPlano(pd.data);
+      if (prob) { state.acesso = 'plano-invalido'; state.planoProblema = prob; FASES = []; PLANO = {}; }
+      else { PLANO = pd.data; FASES = pd.data.fases; state.planoErro = ''; state.planoProblema = ''; state.acesso = 'ok'; }
+    }
+    renderAll();
+  }
+  function ligarBanco() {
+    desligarBanco();
+    const falhou = e => {
+      if (e && e.code === 'permission-denied') state.acesso = 'negado';
+      else { state.acesso = 'erro'; state.erroBanco = 'O banco não respondeu (' + ((e && e.code) || 'erro') + '). Recarregue a página.'; }
+      desligarBanco(); renderAll();
+    };
+    desligar.push(db.doc('painel/plano').onSnapshot(s => {
+      state.planoDoc = { exists: s.exists, data: s.exists ? s.data() : null };
+      got.plano = true; decidir();
+    }, falhou));
+    desligar.push(db.doc('painel/carteira').onSnapshot(s => {
+      state.carteira = s.exists ? s.data() : null;
+      if (!s.metadata.hasPendingWrites && !dirty && state.carteira) {
+        const c = state.carteira; local = { qtd: { ...(c.qtd || {}) }, fase: isNum(c.fase) ? c.fase : 0, aporte: isNum(c.aporte) ? c.aporte : null };
+      }
+      got.carteira = true; decidir();
+    }, falhou));
+  }
+  document.getElementById('conta').addEventListener('click', e => { if (e.target.id === 'btn-sair') sair(); });
+
+  function boot() {
+    lerHash(); renderAll();
+    carregarDados();
+    const cfg = window.LYDIA_FIREBASE;
+    if (!window.firebase || typeof firebase.initializeApp !== 'function') { state.acesso = 'sem-sdk'; renderAll(); return; }
+    if (!cfg || typeof cfg.apiKey !== 'string' || !cfg.projectId || /COLE/i.test(cfg.apiKey)) { state.acesso = 'sem-config'; renderAll(); return; }
+    try { firebase.initializeApp(cfg); auth = firebase.auth(); db = firebase.firestore(); }
+    catch (_) { state.acesso = 'sem-sdk'; renderAll(); return; }
+    auth.getRedirectResult().catch(e => { state.msgLogin = MSG_LOGIN[e && e.code] || ''; renderAll(); });
+    auth.onAuthStateChanged(u => {
+      state.user = u || null;
+      if (!u) {
+        desligarBanco(); FASES = []; PLANO = {}; local = { qtd: {}, fase: 0, aporte: null };
+        state.carteira = null; state.planoDoc = null; state.escolhida = null; state.readOnly = false;
+        if (state.acesso !== 'entrando') state.acesso = 'deslogado';
+        renderAll(); return;
+      }
+      state.acesso = 'carregando'; state.msgLogin = ''; renderAll();
+      ligarBanco();
+    });
+  }
+  boot();
+})();
+</script>
+
+</body></html>

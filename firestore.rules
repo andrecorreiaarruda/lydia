@@ -1,0 +1,19 @@
+rules_version = '2';
+
+// Só o dono do painel lê e grava. Troque SEU-EMAIL@gmail.com pelo e-mail da conta Google
+// com que você entra no painel, aqui e no console do Firebase (Firestore › Regras).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function dono() {
+      return request.auth != null
+        && request.auth.token.email == 'SEU-EMAIL@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    // painel/carteira: quantidades, fase e aporte (gravado pela página)
+    // painel/plano: as cinco fases do PLANO (gravado uma vez pela página, na configuração)
+    match /painel/{doc} {
+      allow read, write: if dono() && doc in ['carteira', 'plano'];
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+ "ativos": {
+  "BBAS3": {
+   "data": "2026-11-06",
+   "dy": 4.03,
+   "fonte": "HG Brasil",
+   "hist": [
+    {
+     "d": "2026-11-06",
+     "p": 17.13
+    }
+   ],
+   "pl": 8,
+   "preco": 17.13,
+   "pvp": 0.51,
+   "url": "https://hgbrasil.com/finance/tickers/B3:BBAS3",
+   "var": 3.88
+  },
+  "BBSE3": {
+   "data": "2026-11-06",
+   "dy": 12.13,
+   "fonte": "HG Brasil",
+   "hist": [
+    {
+     "d": "2026-11-05",
+     "p": 37.9
+    },
+    {
+     "d": "2026-11-06",
+     "p": 37.84
+    }
+   ],
+   "obs": "cotação das 15h12",
+   "pl": 7.98,
+   "preco": 37.84,
+   "pvp": 6.73,
+   "url": "https://hgbrasil.com/finance/tickers/B3:BBSE3",
+   "var": -0.16
+  },
+  "BPAC11": {
+   "data": "2026-11-06",
+   "dy": 2.56,
+   "fonte": "HG Brasil",
+   "hist": [
+    {
+     "d": "2026-11-05",
+     "p": 53.88
+    },
+    {
+     "d": "2026-11-06",
+     "p": 55.54
+    }
+   ],
+   "obs": "cotação das 13h42",
+   "pl": 9.5,
+   "preco": 55.54,
+   "pvp": 2.39,
+   "url": "https://hgbrasil.com/apis/cotacao-acao/banco-btg-pacutal-sa-bpac11",
+   "var": 3.08
+  },
+  "CXSE3": {
+   "data": "2026-11-06",
+   "dy": 6.74,
+   "fonte": "HG Brasil",
+   "hist": [
+    {
+     "d": "2026-11-06",
+     "p": 20.5
+    }
+   ],
+   "pl": 14.33,
+   "preco": 20.5,
+   "pvp": 4.46,
+   "url": "https://hgbrasil.com/finance/tickers/B3:CXSE3",
+   "var": -2.15
+  },
+  "HGLG11": {
+   "data": null,
+   "dy": 9.18,
+   "fonte": "Funds Explorer",
+   "hist": [],
+   "obs": "fonte não mostra a data",
+   "preco": 147.42,
+   "pvp": 0.88,
+   "ultimoRend": {
+    "dataCom": "2026-10-30",
+    "pagamento": "2026-11-16",
+    "valor": 1.17
+   },
+   "url": "https://www.fundsexplorer.com.br/funds/hglg11",
+   "var": null
+  },
+  "ITUB4": {
+   "data": "2026-11-06",
+   "dy": 7.78,
+   "fonte": "HG Brasil",
+   "hist": [
+    {
+     "d": "2026-11-06",
+     "p": 40.69
+    }
+   ],
+   "obs": "cotação das 14h02",
+   "pl": 8.19,
+   "preco": 40.69,
+   "pvp": 1.96,
+   "url": "https://hgbrasil.com/finance/tickers/B3:ITUB4",
+   "var": 1.8
+  },
+  "KNCR11": {
+   "data": null,
+   "dy": 13.4,
+   "fonte": "Funds Explorer",
+   "hist": [],
+   "obs": "fonte não mostra a data",
+   "preco": 102.66,
+   "pvp": 1,
+   "ultimoRend": {
+    "dataCom": "2026-10-30",
+    "pagamento": "2026-11-13",
+    "valor": 1.1
+   },
+   "url": "https://www.fundsexplorer.com.br/funds/kncr11",
+   "var": null
+  },
+  "KNRI11": {
+   "data": null,
+   "dy": 9,
+   "fonte": "Funds Explorer",
+   "hist": [],
+   "obs": "fonte não mostra a data",
+   "preco": 147.89,
+   "pvp": 0.91,
+   "ultimoRend": {
+    "dataCom": "2026-10-30",
+    "pagamento": "2026-11-16",
+    "valor": 1.1
+   },
+   "url": "https://www.fundsexplorer.com.br/funds/knri11",
+   "var": 1.28
+  },
+  "KNSC11": {
+   "data": null,
+   "dy": 13.43,
+   "fonte": "Funds Explorer",
+   "hist": [],
+   "obs": "fonte não mostra a data",
+   "preco": 8.49,
+   "pvp": 0.96,
+   "ultimoRend": {
+    "dataCom": "2026-10-30",
+    "pagamento": "2026-11-13",
+    "valor": 0.08
+   },
+   "url": "https://www.fundsexplorer.com.br/funds/knsc11",
+   "var": 1.8
+  },
+  "NASD11": {
+   "data": "2026-11-06",
+   "fonte": "HG Brasil",
+   "hist": [
+    {
+     "d": "2026-11-06",
+     "p": 20.72
+    }
+   ],
+   "preco": 20.72,
+   "url": "https://hgbrasil.com/finance/tickers/B3:NASD11",
+   "var": 1.72
+  },
+  "PVBI11": {
+   "data": null,
+   "dy": null,
+   "fonte": null,
+   "hist": [],
+   "obs": "sem cotação confiável nesta leitura",
+   "preco": null,
+   "pvp": null,
+   "url": null,
+   "var": null
+  },
+  "QQQM": {
+   "data": null,
+   "fonte": "eToro",
+   "hist": [],
+   "obs": "fonte não mostra a data; conferir",
+   "preco": 270.22,
+   "url": "https://www.etoro.com/markets/qqqm",
+   "var": null
+  },
+  "RBRP11": {
+   "data": null,
+   "dy": 10.94,
+   "fonte": "Funds Explorer",
+   "hist": [],
+   "obs": "fonte não mostra a data",
+   "preco": 43.13,
+   "pvp": 0.54,
+   "ultimoRend": {
+    "dataCom": "2026-10-07",
+    "pagamento": "2026-10-15",
+    "valor": 0.35
+   },
+   "url": "https://www.fundsexplorer.com.br/funds/rbrp11",
+   "var": null
+  },
+  "VALE3": {
+   "data": "2026-11-06",
+   "dy": 8.77,
+   "fonte": "HG Brasil",
+   "hist": [
+    {
+     "d": "2026-11-06",
+     "p": 64.04
+    }
+   ],
+   "pl": 129.9,
+   "preco": 64.04,
+   "pvp": 1.42,
+   "url": "https://hgbrasil.com/finance/tickers/B3:VALE3",
+   "var": 2.19
+  },
+  "XPLG11": {
+   "data": null,
+   "dy": 11.08,
+   "fonte": "Funds Explorer",
+   "hist": [],
+   "obs": "fonte não mostra a data",
+   "preco": 88.78,
+   "pvp": 0.85,
+   "ultimoRend": {
+    "dataCom": "2026-10-30",
+    "pagamento": null,
+    "valor": 0.82
+   },
+   "url": "https://www.fundsexplorer.com.br/funds/xplg11",
+   "var": null
+  }
+ },
+ "atualizadoEm": "2026-11-07T01:45:00-03:00",
+ "fechamento": "2026-11-06",
+ "indicadores": {
+  "cdi": {
+   "data": "2026-10-28",
+   "fonte": "Rankia",
+   "url": "https://rankia.com.br/renda-fixa-novembro-2026-tesouro-prefixado/",
+   "valor": 13.65
+  },
+  "ibov": {
+   "data": "2026-11-06",
+   "fonte": "Campo Grande News",
+   "url": "https://www.campograndenews.com.br/economia/dolar-encerra-semana-a-r-5-50-com-mercado-atento-a-economia-dos-eua",
+   "valor": 168498,
+   "var": 1.39
+  },
+  "ipca12m": {
+   "data": "2026-09",
+   "fonte": "Poder360",
+   "url": "https://www.poder360.com.br/poder-economia/inflacao-sobe-082-em-setembro-em-12-meses-vai-a-458/",
+   "valor": 4.58
+  },
+  "selic": {
+   "data": "2026-11-04",
+   "fonte": "Seu Dinheiro",
+   "url": "https://www.seudinheiro.com/2026/economia/copom-segura-selic-em-1375-e-interrompe-ciclo-de-cortes-nos-juros-mlim/",
+   "valor": 13.75
+  },
+  "usdbrl": {
+   "data": "2026-11-06",
+   "fonte": "Campo Grande News",
+   "url": "https://www.campograndenews.com.br/economia/dolar-encerra-semana-a-r-5-50-com-mercado-atento-a-economia-dos-eua",
+   "valor": 5.5082,
+   "var": 0.36
+  },
+  "ust10": {
+   "data": "2026-11-06",
+   "fonte": "Trading Economics",
+   "url": "https://tradingeconomics.com/united-states/government-bond-yield/news/596893",
+   "valor": 4.86
+  }
+ },
+ "tesouro": {
+  "data": "2026-10-28",
+  "fonte": "Rankia",
+  "titulos": [
+   {
+    "nome": "Tesouro Selic 2031",
+    "taxa": 0.1034,
+    "tipo": "selic"
+   },
+   {
+    "nome": "Tesouro Reserva 2036",
+    "taxa": 0,
+    "tipo": "selic100"
+   },
+   {
+    "nome": "Tesouro Prefixado 2029",
+    "taxa": 14.95,
+    "tipo": "pre"
+   },
+   {
+    "nome": "Tesouro Prefixado 2032",
+    "taxa": 15.32,
+    "tipo": "pre"
+   },
+   {
+    "nome": "Tesouro IPCA+ 2032",
+    "taxa": 7.93,
+    "tipo": "ipca"
+   },
+   {
+    "nome": "Tesouro IPCA+ 2040",
+    "taxa": 7.53,
+    "tipo": "ipca"
+   },
+   {
+    "nome": "Tesouro IPCA+ 2050",
+    "taxa": 7.21,
+    "tipo": "ipca"
+   }
+  ],
+  "url": "https://rankia.com.br/renda-fixa-novembro-2026-tesouro-prefixado/"
+ }
+}
