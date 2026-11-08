@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-07T01:45:00-03:00",
+ "atualizadoEm": "2026-11-08T00:40:00-03:00",
  "itens": [
   {
    "ativos": [
@@ -100,6 +100,73 @@
   },
   {
    "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-05",
+   "fonte": "Times Brasil (CNBC)",
+   "id": "2026-11-05-bolsa",
+   "resumo": "A bolsa fechou a quinta em 166.191 pontos, acompanhando a queda forte das ações de tecnologia americanas. O dólar subiu para cerca de R$ 5,48 com o mercado ainda sem sinal concreto do ajuste fiscal do governo.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Ibovespa cai 0,82% com tombo da tecnologia nos EUA; dólar sobe",
+   "url": "https://timesbrasil.com.br/investimentos/bolsa/ibovespa-cai-082-com-tombo-das-bolsas-nos-eua-dolar-sobe-a-r-548-sem-sinal-fiscal-de-lula/"
+  },
+  {
+   "ativos": [
+    "BBAS3",
+    "BBSE3",
+    "CXSE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-05",
+   "fonte": "O Tempo",
+   "id": "2026-11-05-ajuste",
+   "leituras": [
+    {
+     "diz": "Adiar o ajuste prolonga a dúvida sobre as contas públicas e mantém o dólar e os juros futuros pressionados.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "Medidas fiscais precisam ser negociadas com cuidado com o Congresso; apresentar às pressas aumenta o risco de serem derrubadas.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "nota": "Enquanto o ajuste não sai, a incerteza fiscal tende a pesar mais nas estatais da carteira (BBAS3, BBSE3, CXSE3).",
+   "resumo": "O ministro da Fazenda afirmou que o pacote de medidas fica para depois, já que Lula estará dedicado à COP31 entre 9 e 20 de novembro. Ele também defendeu o imposto seletivo sobre produtos como cigarro e bebida.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Durigan diz que ajuste fiscal não sai nos próximos dias",
+   "url": "https://www.otempo.com.br/economia/2026/11/5/dario-durigan-descarta-apresentar-ajuste-fiscal-nos-proximos-dias-e-defende-imposto-do-pecado"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-05",
+   "fonte": "Brasil 61",
+   "id": "2026-11-05-dividas",
+   "leituras": [
+    {
+     "diz": "Dá autonomia a estados e municípios para trocar dívida cara por mais barata sem esperar o próximo governo.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "Abrir crédito no fim do mandato facilita deixar a conta para o sucessor e enfraquece a disciplina fiscal local.",
+     "quem": "Contra"
+    }
+   ],
+   "resumo": "O plenário aprovou uma resolução que permite a governadores e prefeitos contratar crédito para reestruturar dívidas nos últimos 120 dias de mandato. O texto vai à promulgação.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Senado libera estados e municípios a renegociar dívidas no fim do mandato",
+   "url": "https://brasil61.com/n/plenario-do-senado-aprova-projeto-que-permite-renegociacao-de-dividas-de-estados-e-municipios-no-fim-de-mandato-bras2617430"
+  },
+  {
+   "ativos": [
     "KNCR11",
     "KNSC11"
    ],
@@ -114,6 +181,45 @@
    "tipo": "fato",
    "titulo": "Copom mantém a Selic em 13,75% e interrompe os cortes",
    "url": "https://www.seudinheiro.com/2026/economia/copom-segura-selic-em-1375-e-interrompe-ciclo-de-cortes-nos-juros-mlim/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-04",
+   "fonte": "Investalk (BB)",
+   "id": "2026-11-04-seletivo",
+   "leituras": [
+    {
+     "diz": "É mais um aumento de carga sobre o consumidor, e o Estado não deveria usar imposto para ditar o que as pessoas consomem.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "Produtos que geram custo à saúde pública devem pagar mais, e a troca pelo IPI simplifica a cobrança.",
+     "quem": "Defensores"
+    }
+   ],
+   "resumo": "A MP 1.399/2026 define, entre outras, 66,7% para cigarros, 4,2% para cerveja e 2,6% para bebidas açucaradas, substituindo aos poucos o IPI desses produtos. Um projeto do Novo no Congresso propõe limitar as alíquotas entre 0% e 5%.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Medida provisória fixa as alíquotas do imposto seletivo para 2027",
+   "url": "https://investalk.bb.com.br/noticias/economia/imposto-do-pecado-chega-em-2027-quais-produtos-podem-ficar-mais-caros"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-04",
+   "fonte": "Band",
+   "id": "2026-11-04-dolar",
+   "resumo": "A moeda americana caiu 0,64% na quarta, na leitura de que o resultado das eleições de meio de mandato nos EUA pode frear parte da agenda econômica da Casa Branca.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Dólar recua para R$ 5,45 no dia seguinte à vitória democrata nos EUA",
+   "url": "https://www.band.com.br/economia/macroeconomia/dolar-recua-e-fecha-a-r-545-em-dia-de-vitoria-democrata-nos-eua"
   },
   {
    "ativos": [
@@ -159,38 +265,19 @@
   },
   {
    "ativos": [
-    "KNCR11",
-    "KNSC11",
-    "KNRI11",
-    "HGLG11",
-    "XPLG11"
+    "VALE3"
    ],
    "confirma": false,
-   "data": "2026-10-30",
-   "fonte": "Funds Explorer",
-   "id": "2026-10-30-rendimentos",
-   "nota": "Regra 5: provento nunca vira gasto, volta para a carteira.",
-   "resumo": "KNCR11 paga R$ 1,10 e KNSC11 R$ 0,08 por cota em 13/11; KNRI11 paga R$ 1,10 e HGLG11 R$ 1,17 em 16/11; XPLG11 anunciou R$ 0,82. Quem tinha cota no fim de 30/10 recebe.",
+   "data": "2026-11-02",
+   "fonte": "Reporte Minero",
+   "id": "2026-11-02-vale",
+   "nota": "O dividendo ordinário segue a política normal; só fica fora o pagamento extra.",
+   "resumo": "Depois de um trimestre com lucro bem menor, a mineradora disse que não vai pagar proventos extras diante da incerteza no mercado de minério. A diretoria vê as ações baratas e considera a recompra atraente.",
    "tema": "carteira",
-   "tese": "nao",
+   "tese": "observar",
    "tipo": "fato",
-   "titulo": "Rendimentos de outubro dos seus FIIs",
-   "url": "https://www.fundsexplorer.com.br/funds/kncr11"
-  },
-  {
-   "ativos": [
-    "KNSC11"
-   ],
-   "confirma": false,
-   "data": "2026-10-09",
-   "fonte": "Poder360",
-   "id": "2026-10-09-ipca",
-   "resumo": "O IPCA subiu 0,82% no mês, puxado por energia elétrica e alimentos, e chegou a 4,58% em 12 meses, acima do teto de 4,5%. O dado de outubro sai em novembro.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Inflação de setembro estoura o teto da meta",
-   "url": "https://www.poder360.com.br/poder-economia/inflacao-sobe-082-em-setembro-em-12-meses-vai-a-458/"
+   "titulo": "Vale descarta dividendos extraordinários por ora",
+   "url": "https://reporteminero.cl/noticia/noticias/2026/11/vale-descarta-dividendos-extraordinarios-incertidumbre-mercado"
   }
  ]
 }
