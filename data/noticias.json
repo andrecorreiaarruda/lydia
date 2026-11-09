@@ -1,6 +1,43 @@
 {
- "atualizadoEm": "2026-11-08T00:40:00-03:00",
+ "atualizadoEm": "2026-11-09T18:48:58-03:00",
  "itens": [
+  {
+   "ativos": [
+    "VALE3",
+    "ITUB4",
+    "BPAC11",
+    "CXSE3",
+    "BBAS3"
+   ],
+   "confirma": false,
+   "data": "2026-11-09",
+   "fonte": "Misto Brasil",
+   "id": "2026-11-09-bolsa",
+   "nota": "Vale, BTG e Caixa Seguridade subiram mais de 3% no dia e o Itaú, quase 3%; o Banco do Brasil foi exceção e caiu perto de 1%.",
+   "resumo": "A bolsa voltou aos 171 mil pontos na segunda, puxada pela alta dos metais e dos bancos, acompanhando o bom humor em Nova York e na Europa. O dólar terminou perto de R$ 5,50.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Ibovespa sobe quase 2% com Vale e bancos; dólar fica estável",
+   "url": "https://mistobrasil.com/2026/11/09/ibovespa-fecha-em-alta-e-retoma-a-marca-dos-171-mil-pontos/"
+  },
+  {
+   "ativos": [
+    "CXSE3",
+    "BBAS3"
+   ],
+   "confirma": false,
+   "data": "2026-11-09",
+   "fonte": "Bora Investir (B3)",
+   "id": "2026-11-09-balancos",
+   "nota": "Para BBAS3, o ponto a olhar é se o banco mantém a projeção de lucro do ano e a política de dividendos.",
+   "resumo": "Pelo calendário da B3, a Caixa Seguridade divulga o balanço a partir de 9/11 e o Banco do Brasil em 11/11. O BB chega depois de ter perdido cerca de 30% em um só pregão, em 26/10, na reação do mercado ao resultado da eleição.",
+   "tema": "carteira",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Caixa Seguridade e Banco do Brasil apresentam o 3º trimestre nesta semana",
+   "url": "https://borainvestir.b3.com.br/noticias/calendario-de-divulgacao-dos-balancos-do-3o-trimestre-das-empresas-do-ibovespa-b3/"
+  },
   {
    "ativos": [
     "QQQM",
@@ -100,6 +137,57 @@
   },
   {
    "ativos": [
+    "BBAS3",
+    "BBSE3",
+    "CXSE3"
+   ],
+   "confirma": true,
+   "contraponto": "o governo cumpriu as metas do arcabouço no mandato anterior, e a manutenção da Selic pelo Copom mostra que há instituições que seguram excessos, seja quem for o ministro.",
+   "data": "2026-11-06",
+   "fonte": "NeoFeed",
+   "id": "2026-11-06-fazenda",
+   "leituras": [
+    {
+     "diz": "Sem nome definido e com mais ministérios no horizonte, cresce o risco de gasto maior e de pressão por juros artificialmente baixos.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "A escolha do ministro é decisão do presidente eleito e leva tempo; o compromisso com as contas públicas já foi reafirmado pela equipe atual.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "resumo": "Em coluna, a economista Angela Bittencourt avalia que os preços dos ativos embutem a dúvida fiscal e o suspense sobre quem comandará a economia, enquanto Lula viaja para a COP31. Ela cita ainda o plano de criar novos ministérios.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "opiniao",
+   "titulo": "Mercado espera o nome do ministro da Fazenda do novo mandato",
+   "url": "https://neofeed.com.br/experts/lula-parte-para-a-turquia-e-deixa-o-mercado-em-modo-de-espera-pelo-titular-da-fazenda/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-06",
+   "fonte": "Jornal do Comércio",
+   "id": "2026-11-06-fosseis",
+   "leituras": [
+    {
+     "diz": "Um plano dirigido pelo Estado para o setor de energia pode afastar investimento em petróleo e gás e encarecer a energia antes de existir alternativa barata.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "Sinalizar a transição cedo dá previsibilidade a quem investe e posiciona o Brasil em energias em que já tem vantagem.",
+     "quem": "A favor"
+    }
+   ],
+   "resumo": "Sem acordo entre os países, o governo prepara um roteiro nacional de transição para longe dos combustíveis fósseis, que está no Conselho Nacional de Política Energética. A conferência vai de 9 a 20 de novembro, na Turquia.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Lula leva à COP31 plano próprio para reduzir dependência do petróleo",
+   "url": "https://www.jornaldocomercio.com/economia/2026/11/1269553-lula-vamos-a-cop31-com-proposta-para-que-mundo-leve-a-serio-reducao-de-dependencia-de-petroleo.html"
+  },
+  {
+   "ativos": [
     "QQQM",
     "NASD11"
    ],
@@ -164,6 +252,30 @@
    "tipo": "fato",
    "titulo": "Senado libera estados e municípios a renegociar dívidas no fim do mandato",
    "url": "https://brasil61.com/n/plenario-do-senado-aprova-projeto-que-permite-renegociacao-de-dividas-de-estados-e-municipios-no-fim-de-mandato-bras2617430"
+  },
+  {
+   "ativos": [],
+   "confirma": true,
+   "contraponto": "ampliar o Simples aumenta a renúncia de receita e prolonga um regime especial que pode desestimular a empresa a crescer e a se formalizar no regime geral.",
+   "data": "2026-11-05",
+   "fonte": "Jornal Contábil",
+   "id": "2026-11-05-simples",
+   "leituras": [
+    {
+     "diz": "Os limites estão congelados há anos e a inflação empurra pequenos negócios para fora do regime, com mais imposto e burocracia.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "Em momento de ajuste fiscal, a medida tira arrecadação e beneficia também empresas que já não são tão pequenas.",
+     "quem": "Contra"
+    }
+   ],
+   "resumo": "O projeto eleva o limite de faturamento das microempresas de R$ 360 mil para R$ 870 mil e o das pequenas de R$ 4,8 milhões para R$ 8,7 milhões. O relator diz ter o compromisso do presidente da Câmara de pautar o texto, que ainda precisa passar pelo Senado.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Câmara pode votar ainda em novembro a alta do teto do Simples Nacional",
+   "url": "https://jornalcontabil.com.br/noticia/votacao-do-teto-do-simples-nacional-pode-mudar-ainda-em-2026-veja-quando/"
   },
   {
    "ativos": [
