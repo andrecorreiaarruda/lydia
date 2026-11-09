@@ -143,6 +143,28 @@ def conferir_mercado(m):
                 for k in ("dataCom", "pagamento"):
                     if not dia(ur.get(k)):
                         erro(f"ativos.{tk}.ultimoRend.{k}: AAAA-MM-DD ou null")
+        vs = a.get("velas", [])
+        if not isinstance(vs, list):
+            erro(f"ativos.{tk}.velas: lista")
+        else:
+            if len(vs) > 250:
+                erro(f"ativos.{tk}.velas: no máximo 250 (tem {len(vs)})")
+            anterior = ""
+            for i, v in enumerate(vs):
+                ok = isinstance(v, dict) and dia(v.get("d"), nulo=False) and all(num(v.get(k), nulo=False) and v[k] > 0 for k in ("o", "h", "l", "c"))
+                if not ok:
+                    erro(f"ativos.{tk}.velas[{i}]: {{\"d\", \"o\", \"h\", \"l\", \"c\", \"v\"}} com preços positivos")
+                    break
+                if v["l"] > min(v["o"], v["c"]) or v["h"] < max(v["o"], v["c"]):
+                    erro(f"ativos.{tk}.velas[{i}] ({v['d']}): mínima/máxima não cobrem abertura e fechamento")
+                    break
+                if "v" in v and v["v"] is not None and not (num(v["v"], nulo=False) and v["v"] >= 0):
+                    erro(f"ativos.{tk}.velas[{i}].v: volume ≥ 0 ou null")
+                    break
+                if v["d"] <= anterior:
+                    erro(f"ativos.{tk}.velas: datas fora de ordem ou repetidas em {v['d']}")
+                    break
+                anterior = v["d"]
         h = a.get("hist", [])
         if not isinstance(h, list):
             erro(f"ativos.{tk}.hist: lista")

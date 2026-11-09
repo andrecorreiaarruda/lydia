@@ -130,6 +130,8 @@ tbody tr { background: var(--surface); }
 tbody tr:last-child td { border-bottom: 0; }
 td .nome { font-size: 12px; color: var(--ink-2); white-space: normal; max-width: 180px; }
 td.tk { font-weight: 600; }
+td.tk a.tk-link { color: inherit; text-decoration: none; border-bottom: 1px dashed var(--ink-2); }
+td.tk a.tk-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
 tr.grupo td { background: var(--surface-2); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); font-weight: 600; text-align: left; }
 input.qtd { width: 76px; font: 500 14px var(--font-data); text-align: right; padding: 5px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
 .chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
@@ -173,6 +175,20 @@ code { font-family: var(--font-data); font-size: .92em; }
 .portao { max-width: 560px; width: 100%; margin: 12px auto; }
 .portao textarea { font: 13px/1.45 var(--font-data); width: 100%; min-height: 220px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); resize: vertical; }
 .erro { color: var(--bad); font-size: 14px; }
+/* Gráfico */
+.gt-lista { display: flex; flex-wrap: wrap; gap: 6px; }
+.gt-lista .filtro { font-family: var(--font-data); font-weight: 500; }
+.gt-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.gt-preco { font-family: var(--font-data); font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.gt-box { position: relative; height: 440px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.gt-legenda { position: absolute; top: 8px; left: 10px; z-index: 3; pointer-events: none; font: 12px var(--font-data); color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 10px; max-width: calc(100% - 80px); }
+.gt-legenda b { color: var(--ink); font-weight: 500; }
+.gt-periodos { display: flex; gap: 4px; flex-wrap: wrap; }
+.gt-periodos .filtro { padding: 4px 10px; font-size: 12px; }
+.gt-mm { display: inline-flex; align-items: center; gap: 4px; }
+.gt-mm i { display: inline-block; width: 14px; height: 2px; border-radius: 1px; }
+.field.token input { width: 260px; font-size: 14px; }
+@media (max-width: 520px) { .gt-box { height: 340px; } .gt-preco { font-size: 22px; } }
 .link-btn { appearance: none; border: 0; background: none; color: var(--accent); font: inherit; padding: 0; cursor: pointer; text-decoration: underline; }
 </style>
 </head>
@@ -192,6 +208,7 @@ code { font-family: var(--font-data); font-size: .92em; }
   <nav class="tabs" role="tablist" id="tabs">
     <button class="tab" role="tab" id="tab-aporte" data-v="aporte">Aporte</button>
     <button class="tab" role="tab" id="tab-carteira" data-v="carteira">Carteira</button>
+    <button class="tab" role="tab" id="tab-grafico" data-v="grafico">Gráfico</button>
     <button class="tab" role="tab" id="tab-renda-fixa" data-v="renda-fixa">Renda fixa</button>
     <button class="tab" role="tab" id="tab-noticias" data-v="noticias">Notícias<span class="count" id="ncount"></span></button>
   </nav>
@@ -208,6 +225,7 @@ code { font-family: var(--font-data); font-size: .92em; }
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="firebase-config.js"></script>
 <script>
 (() => {
@@ -233,7 +251,7 @@ code { font-family: var(--font-data); font-size: .92em; }
   let PLANO = {};
 
   const state = {
-    view: 'aporte', filtro: 'tudo',
+    view: 'aporte', filtro: 'tudo', gt: 'BBAS3', gtPeriodo: 66,
     mercado: null, noticias: null, carteira: null,
     confirmed: false, slow: false, err: null, readOnly: false,
     escolhida: null, saving: false, pendingRender: false,
@@ -409,7 +427,7 @@ code { font-family: var(--font-data); font-size: .92em; }
       const rend = d.ultimoRend && isNum(d.ultimoRend.valor) ? `<span class="num">${brl(d.ultimoRend.valor)}</span><div class="nome">paga ${dm(d.ultimoRend.pagamento) || '—'}</div>` : '—';
       const precoTxt = a.usd ? usd(p) : brl(p);
       const dataTxt = d.data ? dm(d.data) : 'sem data';
-      return `<tr><td class="tk">${a.t}<div class="nome">${esc(a.nome)} · ${esc(a.seg)}</div></td>
+      return `<tr><td class="tk"><a class="tk-link" href="#grafico/${a.t}" title="Abrir o gráfico de ${a.t}">${a.t}</a><div class="nome">${esc(a.nome)} · ${esc(a.seg)}</div></td>
         <td class="num">${precoTxt}<div class="nome">${esc(dataTxt)}${d.obs ? ' · ' + esc(d.obs) : ''}</div></td>
         <td class="num ${cls(d.var)}">${sinal(d.var)}</td>
         <td>${spark(d.hist)}</td>
@@ -424,7 +442,7 @@ code { font-family: var(--font-data); font-size: .92em; }
     const head = `<tr><th>Ativo</th><th>Preço</th><th>Dia</th><th>30 dias</th><th>DY 12m</th><th>P/VP</th><th>P/L</th><th>Último rend.</th><th>Qtd</th><th>Valor</th><th>Peso</th></tr>`;
     const grupo = (t, arr) => `<tr class="grupo"><td colspan="11">${t}</td></tr>` + arr.map(linha).join('');
     return `<div class="card"><div class="row" style="justify-content:space-between"><h2>Carteira-alvo</h2><span class="num">Total na fila: ${brl(T)}</span></div>
-      <p class="small muted">Digite quantas cotas você tem de cada ativo. Só muda quando você comprar. Nada aqui está ligado à corretora.</p>
+      <p class="small muted">Digite quantas cotas você tem de cada ativo. Só muda quando você comprar. Nada aqui está ligado à corretora. Toque no código do ativo para abrir o gráfico.</p>
       ${state.readOnly ? '<p class="aviso warn small">Esta visualização não pode salvar quantidades.</p>' : ''}
       <div class="scroll"><table><thead>${head}</thead><tbody>
       ${grupo('Ações · meta 8,3% cada', ATIVOS.filter(a => a.tipo === 'acao'))}
@@ -473,6 +491,163 @@ code { font-family: var(--font-data); font-size: .92em; }
       <p class="small muted">Para quem vive em reais, o resultado também depende do câmbio. Dólar hoje: ${isNum(ind('usdbrl').valor) ? 'R$ ' + nf(4).format(ind('usdbrl').valor) : '—'}.</p></div>`;
   }
 
+  // ---------- gráfico de velas (Lightweight Charts, do TradingView) ----------
+  // Base: velas diárias de data/mercado.json, gravadas pela tarefa das 18h43.
+  // Com um token da brapi.dev guardado neste aparelho, junta os últimos 3 meses e a vela de hoje
+  // (cotação com atraso de uns 15 minutos), atualizando a cada minuto durante o pregão.
+  const TOKEN_KEY = 'lydia.brapiToken';
+  function tokenBrapi(v) {
+    try {
+      if (v === undefined) return localStorage.getItem(TOKEN_KEY) || '';
+      if (v) localStorage.setItem(TOKEN_KEY, v); else localStorage.removeItem(TOKEN_KEY);
+    } catch (_) {}
+    return v || '';
+  }
+  let brapiCache = {};          // { TICKER: { velas, quote, em, erro } }
+  let grafico = null;           // { chart, velas, serie }
+  let gtTimer = null;
+  const PERIODOS = [[22, '1M'], [66, '3M'], [132, '6M'], [250, '1A'], [0, 'Tudo']];
+  const diaBRT = ts => new Date(ts * 1000 - 3 * 3600 * 1000).toISOString().slice(0, 10);
+  function pregaoAberto() {
+    const b = new Date(Date.now() - 3 * 3600 * 1000); const w = b.getUTCDay(); const m = b.getUTCHours() * 60 + b.getUTCMinutes();
+    return w >= 1 && w <= 5 && m >= 9 * 60 + 55 && m <= 18 * 60 + 30;
+  }
+  function velasArquivo(t) {
+    const a = dadosAtivo(t); const v = a && Array.isArray(a.velas) ? a.velas : [];
+    return v.filter(x => x && typeof x.d === 'string' && [x.o, x.h, x.l, x.c].every(isNum));
+  }
+  function velasDe(t) {
+    const m = new Map(); velasArquivo(t).forEach(x => m.set(x.d, x));
+    const c = brapiCache[t];
+    if (c && !c.erro) {
+      c.velas.forEach(x => m.set(x.d, x));
+      const q = c.quote;
+      if (q && [q.o, q.h, q.l, q.c].every(isNum)) m.set(q.d, { ...(m.get(q.d) || {}), ...q });
+    }
+    let lista = [...m.values()].sort((a, b) => a.d < b.d ? -1 : 1);
+    if (!lista.length) {   // sem velas: usa os fechamentos de hist como linha reta de cada dia
+      const a = dadosAtivo(t); const h = a && Array.isArray(a.hist) ? a.hist.filter(x => isNum(x.p)) : [];
+      lista = h.map(x => ({ d: x.d, o: x.p, h: x.p, l: x.p, c: x.p, v: null }));
+    }
+    return lista;
+  }
+  async function buscarBrapi(t, forcar) {
+    const tok = tokenBrapi(); if (!tok) return;
+    const c = brapiCache[t]; const idade = c ? Date.now() - c.em : Infinity;
+    if (!forcar && idade < (pregaoAberto() ? 55e3 : 30 * 60e3)) return;
+    try {
+      const r = await fetch(`https://brapi.dev/api/quote/${encodeURIComponent(t)}?range=3mo&interval=1d&token=${encodeURIComponent(tok)}`);
+      const j = await r.json().catch(() => ({}));
+      const res = j && Array.isArray(j.results) ? j.results[0] : null;
+      if (!r.ok || !res) throw new Error(j && j.message ? j.message : `HTTP ${r.status}`);
+      const velas = (res.historicalDataPrice || []).filter(x => [x.open, x.high, x.low, x.close].every(isNum) && isNum(x.date))
+        .map(x => ({ d: diaBRT(x.date), o: x.open, h: Math.max(x.high, x.open, x.close), l: Math.min(x.low, x.open, x.close), c: x.close, v: isNum(x.volume) ? x.volume : null }));
+      let quote = null;
+      if (isNum(res.regularMarketPrice) && res.regularMarketTime) {
+        const tq = new Date(res.regularMarketTime); const o = res.regularMarketOpen, h = res.regularMarketDayHigh, l = res.regularMarketDayLow, p = res.regularMarketPrice;
+        if ([o, h, l].every(isNum)) quote = { d: diaBRT(tq.getTime() / 1000), o, h: Math.max(h, o, p), l: Math.min(l, o, p), c: p, v: isNum(res.regularMarketVolume) ? res.regularMarketVolume : null };
+        quote && (quote.hora = tq);
+      }
+      brapiCache[t] = { velas, quote, em: Date.now(), erro: null };
+    } catch (e) {
+      brapiCache[t] = { velas: [], quote: null, em: Date.now(), erro: String(e && e.message || e).slice(0, 200) };
+    }
+    if (state.view === 'grafico' && state.gt === t) renderView();
+  }
+  function mediaMovel(v, n) {
+    const out = []; let s = 0;
+    v.forEach((x, i) => { s += x.c; if (i >= n) s -= v[i - n].c; if (i >= n - 1) out.push({ time: x.d, value: s / n }); });
+    return out;
+  }
+  function renderGrafico() {
+    const t = state.gt; const a = ATIVOS.find(x => x.t === t) || ATIVOS[0];
+    const fmt = a.usd ? usd : brl;
+    const v = velasDe(t); const ult = v[v.length - 1], ant = v[v.length - 2];
+    const varDia = ult && ant ? (ult.c / ant.c - 1) * 100 : null;
+    const c = brapiCache[t]; const tok = tokenBrapi();
+    const grupos = [['acao', 'Ações'], ['fii', 'FIIs'], ['etf', 'Meninas']];
+    const lista = grupos.map(([k, n]) => `<span class="label" style="align-self:center">${n}</span>` + ATIVOS.filter(x => x.tipo === k).map(x => `<button class="filtro" data-gt="${x.t}" aria-pressed="${x.t === t}">${x.t}</button>`).join('')).join('');
+    let origem;
+    if (c && c.quote && !c.erro) origem = `brapi.dev · cotação de ${dm(c.quote.d)} às ${c.quote.hora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' })} (atraso de ~15 min)${pregaoAberto() ? ' · atualiza a cada minuto' : ''}`;
+    else if (ult) origem = `velas diárias gravadas às 18h43 · última de ${dm(ult.d)}`;
+    else origem = 'sem velas ainda';
+    const tokenHTML = tok
+      ? `<p class="small muted">Token da brapi guardado só neste aparelho. <button class="link-btn" id="btn-token-remover">Remover</button></p>`
+      : `<div class="row" style="align-items:flex-end"><div class="field token"><label class="label" for="in-token">Token da brapi.dev (opcional)</label><input id="in-token" type="password" autocomplete="off" spellcheck="false" placeholder="cole o token aqui"></div><button class="btn" id="btn-token-salvar">Guardar neste aparelho</button></div>
+        <p class="small muted">Com o token, o gráfico mostra a vela de hoje se formando, com atraso de uns 15 minutos. Ele fica só no navegador deste aparelho, fora do código público. Sem ele, o gráfico usa as velas diárias que a tarefa das 18h43 grava.</p>`;
+    return `<div class="card"><div class="gt-lista" role="group" aria-label="Escolher ativo">${lista}</div></div>
+      <div class="card">
+        <div class="gt-head"><div><h2>${a.t} <span class="muted small" style="font-family:var(--font-body);font-weight:500">${esc(a.nome)}</span></h2><p class="small muted">${esc(a.seg)}</p></div>
+          <div style="text-align:right"><span class="gt-preco">${ult ? fmt(ult.c) : '—'}</span> <span class="num ${cls(varDia)}">${sinal(varDia)}</span><p class="small muted">${esc(origem)}</p></div></div>
+        <div class="row" style="justify-content:space-between"><div class="gt-periodos" role="group" aria-label="Período">${PERIODOS.map(([n, l]) => `<button class="filtro" data-per="${n}" aria-pressed="${state.gtPeriodo === n}">${l}</button>`).join('')}</div>
+          <span class="small muted"><span class="gt-mm"><i style="background:var(--warn)"></i>Média 20</span> &nbsp; <span class="gt-mm"><i style="background:var(--accent)"></i>Média 50</span></span></div>
+        ${c && c.erro ? `<p class="aviso warn small">A brapi não respondeu (${esc(c.erro)}). Mostrando as velas do arquivo do painel.</p>` : ''}
+        ${window.LightweightCharts ? `<div class="gt-box"><div class="gt-legenda" id="gt-legenda"></div><div id="gt-chart" style="position:absolute;inset:0"></div></div>` : '<p class="aviso warn">Não consegui carregar a biblioteca do gráfico. Confira a conexão e recarregue a página.</p>'}
+        ${v.length < 2 ? '<p class="small muted">Ainda há poucas velas para este ativo; o histórico cresce a cada dia útil.</p>' : ''}
+        ${tokenHTML}
+        <p class="small muted">Velas diárias: corpo verde quando fechou acima da abertura, vermelho quando fechou abaixo; o pavio vai da mínima à máxima do dia. As barras de baixo são o volume. Gráfico feito com Lightweight Charts, do TradingView.</p>
+      </div>`;
+  }
+  function cor(nome) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim(); }
+  let gtFaixa = null;           // mantém o zoom quando a página redesenha o mesmo ativo
+  function desmontarGrafico() {
+    if (!grafico) return;
+    try { gtFaixa = { t: grafico.t, faixa: grafico.chart.timeScale().getVisibleLogicalRange(), per: state.gtPeriodo }; grafico.chart.remove(); } catch (_) {}
+    grafico = null;
+  }
+  function legenda(x, fmtN) {
+    const el = document.getElementById('gt-legenda'); if (!el || !x) return;
+    const ch = (x.c / x.o - 1) * 100;
+    el.innerHTML = `<span>${dm(x.d)}</span><span>A <b>${fmtN(x.o)}</b></span><span>Máx <b>${fmtN(x.h)}</b></span><span>Mín <b>${fmtN(x.l)}</b></span><span>F <b class="${cls(ch)}">${fmtN(x.c)}</b></span>${isNum(x.v) ? `<span>Vol <b>${new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(x.v)}</b></span>` : ''}`;
+  }
+  function montarGrafico() {
+    const el = document.getElementById('gt-chart'); const LW = window.LightweightCharts;
+    const t = state.gt; const a = ATIVOS.find(x => x.t === t) || ATIVOS[0];
+    if (!el || !LW) return;
+    const v = velasDe(t);
+    const up = cor('--good'), down = cor('--bad'), ink2 = cor('--ink-2'), line = cor('--line');
+    const fmtN = n => nf(2).format(n);
+    const chart = LW.createChart(el, {
+      autoSize: true,
+      layout: { background: { type: 'solid', color: cor('--surface') }, textColor: ink2, fontFamily: cor('--font-data') || 'monospace', fontSize: 11 },
+      grid: { vertLines: { color: line }, horzLines: { color: line } },
+      rightPriceScale: { borderColor: line, scaleMargins: { top: 0.12, bottom: 0.24 } },
+      timeScale: { borderColor: line, rightOffset: 3, barSpacing: 8, minBarSpacing: 2 },
+      crosshair: { mode: LW.CrosshairMode.Normal },
+      localization: { locale: 'pt-BR', priceFormatter: fmtN, dateFormat: 'dd/MM/yy' },
+      handleScroll: { vertTouchDrag: false }
+    });
+    const vela = chart.addCandlestickSeries({ upColor: up, downColor: down, borderVisible: false, wickUpColor: up, wickDownColor: down, priceLineVisible: true });
+    vela.setData(v.map(x => ({ time: x.d, open: x.o, high: x.h, low: x.l, close: x.c })));
+    const vol = chart.addHistogramSeries({ priceFormat: { type: 'volume' }, priceScaleId: 'vol', lastValueVisible: false, priceLineVisible: false });
+    chart.priceScale('vol').applyOptions({ scaleMargins: { top: 0.82, bottom: 0 } });
+    vol.setData(v.filter(x => isNum(x.v)).map(x => ({ time: x.d, value: x.v, color: (x.c >= x.o ? up : down) + '66' })));
+    const mm = (n, c) => { const s = chart.addLineSeries({ color: c, lineWidth: 1.5, lastValueVisible: false, priceLineVisible: false, crosshairMarkerVisible: false }); s.setData(mediaMovel(v, n)); };
+    mm(20, cor('--warn')); mm(50, cor('--accent'));
+    const porDia = new Map(v.map(x => [x.d, x]));
+    legenda(v[v.length - 1], fmtN);
+    chart.subscribeCrosshairMove(p => {
+      const x = p && p.time ? porDia.get(typeof p.time === 'string' ? p.time : `${p.time.year}-${String(p.time.month).padStart(2, '0')}-${String(p.time.day).padStart(2, '0')}`) : null;
+      legenda(x || v[v.length - 1], fmtN);
+    });
+    grafico = { chart, n: v.length, t };
+    const faixa = gtFaixa && gtFaixa.t === t && gtFaixa.per === state.gtPeriodo ? gtFaixa.faixa : null;
+    gtFaixa = null;
+    // o autoSize mede a caixa só depois do primeiro quadro; aplicar o zoom antes deixa a área vazia
+    requestAnimationFrame(() => setTimeout(() => { if (!grafico || grafico.chart !== chart) return; if (faixa) chart.timeScale().setVisibleLogicalRange(faixa); else aplicarPeriodo(); }, 30));
+    buscarBrapi(t, false);
+  }
+  function aplicarPeriodo() {
+    if (!grafico) return; const n = grafico.n; const p = state.gtPeriodo;
+    if (!p || p >= n) grafico.chart.timeScale().fitContent();
+    else grafico.chart.timeScale().setVisibleLogicalRange({ from: n - p - 0.5, to: n + 2 });
+  }
+  clearInterval(gtTimer);
+  gtTimer = setInterval(() => {
+    if (state.view === 'grafico' && state.acesso === 'ok' && document.visibilityState === 'visible' && tokenBrapi() && pregaoAberto()) buscarBrapi(state.gt, false);
+  }, 60e3);
+  try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (state.view === 'grafico') renderView(); }); } catch (_) {}
+
   const TEMAS = { tudo: 'Tudo', carteira: 'Minha carteira', macro: 'Juros, inflação e câmbio', politica: 'Política e economia' };
   const TIPO = { fato: 'Fato', opiniao: 'Opinião', rumor: 'Rumor, não confirmado' };
   const TESE = { nao: ['Não mexe na tese', ''], observar: ['Observar', 'warn'], risco: ['Tese em risco', 'bad'] };
@@ -506,8 +681,10 @@ code { font-family: var(--font-data); font-size: .92em; }
     if (state.acesso !== 'ok') { v.innerHTML = portaoHTML(); return; }
     let html = '';
     if (state.err) html += `<p class="aviso warn">Os dados do mercado não carregaram (${esc(state.err)}). Recarregue a página mais tarde.</p>`;
-    html += state.view === 'aporte' ? renderAporte() : state.view === 'carteira' ? renderCarteira() : state.view === 'renda-fixa' ? renderRendaFixa() : renderNoticias();
+    html += state.view === 'aporte' ? renderAporte() : state.view === 'carteira' ? renderCarteira() : state.view === 'grafico' ? renderGrafico() : state.view === 'renda-fixa' ? renderRendaFixa() : renderNoticias();
+    desmontarGrafico();
     v.innerHTML = html;
+    if (state.view === 'grafico') montarGrafico();
   }
 
   function renderTabs() {
@@ -573,7 +750,7 @@ code { font-family: var(--font-data); font-size: .92em; }
 
   // ---------- eventos ----------
   document.getElementById('tabs').addEventListener('click', e => {
-    const b = e.target.closest('.tab'); if (!b) return; state.view = b.dataset.v; try { history.replaceState(null, '', '#' + state.view); } catch (_) { location.hash = state.view; } renderTabs(); state.pendingRender = false; document.activeElement && document.activeElement.blur && document.activeElement.blur(); renderView();
+    const b = e.target.closest('.tab'); if (!b) return; state.view = b.dataset.v; try { history.replaceState(null, '', '#' + state.view + (state.view === 'grafico' ? '/' + state.gt : '')); } catch (_) { location.hash = state.view; } renderTabs(); state.pendingRender = false; document.activeElement && document.activeElement.blur && document.activeElement.blur(); renderView();
   });
   document.getElementById('view').addEventListener('click', e => {
     if (e.target.id === 'btn-entrar') { entrar(); return; }
@@ -583,7 +760,13 @@ code { font-family: var(--font-data); font-size: .92em; }
     if (d) { const n = +d.dataset.fase; state.escolhida = n === fase().n ? null : n; renderView(); return; }
     if (e.target.id === 'btn-cancela-fase') { state.escolhida = null; renderView(); return; }
     if (e.target.id === 'btn-confirma-fase') { local.fase = state.escolhida; local.aporte = null; state.escolhida = null; agendarSalvar(); renderAll(); return; }
-    const f = e.target.closest('.filtro'); if (f) { state.filtro = f.dataset.f; renderView(); }
+    const g = e.target.closest('[data-gt]');
+    if (g) { state.gt = g.dataset.gt; try { history.replaceState(null, '', '#grafico/' + state.gt); } catch (_) {} renderView(); return; }
+    const per = e.target.closest('[data-per]');
+    if (per) { state.gtPeriodo = +per.dataset.per; document.querySelectorAll('[data-per]').forEach(b => b.setAttribute('aria-pressed', String(b === per))); aplicarPeriodo(); return; }
+    if (e.target.id === 'btn-token-salvar') { const i = document.getElementById('in-token'); const v = (i && i.value || '').trim(); if (v) { tokenBrapi(v); brapiCache = {}; } if (i) i.blur(); renderView(); return; }
+    if (e.target.id === 'btn-token-remover') { tokenBrapi(''); brapiCache = {}; renderView(); return; }
+    const f = e.target.closest('.filtro'); if (f && f.dataset.f) { state.filtro = f.dataset.f; renderView(); }
   });
   document.getElementById('view').addEventListener('input', e => {
     const i = e.target;
@@ -596,8 +779,12 @@ code { font-family: var(--font-data); font-size: .92em; }
     if (prox && prox.closest && prox.closest('#view button')) return;
     setTimeout(renderView, 0);
   });
-  function lerHash() { const h = (location.hash || '').replace('#', ''); if (['aporte', 'carteira', 'renda-fixa', 'noticias'].includes(h)) state.view = h; }
-  window.addEventListener('hashchange', () => { lerHash(); renderTabs(); renderView(); });
+  function lerHash() {
+    const [h, t] = decodeURIComponent((location.hash || '').replace('#', '')).split('/');
+    if (['aporte', 'carteira', 'grafico', 'renda-fixa', 'noticias'].includes(h)) state.view = h;
+    if (h === 'grafico' && t && ATIVOS.some(a => a.t === t.toUpperCase())) state.gt = t.toUpperCase();
+  }
+  window.addEventListener('hashchange', () => { lerHash(); renderTabs(); renderView(); if (state.view === 'grafico') window.scrollTo({ top: 0 }); });
 
   // ---------- dados do mercado: arquivos públicos gravados pela tarefa agendada ----------
   async function lerJSON(nome) {

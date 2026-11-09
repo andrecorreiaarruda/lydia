@@ -14,10 +14,25 @@ Painel de fim de dia: indicadores, carteira-alvo, renda fixa e notícias. Não �
 - `fechamento` (AAAA-MM-DD), `atualizadoEm` (ISO com -03:00)
 - `indicadores.{selic, cdi, ipca12m, usdbrl, ibov, ust10}`: `{valor, var?, data, fonte, url}`
 - `tesouro`: `{data, fonte, url, titulos: [{nome, tipo: selic|selic100|pre|ipca, taxa}]}`
-- `ativos.{TICKER}`: `{preco, var, dy, pvp, pl, ultimoRend: {valor, dataCom, pagamento}, data, obs, fonte, url, hist: [{d, p}]}` (no máximo 60 pontos em `hist`)
+- `ativos.{TICKER}`: `{preco, var, dy, pvp, pl, ultimoRend: {valor, dataCom, pagamento}, data, obs, fonte, url, hist: [{d, p}], velas: [{d, o, h, l, c, v}]}` (no máximo 60 pontos em `hist` e 250 velas diárias em `velas`, da mais antiga para a mais nova)
 
 `data/noticias.json`
 - `atualizadoEm`, `itens[]`: `{id, data, tema: carteira|macro|politica, titulo, resumo, nota?, fonte, url, ativos[], tipo: fato|opiniao|rumor, tese: nao|observar|risco, confirma, contraponto?, leituras: [{quem, diz}, {quem, diz}]}` (7 dias, até 25 itens, da mais nova para a mais antiga)
+
+As velas vêm da [brapi.dev](https://brapi.dev) (plano gratuito: velas diárias, até 3 meses por chamada, 1 ativo por vez):
+
+```bash
+python3 scripts/velas.py   # junta as velas novas em data/mercado.json; não mexe em preço nem em hist
+```
+
+O token não fica no repositório. Na sessão da tarefa agendada, o proxy de rede acrescenta a autorização; fora dela, rode com `BRAPI_TOKEN=... python3 scripts/velas.py`.
+
+## Aba Gráfico
+
+Velas diárias com volume e médias de 20 e 50 dias, feitas com [Lightweight Charts](https://github.com/tradingview/lightweight-charts) (TradingView). Abre pela aba ou tocando no código do ativo na Carteira (`#grafico/VALE3`).
+
+- Sem token: usa as velas de `data/mercado.json`, gravadas nos dias úteis às 18h43.
+- Com token da brapi guardado no aparelho (campo no fim da aba, fica só no `localStorage` daquele navegador): junta os últimos 3 meses e a vela de hoje se formando, com atraso de uns 15 minutos, e atualiza a cada minuto durante o pregão. Tempo real sem atraso exige dado pago da B3.
 
 Antes de cada commit:
 
