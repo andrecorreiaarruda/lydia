@@ -1,6 +1,81 @@
 {
- "atualizadoEm": "2026-11-09T18:48:58-03:00",
+ "atualizadoEm": "2026-11-11T18:46:17-03:00",
  "itens": [
+  {
+   "ativos": [
+    "BBAS3",
+    "ITUB4",
+    "BPAC11"
+   ],
+   "confirma": true,
+   "contraponto": "mexer nos pisos de saúde e educação pode tirar dinheiro de serviços que a população mais pobre usa, e o ajuste poderia vir de receitas ou de cortes em outros gastos.",
+   "data": "2026-11-11",
+   "fonte": "NC News",
+   "id": "2026-11-11-pacote",
+   "leituras": [
+    {
+     "diz": "Os pisos crescem sozinhos com a arrecadação e engessam o Orçamento; sem rever essas regras, a dívida não para de subir.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "Saúde e educação têm proteção constitucional por um motivo; cortar ali joga o custo do ajuste em quem mais depende do Estado.",
+     "quem": "Contra"
+    }
+   ],
+   "nota": "A expectativa de controle de gastos ajudou bancos e juros futuros no dia; o efeito dura se o pacote sair do papel.",
+   "resumo": "A equipe econômica negocia com parlamentares medidas de R$ 70 bilhões a R$ 80 bilhões para 2027, entre elas mudar o cálculo dos pisos de gastos com saúde e educação. Nada foi definido e tudo ainda depende de aprovação no Legislativo.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Governo e Congresso discutem pacote para economizar até R$ 80 bi em 2027",
+   "url": "https://ncnews.com.br/2026/11/11/bolsa-fecha/"
+  },
+  {
+   "ativos": [
+    "BBAS3"
+   ],
+   "confirma": false,
+   "data": "2026-11-11",
+   "fonte": "NC News",
+   "id": "2026-11-11-bbas3",
+   "nota": "Os pontos a olhar no balanço são a projeção de lucro de 2026, o pagamento de dividendos e qualquer anúncio sobre a presidência.",
+   "resumo": "O consenso de mercado espera lucro perto de R$ 3 bilhões, 20,7% abaixo de um ano antes, pressionado pela inadimplência no crédito rural. Parte do mercado também aposta numa troca no comando do banco, sem confirmação oficial.",
+   "tema": "carteira",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Banco do Brasil divulga o 3º trimestre com lucro esperado bem menor",
+   "url": "https://ncnews.com.br/2026/11/11/resultado-bbas3-3t26-hoje-lucro-cai-20-7-pressao-aumenta/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-11",
+   "fonte": "Misto Brasil",
+   "id": "2026-11-11-bolsa",
+   "resumo": "O dólar comercial recuou 0,43% e o Ibovespa subiu perto de 0,6%, acima dos 172 mil pontos, com a negociação do ajuste fiscal no radar. A Petrobras caiu depois de anunciar dividendos abaixo do esperado.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Dólar cai a R$ 5,56 e bolsa volta a subir",
+   "url": "https://mistobrasil.com/2026/11/11/ibovespa-fecha-em-alta-e-dolar-recua-nesta-quarta-feira/"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-10",
+   "fonte": "Agência Brasil (via eJornais)",
+   "id": "2026-11-10-dolar",
+   "nota": "Dólar alto encarece o QQQM em reais; juros americanos mais altos costumam pesar nas ações de tecnologia.",
+   "resumo": "O dólar subiu 1,46% na terça, a R$ 5,586, depois que os preços ao consumidor americanos avançaram 0,4% em outubro, contra 0,3% esperado. As apostas numa alta de juros do Fed em dezembro passaram de 88%.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Inflação dos EUA acima do previsto leva dólar ao maior valor em 15 meses",
+   "url": "https://ejornais.com.br/index.php/2026/11/11/dolar-sobe-146-e-fecha-no-maior-valor-em-15-meses/"
+  },
   {
    "ativos": [
     "VALE3",
@@ -37,6 +112,22 @@
    "tipo": "fato",
    "titulo": "Caixa Seguridade e Banco do Brasil apresentam o 3º trimestre nesta semana",
    "url": "https://borainvestir.b3.com.br/noticias/calendario-de-divulgacao-dos-balancos-do-3o-trimestre-das-empresas-do-ibovespa-b3/"
+  },
+  {
+   "ativos": [
+    "CXSE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-09",
+   "fonte": "Visno Invest",
+   "id": "2026-11-09-cxse3",
+   "nota": "Resultado reforça a CXSE3 como pagadora de dividendos; vale acompanhar se as vendas voltam ao ritmo depois da greve.",
+   "resumo": "O lucro gerencial do 3º trimestre foi de R$ 1,18 bilhão, alta de 3,7% sobre um ano antes e acima do que analistas esperavam. As comissões caíram 4,7%, efeito da greve na Caixa em setembro.",
+   "tema": "carteira",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Caixa Seguridade tem o maior lucro trimestral da sua história",
+   "url": "https://visnoinvest.com.br/news/16343/caixa-seguridade-cxse3-registra-lucro-de-r-118-bi-no-3t26"
   },
   {
    "ativos": [
@@ -332,64 +423,6 @@
    "tipo": "fato",
    "titulo": "Dólar recua para R$ 5,45 no dia seguinte à vitória democrata nos EUA",
    "url": "https://www.band.com.br/economia/macroeconomia/dolar-recua-e-fecha-a-r-545-em-dia-de-vitoria-democrata-nos-eua"
-  },
-  {
-   "ativos": [
-    "KNCR11",
-    "KNSC11"
-   ],
-   "confirma": true,
-   "contraponto": "um juro real perto de 9% encarece a dívida pública e trava crédito e investimento; para quem defende a ideia, o custo do aperto cai sobre quem produz.",
-   "data": "2026-11-03",
-   "fonte": "Times Brasil",
-   "id": "2026-11-03-tabelamento",
-   "leituras": [
-    {
-     "diz": "Tabelar juro é controle de preço: tira a credibilidade do Banco Central e tende a trazer mais inflação.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "Juro real tão alto drena o orçamento com a dívida e sufoca a economia; o Banco Central exagera na dose.",
-     "quem": "Defensores de juros menores"
-    }
-   ],
-   "resumo": "Circularam rumores de que Lula se reuniria com o economista André Lara Resende para discutir uma proposta de tabelar a Selic. Nada foi confirmado, mas o boato pesou nos juros futuros e no dólar, que fechou a R$ 5,4872.",
-   "tema": "politica",
-   "tese": "observar",
-   "tipo": "rumor",
-   "titulo": "Boato de limite para a Selic assusta o mercado",
-   "url": "https://timesbrasil.com.br/investimentos/bolsa/ibovespa-cai-pela-sexta-sessao-seguida-com-incertezas-sobre-lula-4-dolar-sobe-a-r-548-com-proposta-de-lara-resende-no-radar/"
-  },
-  {
-   "ativos": [
-    "ITUB4"
-   ],
-   "confirma": false,
-   "data": "2026-11-03",
-   "fonte": "Seu Dinheiro",
-   "id": "2026-11-03-itau",
-   "resumo": "O lucro recorrente subiu 6,7% em um ano e o retorno sobre o patrimônio ficou em 23,6%. Pesaram as provisões para calote (+9,6%), puxadas pelo crédito à pessoa física; a inadimplência acima de 90 dias subiu para 2,0%.",
-   "tema": "carteira",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Itaú lucra R$ 12,6 bi no 3º trimestre, em linha com o esperado",
-   "url": "https://www.seudinheiro.com/2026/empresas/itau-itub4-com-lucro-roe-rentabilidade-banco-balanco-do-3t26-miql/"
-  },
-  {
-   "ativos": [
-    "VALE3"
-   ],
-   "confirma": false,
-   "data": "2026-11-02",
-   "fonte": "Reporte Minero",
-   "id": "2026-11-02-vale",
-   "nota": "O dividendo ordinário segue a política normal; só fica fora o pagamento extra.",
-   "resumo": "Depois de um trimestre com lucro bem menor, a mineradora disse que não vai pagar proventos extras diante da incerteza no mercado de minério. A diretoria vê as ações baratas e considera a recompra atraente.",
-   "tema": "carteira",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Vale descarta dividendos extraordinários por ora",
-   "url": "https://reporteminero.cl/noticia/noticias/2026/11/vale-descarta-dividendos-extraordinarios-incertidumbre-mercado"
   }
  ]
 }
