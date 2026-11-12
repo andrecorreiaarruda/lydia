@@ -1,6 +1,100 @@
 {
- "atualizadoEm": "2026-11-11T18:46:17-03:00",
+ "atualizadoEm": "2026-11-12T18:45:43-03:00",
  "itens": [
+  {
+   "ativos": [
+    "BBAS3",
+    "BBSE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-12",
+   "fonte": "SpaceMoney",
+   "id": "2026-11-12-bbas3",
+   "nota": "É um corte forte de dividendos num ativo comprado em boa parte por eles: a tese de longo prazo de BBAS3 precisa ser revista com calma, sem decisão no impulso.",
+   "resumo": "O lucro recorrente do 3º trimestre foi de R$ 1,27 bilhão, bem abaixo dos R$ 3,5 bilhões esperados, com perdas recordes no crédito ao agronegócio; a projeção de lucro de 2026 caiu de R$ 18–22 bilhões para R$ 9–11 bilhões. O payout de 2026 foi cortado para o mínimo legal de 25%, sem dividendos intermediários em 2027, e a ação caiu 8,6%.",
+   "tema": "carteira",
+   "tese": "risco",
+   "tipo": "fato",
+   "titulo": "Lucro do Banco do Brasil cai 66,5% e banco reduz dividendo ao mínimo",
+   "url": "https://www.spacemoney.com.br/investimentos/acoes/banco-do-brasil-lucro-3t26-guidance-cortado-payout"
+  },
+  {
+   "ativos": [
+    "KNCR11",
+    "KNSC11"
+   ],
+   "confirma": false,
+   "data": "2026-11-12",
+   "fonte": "InfoMoney",
+   "id": "2026-11-12-ipca",
+   "nota": "Economistas não veem espaço para corte da Selic em dezembro; CDI alto continua favorecendo KNCR11, KNSC11 e a renda fixa.",
+   "resumo": "A inflação do mês ficou abaixo do esperado graças à conta de luz e à gasolina, enquanto alimentos subiram mais de 1%. Em 12 meses o índice foi a 4,63%, acima do teto de 4,5% pelo segundo mês.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "IPCA de outubro sobe só 0,14%, mas 12 meses seguem acima da meta",
+   "url": "https://www.infomoney.com.br/economia/ipca-inflacao-outubro-2026-dados-ibge/"
+  },
+  {
+   "ativos": [
+    "BBAS3",
+    "BBSE3",
+    "CXSE3"
+   ],
+   "confirma": true,
+   "contraponto": "um gatilho automático de congelamento é uma trava real e crível, e rever benefícios tributários de empresas também é cortar gasto do Estado, só que pelo lado da receita.",
+   "data": "2026-11-12",
+   "fonte": "InfoMoney",
+   "id": "2026-11-12-moretti",
+   "leituras": [
+    {
+     "diz": "Sem mexer na estrutura de despesas obrigatórias, o ajuste vem de mais arrecadação e não estabiliza a dívida.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "O gatilho fortalece o arcabouço e cobra a conta de quem tem isenções, preservando os programas sociais.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "resumo": "O plano, apelidado pelo nome do ministro do Planejamento, prevê congelar despesas de forma permanente se as contas ficarem abaixo do piso da meta e reduz benefícios tributários de empresas. Analistas viram um primeiro passo, mas criticaram a falta de corte efetivo de gastos.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Governo anuncia pacote fiscal com congelamento automático de gastos",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-12112026/"
+  },
+  {
+   "ativos": [
+    "QQQM"
+   ],
+   "confirma": false,
+   "data": "2026-11-12",
+   "fonte": "InfoMoney",
+   "id": "2026-11-12-dolar",
+   "resumo": "O real foi a moeda que mais sofreu no dia, com dúvidas sobre o alcance do pacote fiscal, e o Ibovespa caiu 0,43%. Os juros futuros subiram em toda a curva.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Dólar dispara 1,6% a R$ 5,65 e juros futuros passam de 15%",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-12112026/#dolar"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-12",
+   "fonte": "InfoMoney",
+   "id": "2026-11-12-nvidia",
+   "nota": "A Nvidia é uma das maiores posições do Nasdaq 100, índice que o QQQM e o NASD11 replicam.",
+   "resumo": "Jensen Huang deixou o comando da empresa por motivos pessoais e a diretora financeira assumiu de forma interina. As bolsas americanas fecharam em queda, também pressionadas pela alta do petróleo.",
+   "tema": "carteira",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "CEO da Nvidia renuncia e ação cai perto de 6%",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-12112026/#nvidia"
+  },
   {
    "ativos": [
     "BBAS3",
@@ -367,62 +461,6 @@
    "tipo": "fato",
    "titulo": "Câmara pode votar ainda em novembro a alta do teto do Simples Nacional",
    "url": "https://jornalcontabil.com.br/noticia/votacao-do-teto-do-simples-nacional-pode-mudar-ainda-em-2026-veja-quando/"
-  },
-  {
-   "ativos": [
-    "KNCR11",
-    "KNSC11"
-   ],
-   "confirma": false,
-   "data": "2026-11-04",
-   "fonte": "Seu Dinheiro",
-   "id": "2026-11-04-copom",
-   "nota": "CDI alto mantém o rendimento dos FIIs de papel (KNCR11, KNSC11) e do colchão em renda fixa.",
-   "resumo": "Depois de cinco cortes seguidos desde março, o Banco Central parou. O comunicado não diz se volta a cortar na reunião de 8 e 9 de dezembro; o Focus espera 13,50% no fim do ano e inflação de 5,2% em 2026.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Copom mantém a Selic em 13,75% e interrompe os cortes",
-   "url": "https://www.seudinheiro.com/2026/economia/copom-segura-selic-em-1375-e-interrompe-ciclo-de-cortes-nos-juros-mlim/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-04",
-   "fonte": "Investalk (BB)",
-   "id": "2026-11-04-seletivo",
-   "leituras": [
-    {
-     "diz": "É mais um aumento de carga sobre o consumidor, e o Estado não deveria usar imposto para ditar o que as pessoas consomem.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "Produtos que geram custo à saúde pública devem pagar mais, e a troca pelo IPI simplifica a cobrança.",
-     "quem": "Defensores"
-    }
-   ],
-   "resumo": "A MP 1.399/2026 define, entre outras, 66,7% para cigarros, 4,2% para cerveja e 2,6% para bebidas açucaradas, substituindo aos poucos o IPI desses produtos. Um projeto do Novo no Congresso propõe limitar as alíquotas entre 0% e 5%.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Medida provisória fixa as alíquotas do imposto seletivo para 2027",
-   "url": "https://investalk.bb.com.br/noticias/economia/imposto-do-pecado-chega-em-2027-quais-produtos-podem-ficar-mais-caros"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-04",
-   "fonte": "Band",
-   "id": "2026-11-04-dolar",
-   "resumo": "A moeda americana caiu 0,64% na quarta, na leitura de que o resultado das eleições de meio de mandato nos EUA pode frear parte da agenda econômica da Casa Branca.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Dólar recua para R$ 5,45 no dia seguinte à vitória democrata nos EUA",
-   "url": "https://www.band.com.br/economia/macroeconomia/dolar-recua-e-fecha-a-r-545-em-dia-de-vitoria-democrata-nos-eua"
   }
  ]
 }
