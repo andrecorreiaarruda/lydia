@@ -1,6 +1,106 @@
 {
- "atualizadoEm": "2026-11-13T18:45:50-03:00",
+ "atualizadoEm": "2026-11-16T18:46:07-03:00",
  "itens": [
+  {
+   "ativos": [
+    "VALE3",
+    "ITUB4",
+    "BPAC11",
+    "BBAS3"
+   ],
+   "confirma": false,
+   "data": "2026-11-16",
+   "fonte": "Suno Notícias",
+   "id": "2026-11-16-bolsa",
+   "nota": "Dia de queda ampla na carteira: VALE3 −4,4%, BPAC11 e ITUB4 perto de −2,3%; os FIIs também cederam com os juros futuros em alta.",
+   "resumo": "A bolsa caiu 1,83% e o dólar foi a R$ 5,777, com o mercado inquieto pela falta de um nome para a Fazenda e pela dúvida se o pacote fiscal basta. Vale caiu 4,4% com o minério mais barato na China, e os grandes bancos também recuaram.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Ibovespa perde mais de 3 mil pontos e dólar sobe 2,15%",
+   "url": "https://www.suno.com.br/noticias/ibovespa-vale-vale3-dolar-fiscal/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-16",
+   "fonte": "InfoMoney",
+   "id": "2026-11-16-ibcbr",
+   "resumo": "O IBC-Br do Banco Central caiu 0,2% em setembro e 0,9% no trimestre, com desaceleração espalhada pelos setores. O mercado já fala em PIB parado ou em queda no fim do ano.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Prévia do PIB confirma economia encolhendo no 3º trimestre",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#ibcbr"
+  },
+  {
+   "ativos": [
+    "BBAS3",
+    "BBSE3",
+    "CXSE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-16",
+   "fonte": "InfoMoney",
+   "id": "2026-11-16-fazenda",
+   "leituras": [
+    {
+     "diz": "Quanto mais demora a escolha, mais o dólar e os juros sobem; um nome comprometido com corte de gastos reduziria o custo para todo o país.",
+     "quem": "Mercado"
+    },
+    {
+     "diz": "A escolha do ministro é prerrogativa do presidente eleito e não precisa seguir o calendário do mercado; a política econômica é definida pelo governo como um todo.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "resumo": "Com Lula de volta ao país, investidores esperam o nome que comandará a economia no novo mandato; o Citi disse que só aumentaria a aposta em ações com um nome visto como pró-mercado e citou Geraldo Alckmin e Rafael Fonteles. O presidente do BNDES, Aloizio Mercadante, negou interesse no cargo.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Sem ministro da Fazenda definido, mercado aumenta a cautela",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#fazenda"
+  },
+  {
+   "ativos": [],
+   "confirma": true,
+   "contraponto": "benefícios tributários são gasto do Estado por outra via, concentrados em setores com lobby, e cortá-los reduz distorções sem tirar serviço da população.",
+   "data": "2026-11-16",
+   "fonte": "InfoMoney (entrevista à CNN Brasil)",
+   "id": "2026-11-16-incentivos",
+   "leituras": [
+    {
+     "diz": "Cortar incentivo é, na prática, aumentar imposto para quem produz; o ajuste deveria vir de despesas obrigatórias que crescem sozinhas.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "Os incentivos custam centenas de bilhões por ano e beneficiam poucos; revê-los é a forma mais justa de equilibrar as contas.",
+     "quem": "Governo"
+    }
+   ],
+   "resumo": "O ministro do Planejamento disse que reduzir benefícios tributários será uma das principais medidas do pacote. Analistas criticam que o ajuste se apoia mais em arrecadação do que em corte de despesas.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Moretti aposta no corte de incentivos fiscais para cumprir a meta de 2027",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#moretti"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-16",
+   "fonte": "InfoMoney",
+   "id": "2026-11-16-nvidia",
+   "nota": "A Nvidia é uma das maiores posições do Nasdaq 100; o QQQM caiu 2,7% no dia.",
+   "resumo": "As bolsas americanas caíram na véspera do resultado da Nvidia, que vive disputa sobre a volta do fundador Jensen Huang ao comando: ele tem apoio de Donald Trump e de parte do Vale do Silício, mas o conselho resiste.",
+   "tema": "carteira",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Nvidia divulga balanço nesta terça em meio à crise no comando",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#nvidia"
+  },
   {
    "ativos": [
     "QQQM",
@@ -292,154 +392,6 @@
    "tipo": "fato",
    "titulo": "Caixa Seguridade tem o maior lucro trimestral da sua história",
    "url": "https://visnoinvest.com.br/news/16343/caixa-seguridade-cxse3-registra-lucro-de-r-118-bi-no-3t26"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": true,
-   "contraponto": "regras claras de segurança, concorrência e privacidade dão previsibilidade, e o mercado costuma exagerar na reação a eleições.",
-   "data": "2026-11-06",
-   "fonte": "Campo Grande News",
-   "id": "2026-11-06-tech-ia",
-   "leituras": [
-    {
-     "diz": "Regra pesada encarece a inovação e acaba favorecendo só as gigantes que conseguem pagar o custo de cumprir a lei.",
-     "quem": "Contra a regulação"
-    },
-    {
-     "diz": "Sem regras, o risco fica com o consumidor; uma lei clara reduz a incerteza para quem investe no longo prazo.",
-     "quem": "A favor da regulação"
-    }
-   ],
-   "nota": "Para as meninas o horizonte é longo; um tombo de um dia não muda a decisão do aporte.",
-   "resumo": "Papéis ligados à inteligência artificial caíram forte na quinta (Nasdaq −5,5%) com o temor de que a maioria democrata no Congresso, saída das eleições de meio de mandato, aperte as regras do setor. Parte da queda voltou na sexta.",
-   "tema": "politica",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Ações de tecnologia caem com medo de regras mais duras para IA nos EUA",
-   "url": "https://www.campograndenews.com.br/economia/dolar-encerra-semana-a-r-5-50-com-mercado-atento-a-economia-dos-eua"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-06",
-   "fonte": "Campo Grande News",
-   "id": "2026-11-06-payroll",
-   "resumo": "Os EUA criaram 165 mil vagas em outubro, contra 59 mil esperadas, e o desemprego caiu para 4,1%. O dólar fechou a R$ 5,5082 (+0,36%) e o Ibovespa subiu 1,39%, a 168.498 pontos.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Emprego forte nos EUA reforça juros altos por lá e empurra o dólar",
-   "url": "https://www.campograndenews.com.br/economia/dolar-encerra-semana-a-r-5-50-com-mercado-atento-a-economia-dos-eua"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "BBSE3",
-    "CXSE3"
-   ],
-   "confirma": true,
-   "contraponto": "o governo diz que vai cumprir os compromissos fiscais e sociais, e o pessimismo do mercado depois de eleições costuma diminuir quando as medidas saem do papel.",
-   "data": "2026-11-06",
-   "fonte": "InfoMoney",
-   "id": "2026-11-06-fiscal",
-   "leituras": [
-    {
-     "diz": "Com as medidas ainda indefinidas, o risco é mais gasto público e juros altos por mais tempo.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "O ajuste está em negociação, e manter os programas sociais sustenta o consumo e a economia.",
-     "quem": "Governo e apoiadores"
-    }
-   ],
-   "nota": "BBAS3, BBSE3 e CXSE3 têm controle estatal: decisões do governo pesam direto nelas.",
-   "resumo": "O ministro da Fazenda, Dario Durigan, disse que Lula pediu aos ministros que enxuguem as propostas, a serem validadas depois da viagem do presidente. A bolsa vinha de seis quedas seguidas com dúvidas sobre a política econômica do novo mandato.",
-   "tema": "politica",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Governo negocia ajuste fiscal sob pressão do mercado",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-06112026/"
-  },
-  {
-   "ativos": [],
-   "confirma": true,
-   "contraponto": "com o diesel em risco, uma taxa temporária evita falta do produto e alta de preço dentro do país.",
-   "data": "2026-11-06",
-   "fonte": "InfoMoney",
-   "id": "2026-11-06-petroleo",
-   "leituras": [
-    {
-     "diz": "Imposto sobre exportação tira competitividade, afasta investimento e muda a regra no meio do jogo.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "É temporário e protege o abastecimento interno de diesel.",
-     "quem": "Governo"
-    }
-   ],
-   "resumo": "A Camex estendeu o imposto. O governo diz que a medida serve para manter o abastecimento de diesel no país estável.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Taxa de 12% sobre exportação de petróleo é prorrogada até 31/12",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-06112026/"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "BBSE3",
-    "CXSE3"
-   ],
-   "confirma": true,
-   "contraponto": "o governo cumpriu as metas do arcabouço no mandato anterior, e a manutenção da Selic pelo Copom mostra que há instituições que seguram excessos, seja quem for o ministro.",
-   "data": "2026-11-06",
-   "fonte": "NeoFeed",
-   "id": "2026-11-06-fazenda",
-   "leituras": [
-    {
-     "diz": "Sem nome definido e com mais ministérios no horizonte, cresce o risco de gasto maior e de pressão por juros artificialmente baixos.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "A escolha do ministro é decisão do presidente eleito e leva tempo; o compromisso com as contas públicas já foi reafirmado pela equipe atual.",
-     "quem": "Governo e apoiadores"
-    }
-   ],
-   "resumo": "Em coluna, a economista Angela Bittencourt avalia que os preços dos ativos embutem a dúvida fiscal e o suspense sobre quem comandará a economia, enquanto Lula viaja para a COP31. Ela cita ainda o plano de criar novos ministérios.",
-   "tema": "politica",
-   "tese": "observar",
-   "tipo": "opiniao",
-   "titulo": "Mercado espera o nome do ministro da Fazenda do novo mandato",
-   "url": "https://neofeed.com.br/experts/lula-parte-para-a-turquia-e-deixa-o-mercado-em-modo-de-espera-pelo-titular-da-fazenda/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-06",
-   "fonte": "Jornal do Comércio",
-   "id": "2026-11-06-fosseis",
-   "leituras": [
-    {
-     "diz": "Um plano dirigido pelo Estado para o setor de energia pode afastar investimento em petróleo e gás e encarecer a energia antes de existir alternativa barata.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "Sinalizar a transição cedo dá previsibilidade a quem investe e posiciona o Brasil em energias em que já tem vantagem.",
-     "quem": "A favor"
-    }
-   ],
-   "resumo": "Sem acordo entre os países, o governo prepara um roteiro nacional de transição para longe dos combustíveis fósseis, que está no Conselho Nacional de Política Energética. A conferência vai de 9 a 20 de novembro, na Turquia.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Lula leva à COP31 plano próprio para reduzir dependência do petróleo",
-   "url": "https://www.jornaldocomercio.com/economia/2026/11/1269553-lula-vamos-a-cop31-com-proposta-para-que-mundo-leve-a-serio-reducao-de-dependencia-de-petroleo.html"
   }
  ]
 }
