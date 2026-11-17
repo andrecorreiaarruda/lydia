@@ -1,6 +1,69 @@
 {
- "atualizadoEm": "2026-11-16T18:46:07-03:00",
+ "atualizadoEm": "2026-11-17T18:45:25-03:00",
  "itens": [
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-17",
+   "fonte": "Money Times",
+   "id": "2026-11-17-adiamento",
+   "leituras": [
+    {
+     "diz": "Adiar para negociar destaques costuma desidratar o texto; o que já era pouco pode sair menor ainda.",
+     "quem": "Críticos do pacote"
+    },
+    {
+     "diz": "Negociar os destaques evita uma derrota em plenário e aumenta a chance de o texto ser aprovado e aplicado de fato.",
+     "quem": "Defensores do pacote"
+    }
+   ],
+   "resumo": "O presidente do Senado, Davi Alcolumbre, adiou a votação a pedido do relator, Eduardo Braga, que precisava de mais tempo para fechar acordo sobre os destaques. O dólar chegou a passar de R$ 5,80 no dia, com economistas avaliando as medidas como tímidas.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Senado adia para quarta a votação do pacote fiscal",
+   "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/#adiamento"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-17",
+   "fonte": "Money Times (Estadão Conteúdo)",
+   "id": "2026-11-17-soberano",
+   "leituras": [
+    {
+     "diz": "Crédito subsidiado pelo Tesouro em plena crise fiscal amplia o gasto, distorce o mercado de crédito e escolhe vencedores.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "As empresas foram atingidas por uma decisão de outro país; sem apoio temporário, empregos e exportações se perdem de forma permanente.",
+     "quem": "Defensores"
+    }
+   ],
+   "resumo": "A medida provisória cria linhas com juros subsidiados para exportadores afetados pela sobretaxa americana, com R$ 13,5 bilhões do Tesouro e R$ 9,1 bilhões do BNDES. O texto vai à sanção.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Senado aprova R$ 22,6 bi em crédito subsidiado a empresas atingidas pelo tarifaço",
+   "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/#soberano"
+  },
+  {
+   "ativos": [
+    "BBAS3",
+    "QQQM"
+   ],
+   "confirma": false,
+   "data": "2026-11-17",
+   "fonte": "Money Times",
+   "id": "2026-11-17-bolsa",
+   "nota": "BBAS3 caiu mais 2,2% e voltou a ser o pior papel da carteira no dia; QQQM recuou 0,8%.",
+   "resumo": "O Ibovespa fechou a 169,8 mil pontos ajudado pela alta do petróleo, enquanto o dólar subiu só 0,09% depois de passar de R$ 5,80. Em Nova York, os índices caíram com pressão sobre ações de tecnologia.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Bolsa sobe 0,3% com petróleo; dólar fica perto de R$ 5,78",
+   "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/"
+  },
   {
    "ativos": [
     "VALE3",
@@ -111,7 +174,7 @@
    "fonte": "Cruzeiro FM",
    "id": "2026-11-13-dolar",
    "nota": "Dólar alto encarece o aporte em QQQM; em reais, a cota do NASD11 já reflete o câmbio.",
-   "resumo": "A moeda americana terminou a sexta a R$ 5,655, o maior fechamento desde junho de 2025, enquanto o Ibovespa subiu para 172,4 mil pontos. Segundo a reportagem, o mercado repercute a aprovação do plano de ajuste fiscal pelo Senado.",
+   "resumo": "A moeda americana terminou a sexta a R$ 5,655, o maior fechamento desde junho de 2025, enquanto o Ibovespa subiu para 172,4 mil pontos. O pacote de ajuste fiscal seguia em discussão no Senado.",
    "tema": "macro",
    "tese": "nao",
    "tipo": "fato",
@@ -339,59 +402,6 @@
    "tipo": "fato",
    "titulo": "Inflação dos EUA acima do previsto leva dólar ao maior valor em 15 meses",
    "url": "https://ejornais.com.br/index.php/2026/11/11/dolar-sobe-146-e-fecha-no-maior-valor-em-15-meses/"
-  },
-  {
-   "ativos": [
-    "VALE3",
-    "ITUB4",
-    "BPAC11",
-    "CXSE3",
-    "BBAS3"
-   ],
-   "confirma": false,
-   "data": "2026-11-09",
-   "fonte": "Misto Brasil",
-   "id": "2026-11-09-bolsa",
-   "nota": "Vale, BTG e Caixa Seguridade subiram mais de 3% no dia e o Itaú, quase 3%; o Banco do Brasil foi exceção e caiu perto de 1%.",
-   "resumo": "A bolsa voltou aos 171 mil pontos na segunda, puxada pela alta dos metais e dos bancos, acompanhando o bom humor em Nova York e na Europa. O dólar terminou perto de R$ 5,50.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Ibovespa sobe quase 2% com Vale e bancos; dólar fica estável",
-   "url": "https://mistobrasil.com/2026/11/09/ibovespa-fecha-em-alta-e-retoma-a-marca-dos-171-mil-pontos/"
-  },
-  {
-   "ativos": [
-    "CXSE3",
-    "BBAS3"
-   ],
-   "confirma": false,
-   "data": "2026-11-09",
-   "fonte": "Bora Investir (B3)",
-   "id": "2026-11-09-balancos",
-   "nota": "Para BBAS3, o ponto a olhar é se o banco mantém a projeção de lucro do ano e a política de dividendos.",
-   "resumo": "Pelo calendário da B3, a Caixa Seguridade divulga o balanço a partir de 9/11 e o Banco do Brasil em 11/11. O BB chega depois de ter perdido cerca de 30% em um só pregão, em 26/10, na reação do mercado ao resultado da eleição.",
-   "tema": "carteira",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Caixa Seguridade e Banco do Brasil apresentam o 3º trimestre nesta semana",
-   "url": "https://borainvestir.b3.com.br/noticias/calendario-de-divulgacao-dos-balancos-do-3o-trimestre-das-empresas-do-ibovespa-b3/"
-  },
-  {
-   "ativos": [
-    "CXSE3"
-   ],
-   "confirma": false,
-   "data": "2026-11-09",
-   "fonte": "Visno Invest",
-   "id": "2026-11-09-cxse3",
-   "nota": "Resultado reforça a CXSE3 como pagadora de dividendos; vale acompanhar se as vendas voltam ao ritmo depois da greve.",
-   "resumo": "O lucro gerencial do 3º trimestre foi de R$ 1,18 bilhão, alta de 3,7% sobre um ano antes e acima do que analistas esperavam. As comissões caíram 4,7%, efeito da greve na Caixa em setembro.",
-   "tema": "carteira",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Caixa Seguridade tem o maior lucro trimestral da sua história",
-   "url": "https://visnoinvest.com.br/news/16343/caixa-seguridade-cxse3-registra-lucro-de-r-118-bi-no-3t26"
   }
  ]
 }
