@@ -1,6 +1,79 @@
 {
- "atualizadoEm": "2026-11-17T18:45:25-03:00",
+ "atualizadoEm": "2026-11-18T18:46:24-03:00",
  "itens": [
+  {
+   "ativos": [
+    "BBAS3",
+    "BPAC11",
+    "CXSE3",
+    "BBSE3",
+    "ITUB4"
+   ],
+   "confirma": false,
+   "data": "2026-11-18",
+   "fonte": "InfoMoney",
+   "id": "2026-11-18-goldman",
+   "nota": "Bancos e seguradoras da carteira caíram de 1,7% a 3,7% no dia; NASD11 subiu 1,8% com a Nvidia.",
+   "resumo": "O banco americano citou crescimento fraco e pouco espaço para cortar juros, e o Ibovespa caiu 1,34%, a 167,5 mil pontos. O dólar subiu 1,46% mesmo com o Banco Central vendendo US$ 1 bilhão em leilões de linha, e os juros futuros passaram de 15% na maior parte da curva.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Goldman rebaixa Brasil para venda; dólar sobe pela quinta vez e vai a R$ 5,87",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-18",
+   "fonte": "InfoMoney",
+   "id": "2026-11-18-durigan",
+   "leituras": [
+    {
+     "diz": "Promessa sem medida concreta não muda a trajetória da dívida; o mercado precisa ver corte de despesa aprovado.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "O ajuste está em andamento, com texto-base aprovado, e novas medidas mostram disposição de cumprir a meta sem cortar programas sociais.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "resumo": "O ministro da Fazenda disse que o governo vai adotar medidas adicionais para melhorar as contas e abrir espaço para juros menores. O primeiro pacote ainda não terminou de tramitar no Senado, e o mercado segue à espera do nome da equipe econômica do novo mandato.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Durigan promete novas medidas fiscais no curto prazo",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/#durigan"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-18",
+   "fonte": "InfoMoney",
+   "id": "2026-11-18-nvidia",
+   "nota": "Boa notícia para QQQM e NASD11, que têm a Nvidia entre as maiores posições.",
+   "resumo": "Os resultados trimestrais da Nvidia vieram acima do esperado apesar da disputa sobre o comando da empresa. Em Nova York, o Nasdaq foi o único grande índice a fechar em alta.",
+   "tema": "carteira",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Balanço da Nvidia supera expectativas e segura o Nasdaq",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/#nvidia"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-18",
+   "fonte": "InfoMoney (FGV Ibre)",
+   "id": "2026-11-18-pib",
+   "resumo": "A estimativa da FGV mostra a economia encolhendo entre julho e setembro na comparação com o trimestre anterior. O dado reforça o quadro de desaceleração já indicado pelo IBC-Br.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Monitor do PIB aponta queda de 0,2% no terceiro trimestre",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/#pib"
+  },
   {
    "ativos": [],
    "confirma": false,
@@ -17,11 +90,11 @@
      "quem": "Defensores do pacote"
     }
    ],
-   "resumo": "O presidente do Senado, Davi Alcolumbre, adiou a votação a pedido do relator, Eduardo Braga, que precisava de mais tempo para fechar acordo sobre os destaques. O dólar chegou a passar de R$ 5,80 no dia, com economistas avaliando as medidas como tímidas.",
+   "resumo": "O texto-base já havia sido aprovado em 12/11; o presidente do Senado, Davi Alcolumbre, adiou a votação dos destaques a pedido do relator, Eduardo Braga, que buscava acordo. O dólar chegou a passar de R$ 5,80 no dia, com economistas avaliando as medidas como tímidas.",
    "tema": "politica",
    "tese": "nao",
    "tipo": "fato",
-   "titulo": "Senado adia para quarta a votação do pacote fiscal",
+   "titulo": "Senado adia para quarta a votação dos destaques do pacote fiscal",
    "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/#adiamento"
   },
   {
@@ -174,7 +247,7 @@
    "fonte": "Cruzeiro FM",
    "id": "2026-11-13-dolar",
    "nota": "Dólar alto encarece o aporte em QQQM; em reais, a cota do NASD11 já reflete o câmbio.",
-   "resumo": "A moeda americana terminou a sexta a R$ 5,655, o maior fechamento desde junho de 2025, enquanto o Ibovespa subiu para 172,4 mil pontos. O pacote de ajuste fiscal seguia em discussão no Senado.",
+   "resumo": "A moeda americana terminou a sexta a R$ 5,655, o maior fechamento desde junho de 2025, enquanto o Ibovespa subiu para 172,4 mil pontos. O mercado repercutia a aprovação do texto-base do pacote fiscal pelo Senado na véspera; os destaques ficaram para depois.",
    "tema": "macro",
    "tese": "nao",
    "tipo": "fato",
@@ -316,6 +389,29 @@
    "url": "https://jornaldebrasilia.com.br/noticias/economia/entidades-empresariais-criticam-proposta-prevista-no-plano-moretti-que-limita-compensacao-de-tributos/"
   },
   {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-12",
+   "fonte": "Agência Senado",
+   "id": "2026-11-12-senado",
+   "leituras": [
+    {
+     "diz": "Dá base legal para cumprir a meta de 2027 e executar o Orçamento sem cortes desordenados de última hora.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "A maior parte do ajuste vem de receita e de travas condicionais, sem reduzir a estrutura de gastos que pressiona a dívida.",
+     "quem": "Contra"
+    }
+   ],
+   "resumo": "O projeto do relator Eduardo Braga prevê melhora de R$ 45,1 bilhões a R$ 56,1 bilhões no resultado primário de 2027. Quatro destaques ainda precisam ser votados antes de o texto seguir para a Câmara.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Senado aprova texto-base do ajuste fiscal por 45 a 31",
+   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/texto-principal-do-ajuste-fiscal-e-aprovado-pelo-senado"
+  },
+  {
    "ativos": [
     "BBAS3",
     "ITUB4",
@@ -385,23 +481,6 @@
    "tipo": "fato",
    "titulo": "Pacote fiscal mira até R$ 60 bi, mas dívida só cai a partir de 2030",
    "url": "https://neofeed.com.br/poder/governo-promete-pacote-fiscal-de-ate-r-60-bi-mas-divida-so-comeca-a-cair-no-ultimo-ano-do-lula-4/"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-10",
-   "fonte": "Agência Brasil (via eJornais)",
-   "id": "2026-11-10-dolar",
-   "nota": "Dólar alto encarece o QQQM em reais; juros americanos mais altos costumam pesar nas ações de tecnologia.",
-   "resumo": "O dólar subiu 1,46% na terça, a R$ 5,586, depois que os preços ao consumidor americanos avançaram 0,4% em outubro, contra 0,3% esperado. As apostas numa alta de juros do Fed em dezembro passaram de 88%.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Inflação dos EUA acima do previsto leva dólar ao maior valor em 15 meses",
-   "url": "https://ejornais.com.br/index.php/2026/11/11/dolar-sobe-146-e-fecha-no-maior-valor-em-15-meses/"
   }
  ]
 }
