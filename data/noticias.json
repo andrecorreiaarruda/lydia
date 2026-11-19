@@ -1,6 +1,65 @@
 {
- "atualizadoEm": "2026-11-18T18:46:24-03:00",
+ "atualizadoEm": "2026-11-19T18:45:33-03:00",
  "itens": [
+  {
+   "ativos": [
+    "BBAS3",
+    "ITUB4",
+    "BPAC11",
+    "VALE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-19",
+   "fonte": "InfoMoney",
+   "id": "2026-11-19-bolsa",
+   "nota": "Sexta (20/11) é feriado da Consciência Negra e não tem pregão; a próxima atualização de preços é na segunda.",
+   "resumo": "O Ibovespa caiu 0,69% na quinta e acumulou perda de 3,53% na semana; o dólar subiu 1,15% mesmo com o Banco Central vendendo US$ 1 bilhão. Goldman Sachs, Itaú BBA, Morgan Stanley, UBS, JPMorgan, BTG e Citi reduziram recomendações para ações brasileiras nas últimas semanas.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Bolsa fecha a semana em queda de 3,5% e dólar vai a R$ 5,93",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-19",
+   "fonte": "InfoMoney",
+   "id": "2026-11-19-lula",
+   "leituras": [
+    {
+     "diz": "Sem tocar em gastos obrigatórios e sem equipe econômica definida, o compromisso fiscal soa vago e o custo aparece no dólar e nos juros.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "O governo já entregou metas fiscais antes e não precisa ceder ao calendário do mercado; proteger direitos sociais é escolha legítima de quem venceu a eleição.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "resumo": "O presidente afirmou que quem deseja controle fiscal é o governo, mas que não haverá redução de direitos conquistados enquanto ele estiver no cargo. Também circulou a notícia de um novo pacote com travas de gasto para os próximos quatro anos.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Lula diz não ter pressa para escolher ministros e promete não cortar direitos",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#lula"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-19",
+   "fonte": "InfoMoney",
+   "id": "2026-11-19-anthropic",
+   "nota": "O QQQM caiu 2,2% no dia; uma ação recém-listada não entra de imediato no Nasdaq 100.",
+   "resumo": "A abertura de capital da Anthropic, dona da IA Claude, foi a maior estreia já registrada em bolsa, mas os índices americanos viraram e fecharam em forte queda. Um diretor do Fed disse que a inteligência artificial pressiona a inflação no curto prazo.",
+   "tema": "carteira",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Wall Street cai mesmo com estreia recorde da Anthropic na Nasdaq",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#wallstreet"
+  },
   {
    "ativos": [
     "BBAS3",
@@ -73,6 +132,29 @@
    "tipo": "fato",
    "titulo": "Monitor do PIB aponta queda de 0,2% no terceiro trimestre",
    "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/#pib"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-18",
+   "fonte": "InvestNews",
+   "id": "2026-11-18-pacote",
+   "leituras": [
+    {
+     "diz": "Apertar o limite de despesas de 2,5% para 2% é uma trava real, e rever benefícios fiscais corta privilégios de setores específicos.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "Limitar créditos tributários e apostar em receitas incertas transfere o ajuste para as empresas sem reduzir o tamanho do Estado.",
+     "quem": "Contra"
+    }
+   ],
+   "resumo": "O texto limita o crescimento real das despesas a 2% a partir de 2027, dobra para 20% o corte de benefícios fiscais e mantém a permissão para limitar o uso de créditos tributários por empresas; a Câmara deve votar na terça (24). A IFI, órgão do Senado, avaliou que cerca de 70% do ajuste depende de receitas incertas.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Senado conclui pacote fiscal e texto vai à Câmara",
+   "url": "https://investnews.com.br/economia/pacote-fiscal-passa-no-senado/"
   },
   {
    "ativos": [],
@@ -410,77 +492,6 @@
    "tipo": "fato",
    "titulo": "Senado aprova texto-base do ajuste fiscal por 45 a 31",
    "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/texto-principal-do-ajuste-fiscal-e-aprovado-pelo-senado"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "ITUB4",
-    "BPAC11"
-   ],
-   "confirma": true,
-   "contraponto": "mexer nos pisos de saúde e educação pode tirar dinheiro de serviços que a população mais pobre usa, e o ajuste poderia vir de receitas ou de cortes em outros gastos.",
-   "data": "2026-11-11",
-   "fonte": "NC News",
-   "id": "2026-11-11-pacote",
-   "leituras": [
-    {
-     "diz": "Os pisos crescem sozinhos com a arrecadação e engessam o Orçamento; sem rever essas regras, a dívida não para de subir.",
-     "quem": "A favor"
-    },
-    {
-     "diz": "Saúde e educação têm proteção constitucional por um motivo; cortar ali joga o custo do ajuste em quem mais depende do Estado.",
-     "quem": "Contra"
-    }
-   ],
-   "nota": "A expectativa de controle de gastos ajudou bancos e juros futuros no dia; o efeito dura se o pacote sair do papel.",
-   "resumo": "A equipe econômica negocia com parlamentares medidas de R$ 70 bilhões a R$ 80 bilhões para 2027, entre elas mudar o cálculo dos pisos de gastos com saúde e educação. Nada foi definido e tudo ainda depende de aprovação no Legislativo.",
-   "tema": "politica",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Governo e Congresso discutem pacote para economizar até R$ 80 bi em 2027",
-   "url": "https://ncnews.com.br/2026/11/11/bolsa-fecha/"
-  },
-  {
-   "ativos": [
-    "BBAS3"
-   ],
-   "confirma": false,
-   "data": "2026-11-11",
-   "fonte": "NC News",
-   "id": "2026-11-11-bbas3",
-   "nota": "Os pontos a olhar no balanço são a projeção de lucro de 2026, o pagamento de dividendos e qualquer anúncio sobre a presidência.",
-   "resumo": "O consenso de mercado espera lucro perto de R$ 3 bilhões, 20,7% abaixo de um ano antes, pressionado pela inadimplência no crédito rural. Parte do mercado também aposta numa troca no comando do banco, sem confirmação oficial.",
-   "tema": "carteira",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Banco do Brasil divulga o 3º trimestre com lucro esperado bem menor",
-   "url": "https://ncnews.com.br/2026/11/11/resultado-bbas3-3t26-hoje-lucro-cai-20-7-pressao-aumenta/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-11",
-   "fonte": "Misto Brasil",
-   "id": "2026-11-11-bolsa",
-   "resumo": "O dólar comercial recuou 0,43% e o Ibovespa subiu perto de 0,6%, acima dos 172 mil pontos, com a negociação do ajuste fiscal no radar. A Petrobras caiu depois de anunciar dividendos abaixo do esperado.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Dólar cai a R$ 5,56 e bolsa volta a subir",
-   "url": "https://mistobrasil.com/2026/11/11/ibovespa-fecha-em-alta-e-dolar-recua-nesta-quarta-feira/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-11",
-   "fonte": "NeoFeed",
-   "id": "2026-11-11-divida",
-   "resumo": "O projeto enviado ao Congresso busca de R$ 50 bilhões a R$ 60 bilhões em 2027, limita o crescimento real das despesas a 2% e revê supersalários. Pelas projeções do governo, a dívida chega a 83,6% do PIB em 2026 e só começa a cair em 2030.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Pacote fiscal mira até R$ 60 bi, mas dívida só cai a partir de 2030",
-   "url": "https://neofeed.com.br/poder/governo-promete-pacote-fiscal-de-ate-r-60-bi-mas-divida-so-comeca-a-cair-no-ultimo-ano-do-lula-4/"
   }
  ]
 }
