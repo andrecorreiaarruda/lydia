@@ -1,6 +1,69 @@
 {
- "atualizadoEm": "2026-11-19T18:45:33-03:00",
+ "atualizadoEm": "2026-11-20T18:45:14-03:00",
  "itens": [
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-20",
+   "fonte": "Jornal de Negócios",
+   "id": "2026-11-20-nasdaq",
+   "nota": "O QQQM caiu 5,4% na sexta, para US$ 251,23; o preço no painel só é atualizado no próximo pregão da B3, pois hoje foi feriado aqui.",
+   "resumo": "O S&P 500 caiu 3,49% e entrou em correção, mais de 10% abaixo das máximas de outubro, com o medo de que os investimentos em inteligência artificial não se paguem. A Nvidia, alvo de uma investigação da SEC sobre práticas contábeis, acumulou a sétima semana de queda.",
+   "tema": "carteira",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Nasdaq despenca 5,3% e Nvidia cai 14% com investigação da SEC",
+   "url": "https://jornaldenegocios.pt/mercados/bolsa/detalhe/wall-street-afunda-sob-pressao-da-ia-nasdaq-recua-mais-de-5-nvidia-desce-14"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-20",
+   "fonte": "Tribuna do Planalto",
+   "id": "2026-11-20-camara",
+   "leituras": [
+    {
+     "diz": "Aprovar o texto sem mudanças dá previsibilidade ao Orçamento de 2027 e tira um foco de incerteza do câmbio e dos juros.",
+     "quem": "A favor de votar rápido"
+    },
+    {
+     "diz": "A Câmara não deveria carimbar um pacote baseado em receitas incertas; o debate é a chance de incluir cortes de despesa de verdade.",
+     "quem": "A favor de mudar o texto"
+    }
+   ],
+   "resumo": "O relator na Câmara, Mauro Benevides Filho, apresentou parecer sem mudanças de mérito para que o texto não precise voltar ao Senado. A votação ainda depende da aprovação da urgência e da presença de ao menos 257 deputados.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Câmara deve analisar o pacote fiscal na segunda (23)",
+   "url": "https://tribunadoplanalto.com.br/camara-deve-analisar-ajuste-fiscal-de-lula-na-segunda-feira-23/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-20",
+   "fonte": "Brasil 247 (com CNN Brasil)",
+   "id": "2026-11-20-plano",
+   "leituras": [
+    {
+     "diz": "Anunciar um plano futuro sem detalhes nem ministro da Fazenda não reduz a incerteza; o mercado quer medidas concretas agora.",
+     "quem": "Céticos"
+    },
+    {
+     "diz": "Um plano de quatro anos com o vice-presidente envolvido dá horizonte e coordenação ao ajuste, em vez de medidas soltas.",
+     "quem": "Governo e apoiadores"
+    }
+   ],
+   "resumo": "Segundo apuração da CNN Brasil, o presidente quer novos limites para as despesas federais nos próximos quatro anos, preservando programas sociais e investimentos. O ministro do Planejamento disse que a prioridade agora é concluir a votação do pacote atual.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "rumor",
+   "titulo": "Lula prepara plano fiscal para 2027–2030 com Alckmin e Moretti",
+   "url": "https://www.brasil247.com/economia/lula-prepara-novo-plano-fiscal-para-2027-a-2030-e-quer-alckmin-na-elaboracao-das-medidas/"
+  },
   {
    "ativos": [
     "BBAS3",
@@ -59,6 +122,29 @@
    "tipo": "fato",
    "titulo": "Wall Street cai mesmo com estreia recorde da Anthropic na Nasdaq",
    "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#wallstreet"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-19",
+   "fonte": "InfoMoney",
+   "id": "2026-11-19-6x1",
+   "leituras": [
+    {
+     "diz": "Impor a jornada por lei, em vez de negociar empresa a empresa, eleva o custo do trabalho e pode reduzir contratações formais.",
+     "quem": "Empresas e críticos"
+    },
+    {
+     "diz": "Mais tempo de descanso melhora a vida das famílias e a produtividade, e a transição gradual dá tempo para as empresas se ajustarem.",
+     "quem": "Defensores"
+    }
+   ],
+   "resumo": "O decreto detalha a aplicação da emenda constitucional promulgada em outubro, que troca a escala de seis dias de trabalho por cinco e reduz a jornada de 44 para 40 horas de forma gradual. CNI e CNC pediram ao STF que suspenda as mudanças.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Lula assina decreto que regulamenta o fim da escala 6x1",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#6x1"
   },
   {
    "ativos": [
@@ -335,163 +421,6 @@
    "tipo": "fato",
    "titulo": "Dólar fecha no maior valor de 2026; bolsa sobe 0,66%",
    "url": "https://www.cruzeirofm.com.br/2026/11/13/economia/dolar-fecha-na-maior-cotacao-de-2026-enquanto-ibovespa-sobe-066/"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "BBSE3"
-   ],
-   "confirma": false,
-   "data": "2026-11-12",
-   "fonte": "SpaceMoney",
-   "id": "2026-11-12-bbas3",
-   "nota": "É um corte forte de dividendos num ativo comprado em boa parte por eles: a tese de longo prazo de BBAS3 precisa ser revista com calma, sem decisão no impulso.",
-   "resumo": "O lucro recorrente do 3º trimestre foi de R$ 1,27 bilhão, bem abaixo dos R$ 3,5 bilhões esperados, com perdas recordes no crédito ao agronegócio; a projeção de lucro de 2026 caiu de R$ 18–22 bilhões para R$ 9–11 bilhões. O payout de 2026 foi cortado para o mínimo legal de 25%, sem dividendos intermediários em 2027, e a ação caiu 8,6%.",
-   "tema": "carteira",
-   "tese": "risco",
-   "tipo": "fato",
-   "titulo": "Lucro do Banco do Brasil cai 66,5% e banco reduz dividendo ao mínimo",
-   "url": "https://www.spacemoney.com.br/investimentos/acoes/banco-do-brasil-lucro-3t26-guidance-cortado-payout"
-  },
-  {
-   "ativos": [
-    "KNCR11",
-    "KNSC11"
-   ],
-   "confirma": false,
-   "data": "2026-11-12",
-   "fonte": "InfoMoney",
-   "id": "2026-11-12-ipca",
-   "nota": "Economistas não veem espaço para corte da Selic em dezembro; CDI alto continua favorecendo KNCR11, KNSC11 e a renda fixa.",
-   "resumo": "A inflação do mês ficou abaixo do esperado graças à conta de luz e à gasolina, enquanto alimentos subiram mais de 1%. Em 12 meses o índice foi a 4,63%, acima do teto de 4,5% pelo segundo mês.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "IPCA de outubro sobe só 0,14%, mas 12 meses seguem acima da meta",
-   "url": "https://www.infomoney.com.br/economia/ipca-inflacao-outubro-2026-dados-ibge/"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "BBSE3",
-    "CXSE3"
-   ],
-   "confirma": true,
-   "contraponto": "um gatilho automático de congelamento é uma trava real e crível, e rever benefícios tributários de empresas também é cortar gasto do Estado, só que pelo lado da receita.",
-   "data": "2026-11-12",
-   "fonte": "InfoMoney",
-   "id": "2026-11-12-moretti",
-   "leituras": [
-    {
-     "diz": "Sem mexer na estrutura de despesas obrigatórias, o ajuste vem de mais arrecadação e não estabiliza a dívida.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "O gatilho fortalece o arcabouço e cobra a conta de quem tem isenções, preservando os programas sociais.",
-     "quem": "Governo e apoiadores"
-    }
-   ],
-   "resumo": "O plano, apelidado pelo nome do ministro do Planejamento, prevê congelar despesas de forma permanente se as contas ficarem abaixo do piso da meta e reduz benefícios tributários de empresas. Analistas viram um primeiro passo, mas criticaram a falta de corte efetivo de gastos.",
-   "tema": "politica",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Governo anuncia pacote fiscal com congelamento automático de gastos",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-12112026/"
-  },
-  {
-   "ativos": [
-    "QQQM"
-   ],
-   "confirma": false,
-   "data": "2026-11-12",
-   "fonte": "InfoMoney",
-   "id": "2026-11-12-dolar",
-   "resumo": "O real foi a moeda que mais sofreu no dia, com dúvidas sobre o alcance do pacote fiscal, e o Ibovespa caiu 0,43%. Os juros futuros subiram em toda a curva.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Dólar dispara 1,6% a R$ 5,65 e juros futuros passam de 15%",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-12112026/#dolar"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-12",
-   "fonte": "InfoMoney",
-   "id": "2026-11-12-nvidia",
-   "nota": "A Nvidia é uma das maiores posições do Nasdaq 100, índice que o QQQM e o NASD11 replicam.",
-   "resumo": "Jensen Huang deixou o comando da empresa por motivos pessoais e a diretora financeira assumiu de forma interina. As bolsas americanas fecharam em queda, também pressionadas pela alta do petróleo.",
-   "tema": "carteira",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "CEO da Nvidia renuncia e ação cai perto de 6%",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-12112026/#nvidia"
-  },
-  {
-   "ativos": [
-    "BBAS3"
-   ],
-   "confirma": false,
-   "data": "2026-11-12",
-   "fonte": "InfoMoney (Estadão Conteúdo)",
-   "id": "2026-11-12-bbnota",
-   "nota": "A ação caiu mais 2,7% na sexta; o que define a tese é se a inadimplência do agro para de subir nos próximos trimestres.",
-   "resumo": "Em nota, o banco afirmou que os atrasos se concentram em médios e grandes produtores de soja, milho e pecuária, sobretudo no Centro-Oeste, e não no agronegócio como um todo. A ação chegou a cair perto de 12% pela manhã no dia do balanço.",
-   "tema": "carteira",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "BB diz que 90% dos clientes do agro pagam em dia",
-   "url": "https://www.infomoney.com.br/mercados/bb-diz-que-nao-culpou-todo-o-agro-por-resultado-e-que-90-dos-clientes-estao-em-dia/"
-  },
-  {
-   "ativos": [],
-   "confirma": true,
-   "contraponto": "a trava só é acionada se a receita frustrar a meta, e dividir o ajuste entre corte de gasto e receita evita que todo o peso caia sobre serviços públicos.",
-   "data": "2026-11-12",
-   "fonte": "Jornal de Brasília (Folhapress)",
-   "id": "2026-11-12-compensacao",
-   "leituras": [
-    {
-     "diz": "Crédito tributário é dinheiro da empresa; limitar a compensação obriga a pagar imposto em dinheiro e só adia uma devolução devida.",
-     "quem": "Empresas"
-    },
-    {
-     "diz": "O mecanismo é temporário e condicionado, e equilibra o ajuste quando a arrecadação fica abaixo do previsto.",
-     "quem": "Governo"
-    }
-   ],
-   "resumo": "O plano do governo permite restringir a compensação de tributos quando houver bloqueio extra de gastos, dobrando o esforço de ajuste. Entidades empresariais lembram que o Congresso já rejeitou ideia parecida em 2024 e há emendas para retirar o trecho.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Empresas criticam limite ao uso de créditos tributários no pacote fiscal",
-   "url": "https://jornaldebrasilia.com.br/noticias/economia/entidades-empresariais-criticam-proposta-prevista-no-plano-moretti-que-limita-compensacao-de-tributos/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-12",
-   "fonte": "Agência Senado",
-   "id": "2026-11-12-senado",
-   "leituras": [
-    {
-     "diz": "Dá base legal para cumprir a meta de 2027 e executar o Orçamento sem cortes desordenados de última hora.",
-     "quem": "A favor"
-    },
-    {
-     "diz": "A maior parte do ajuste vem de receita e de travas condicionais, sem reduzir a estrutura de gastos que pressiona a dívida.",
-     "quem": "Contra"
-    }
-   ],
-   "resumo": "O projeto do relator Eduardo Braga prevê melhora de R$ 45,1 bilhões a R$ 56,1 bilhões no resultado primário de 2027. Quatro destaques ainda precisam ser votados antes de o texto seguir para a Câmara.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Senado aprova texto-base do ajuste fiscal por 45 a 31",
-   "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/texto-principal-do-ajuste-fiscal-e-aprovado-pelo-senado"
   }
  ]
 }
