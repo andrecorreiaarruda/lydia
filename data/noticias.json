@@ -1,6 +1,85 @@
 {
- "atualizadoEm": "2026-11-20T18:45:14-03:00",
+ "atualizadoEm": "2026-11-23T18:45:18-03:00",
  "itens": [
+  {
+   "ativos": [
+    "BBAS3",
+    "ITUB4"
+   ],
+   "confirma": false,
+   "data": "2026-11-23",
+   "fonte": "Times Brasil (CNBC)",
+   "id": "2026-11-23-dolar",
+   "resumo": "A moeda chegou a R$ 6,0066 e terminou a R$ 5,9262 (−0,15%), interrompendo seis altas seguidas, depois de notícias sobre nomes bem avaliados pelo mercado para a diretoria do Banco Central. O Ibovespa caiu 0,95%, terceira queda seguida, e o Focus voltou a elevar as projeções de inflação, Selic e dólar.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Dólar bate R$ 6 pela primeira vez desde abril de 2025, mas fecha em leve queda",
+   "url": "https://timesbrasil.com.br/investimentos/bolsa/ibovespa-cai-095-com-tensao-fiscal-dolar-atinge-os-r-6-e-vira-para-queda-no-fechamento/"
+  },
+  {
+   "ativos": [
+    "QQQM",
+    "NASD11"
+   ],
+   "confirma": false,
+   "data": "2026-11-23",
+   "fonte": "InfoMoney",
+   "id": "2026-11-23-nvidia",
+   "nota": "O QQQM subiu 6,7% e recuperou boa parte da perda da semana passada; o NASD11 subiu menos porque a B3 não negociou na sexta.",
+   "resumo": "Com o fundador reconduzido ao cargo de presidente-executivo, as ações da Nvidia chegaram a subir mais de 30% e devolveram o tombo de sexta. A queda do petróleo também aliviou o temor de alta de juros do Fed em dezembro.",
+   "tema": "carteira",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Huang volta ao comando da Nvidia e Nasdaq dispara 6,4%",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-23112026/#nvidia"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-23",
+   "fonte": "InfoMoney",
+   "id": "2026-11-23-galipolo",
+   "leituras": [
+    {
+     "diz": "Sem rever programas e despesas obrigatórias, o ajuste fica concentrado em impostos e não muda a trajetória da dívida.",
+     "quem": "Críticos"
+    },
+    {
+     "diz": "Há espaço em benefícios tributários e em eficiência do gasto; dá para equilibrar as contas preservando a rede de proteção social.",
+     "quem": "Defensores"
+    }
+   ],
+   "resumo": "O presidente do Banco Central afirmou que o cenário está mais desafiador que nos últimos dois anos e que não há debate no governo sobre mudar as metas de inflação. A Fazenda revisou suas projeções para 2026 e 2027, com mais inflação e menos crescimento.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Galípolo diz que ajuste estrutural é possível sem cortar programas sociais",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-23112026/#galipolo"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-23",
+   "fonte": "Gazeta do Povo",
+   "id": "2026-11-23-camara",
+   "leituras": [
+    {
+     "diz": "Votar em poucas horas, numa segunda à noite, reduz o debate sobre medidas que mexem com impostos de empresas e regras fiscais.",
+     "quem": "Críticos do ritmo"
+    },
+    {
+     "diz": "O texto já foi debatido no Senado; aprovar rápido dá segurança ao Orçamento de 2027 e reduz a pressão sobre dólar e juros.",
+     "quem": "Defensores do ritmo"
+    }
+   ],
+   "resumo": "Hugo Motta pautou para segunda a urgência e o mérito do projeto, com o parecer do relator sem mudanças em relação ao Senado; o governo quer concluir antes do relatório bimestral de receitas e despesas. Aliados do próprio governo dizem que o pacote é insuficiente.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Câmara tenta aprovar o pacote fiscal na mesma noite",
+   "url": "https://www.gazetadopovo.com.br/republica/camara-vota-ajuste-fiscal-lula-nesta-segunda-ritmo-acelerado/"
+  },
   {
    "ativos": [
     "QQQM",
@@ -404,23 +483,6 @@
    "tipo": "fato",
    "titulo": "Nvidia divulga balanço nesta terça em meio à crise no comando",
    "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#nvidia"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-13",
-   "fonte": "Cruzeiro FM",
-   "id": "2026-11-13-dolar",
-   "nota": "Dólar alto encarece o aporte em QQQM; em reais, a cota do NASD11 já reflete o câmbio.",
-   "resumo": "A moeda americana terminou a sexta a R$ 5,655, o maior fechamento desde junho de 2025, enquanto o Ibovespa subiu para 172,4 mil pontos. O mercado repercutia a aprovação do texto-base do pacote fiscal pelo Senado na véspera; os destaques ficaram para depois.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Dólar fecha no maior valor de 2026; bolsa sobe 0,66%",
-   "url": "https://www.cruzeirofm.com.br/2026/11/13/economia/dolar-fecha-na-maior-cotacao-de-2026-enquanto-ibovespa-sobe-066/"
   }
  ]
 }
