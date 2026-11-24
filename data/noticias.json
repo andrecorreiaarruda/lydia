@@ -1,6 +1,37 @@
 {
- "atualizadoEm": "2026-11-23T18:45:18-03:00",
+ "atualizadoEm": "2026-11-24T18:45:26-03:00",
  "itens": [
+  {
+   "ativos": [
+    "VALE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-24",
+   "fonte": "InfoMoney",
+   "id": "2026-11-24-vale",
+   "nota": "VALE3 acumula forte queda desde o 3º trimestre; o dividendo ordinário segue a política normal, mas os extras ficam menos prováveis.",
+   "resumo": "A ação fechou a R$ 55,24, pressionada pelo minério perto de US$ 90, custos em alta e revisões negativas de analistas. Analistas dizem que a geração de caixa ficou mais incerta e que a empresa tem priorizado reduzir dívida em vez de pagar proventos extraordinários.",
+   "tema": "carteira",
+   "tese": "observar",
+   "tipo": "fato",
+   "titulo": "Vale cai 5,4% com minério fraco e dúvida sobre dividendos extras",
+   "url": "https://www.infomoney.com.br/mercados/por-que-a-vale-vale3-caiu-mais-de-5-nesta-terca/"
+  },
+  {
+   "ativos": [
+    "VALE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-24",
+   "fonte": "BPMoney",
+   "id": "2026-11-24-bolsa",
+   "resumo": "O Ibovespa chegou a subir pela manhã com a queda dos juros futuros após a aprovação do pacote, mas fechou em baixa de 0,43%. Também foi sancionada a lei que muda regras de execução do Orçamento e permite excluir até R$ 10,5 bilhões da meta fiscal de 2026.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Bolsa perde força com Vale e Petrobras; dólar recua a R$ 5,91",
+   "url": "https://bpmoney.com.br/mercado/ibovespa-fecha-em-queda-com-pressao-de-vale-e-petrobras/"
+  },
   {
    "ativos": [
     "BBAS3",
@@ -79,6 +110,29 @@
    "tipo": "fato",
    "titulo": "Câmara tenta aprovar o pacote fiscal na mesma noite",
    "url": "https://www.gazetadopovo.com.br/republica/camara-vota-ajuste-fiscal-lula-nesta-segunda-ritmo-acelerado/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-23",
+   "fonte": "CNN Brasil",
+   "id": "2026-11-23-aprovado",
+   "leituras": [
+    {
+     "diz": "Aprovar rápido e por ampla maioria cria gatilhos de controle de gastos e mostra que Congresso e governo conseguem agir juntos no fiscal.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "O pacote se apoia em receitas incertas e limita créditos tributários das empresas; sem corte estrutural de despesas, a dívida continua subindo.",
+     "quem": "Contra"
+    }
+   ],
+   "resumo": "O relator manteve o texto do Senado sem mudanças, e o governo estima melhora de R$ 45,1 bilhões a R$ 50,1 bilhões no resultado de 2027. O presidente da Câmara, Hugo Motta, disse que o Congresso está disposto a avançar mais no ajuste.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Câmara aprova pacote fiscal por 353 a 128 e texto vai à sanção",
+   "url": "https://www.cnnbrasil.com.br/politica/camara-aprova-ajuste-fiscal/"
   },
   {
    "ativos": [
@@ -383,106 +437,6 @@
    "tipo": "fato",
    "titulo": "Bolsa sobe 0,3% com petróleo; dólar fica perto de R$ 5,78",
    "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/"
-  },
-  {
-   "ativos": [
-    "VALE3",
-    "ITUB4",
-    "BPAC11",
-    "BBAS3"
-   ],
-   "confirma": false,
-   "data": "2026-11-16",
-   "fonte": "Suno Notícias",
-   "id": "2026-11-16-bolsa",
-   "nota": "Dia de queda ampla na carteira: VALE3 −4,4%, BPAC11 e ITUB4 perto de −2,3%; os FIIs também cederam com os juros futuros em alta.",
-   "resumo": "A bolsa caiu 1,83% e o dólar foi a R$ 5,777, com o mercado inquieto pela falta de um nome para a Fazenda e pela dúvida se o pacote fiscal basta. Vale caiu 4,4% com o minério mais barato na China, e os grandes bancos também recuaram.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Ibovespa perde mais de 3 mil pontos e dólar sobe 2,15%",
-   "url": "https://www.suno.com.br/noticias/ibovespa-vale-vale3-dolar-fiscal/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-16",
-   "fonte": "InfoMoney",
-   "id": "2026-11-16-ibcbr",
-   "resumo": "O IBC-Br do Banco Central caiu 0,2% em setembro e 0,9% no trimestre, com desaceleração espalhada pelos setores. O mercado já fala em PIB parado ou em queda no fim do ano.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Prévia do PIB confirma economia encolhendo no 3º trimestre",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#ibcbr"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "BBSE3",
-    "CXSE3"
-   ],
-   "confirma": false,
-   "data": "2026-11-16",
-   "fonte": "InfoMoney",
-   "id": "2026-11-16-fazenda",
-   "leituras": [
-    {
-     "diz": "Quanto mais demora a escolha, mais o dólar e os juros sobem; um nome comprometido com corte de gastos reduziria o custo para todo o país.",
-     "quem": "Mercado"
-    },
-    {
-     "diz": "A escolha do ministro é prerrogativa do presidente eleito e não precisa seguir o calendário do mercado; a política econômica é definida pelo governo como um todo.",
-     "quem": "Governo e apoiadores"
-    }
-   ],
-   "resumo": "Com Lula de volta ao país, investidores esperam o nome que comandará a economia no novo mandato; o Citi disse que só aumentaria a aposta em ações com um nome visto como pró-mercado e citou Geraldo Alckmin e Rafael Fonteles. O presidente do BNDES, Aloizio Mercadante, negou interesse no cargo.",
-   "tema": "politica",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Sem ministro da Fazenda definido, mercado aumenta a cautela",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#fazenda"
-  },
-  {
-   "ativos": [],
-   "confirma": true,
-   "contraponto": "benefícios tributários são gasto do Estado por outra via, concentrados em setores com lobby, e cortá-los reduz distorções sem tirar serviço da população.",
-   "data": "2026-11-16",
-   "fonte": "InfoMoney (entrevista à CNN Brasil)",
-   "id": "2026-11-16-incentivos",
-   "leituras": [
-    {
-     "diz": "Cortar incentivo é, na prática, aumentar imposto para quem produz; o ajuste deveria vir de despesas obrigatórias que crescem sozinhas.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "Os incentivos custam centenas de bilhões por ano e beneficiam poucos; revê-los é a forma mais justa de equilibrar as contas.",
-     "quem": "Governo"
-    }
-   ],
-   "resumo": "O ministro do Planejamento disse que reduzir benefícios tributários será uma das principais medidas do pacote. Analistas criticam que o ajuste se apoia mais em arrecadação do que em corte de despesas.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Moretti aposta no corte de incentivos fiscais para cumprir a meta de 2027",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#moretti"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-16",
-   "fonte": "InfoMoney",
-   "id": "2026-11-16-nvidia",
-   "nota": "A Nvidia é uma das maiores posições do Nasdaq 100; o QQQM caiu 2,7% no dia.",
-   "resumo": "As bolsas americanas caíram na véspera do resultado da Nvidia, que vive disputa sobre a volta do fundador Jensen Huang ao comando: ele tem apoio de Donald Trump e de parte do Vale do Silício, mas o conselho resiste.",
-   "tema": "carteira",
-   "tese": "observar",
-   "tipo": "fato",
-   "titulo": "Nvidia divulga balanço nesta terça em meio à crise no comando",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-16112026/#nvidia"
   }
  ]
 }
