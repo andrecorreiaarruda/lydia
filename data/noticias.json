@@ -1,6 +1,75 @@
 {
- "atualizadoEm": "2026-11-24T18:45:26-03:00",
+ "atualizadoEm": "2026-11-25T18:45:49-03:00",
  "itens": [
+  {
+   "ativos": [
+    "BPAC11",
+    "BBAS3",
+    "VALE3",
+    "ITUB4"
+   ],
+   "confirma": false,
+   "data": "2026-11-25",
+   "fonte": "Money Times",
+   "id": "2026-11-25-bolsa",
+   "nota": "Dia de alta ampla na carteira: BPAC11 +5,9%, BBAS3 +3,6%, VALE3 +3,1% e FIIs de tijolo em recuperação.",
+   "resumo": "O Ibovespa recuperou os 166 mil pontos e o dólar caiu 1,59%, ajudados pela expectativa de uma PEC que limite gastos e pela especulação sobre o nome do ministro da Fazenda. Os bancos lideraram, com o BTG subindo 5,9%.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Bolsa sobe 1,6% e dólar cai a R$ 5,82",
+   "url": "https://www.moneytimes.com.br/ibovespa-fecha-em-alta-e-recupera-os-166-mil-pontos-com-pec-fiscal-e-expectativas-sobre-equipe-economica-de-lula-davs/"
+  },
+  {
+   "ativos": [
+    "BBAS3",
+    "BBSE3",
+    "CXSE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-25",
+   "fonte": "Money Times",
+   "id": "2026-11-25-trabuco",
+   "leituras": [
+    {
+     "diz": "Um nome com experiência no setor privado e credibilidade técnica ajudaria a reduzir os prêmios de risco e o custo da dívida.",
+     "quem": "Mercado"
+    },
+    {
+     "diz": "Colocar um banqueiro no comando da economia pode aproximar demais a política econômica dos interesses do setor financeiro.",
+     "quem": "Críticos da indicação"
+    }
+   ],
+   "resumo": "Circulou a informação de que Luiz Carlos Trabuco, presidente do conselho do Bradesco, pode ser nomeado ministro da Fazenda a partir de 2027. Não há confirmação do governo.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "rumor",
+   "titulo": "Mercado reage à hipótese de Trabuco, do Bradesco, na Fazenda",
+   "url": "https://www.moneytimes.com.br/ibovespa-fecha-em-alta-e-recupera-os-166-mil-pontos-com-pec-fiscal-e-expectativas-sobre-equipe-economica-de-lula-davs/#trabuco"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-25",
+   "fonte": "SBT News",
+   "id": "2026-11-25-pec",
+   "leituras": [
+    {
+     "diz": "Sem mexer nas despesas que crescem por regra constitucional, nenhum ajuste se sustenta; a PEC ataca o problema na raiz.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "Limitar os pisos de saúde e educação pode reduzir serviços para quem mais depende deles; o ajuste deveria vir de outras fontes.",
+     "quem": "Contra"
+    }
+   ],
+   "resumo": "O presidente reuniu Alckmin, os ministros da Fazenda, do Planejamento e da Casa Civil e o presidente do Banco Central para tratar de uma emenda constitucional de ajuste ainda em 2026. Segundo relatos, a proposta deve limitar o crescimento de gastos com saúde, educação e emendas parlamentares.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Lula discute PEC para conter despesas obrigatórias",
+   "url": "https://sbtnews.sbt.com.br/noticia/politica/lula-discute-pec-fiscal-com-alckmin-e-tres-ministros"
+  },
   {
    "ativos": [
     "VALE3"
@@ -31,6 +100,29 @@
    "tipo": "fato",
    "titulo": "Bolsa perde força com Vale e Petrobras; dólar recua a R$ 5,91",
    "url": "https://bpmoney.com.br/mercado/ibovespa-fecha-em-queda-com-pressao-de-vale-e-petrobras/"
+  },
+  {
+   "ativos": [],
+   "confirma": false,
+   "data": "2026-11-24",
+   "fonte": "Tribuna do Norte",
+   "id": "2026-11-24-sancao",
+   "leituras": [
+    {
+     "diz": "Com a lei em vigor, o governo tem instrumentos para conter gastos já em 2027 e dar previsibilidade ao Orçamento.",
+     "quem": "A favor"
+    },
+    {
+     "diz": "Restringir compensações tributárias pesa sobre as empresas, e a maior parte do ajuste depende de receitas que podem não se confirmar.",
+     "quem": "Contra"
+    }
+   ],
+   "resumo": "A Lei Complementar 239/2026 foi publicada horas após a votação na Câmara: reduz de 2,5% para 2% o limite de crescimento real das despesas, dobra o corte de benefícios tributários e restringe compensações de tributos. A sanção abre caminho para um novo bloqueio de gastos.",
+   "tema": "politica",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Lula sanciona sem vetos o pacote fiscal",
+   "url": "https://tribunadonorte.com.br/politica/lula-sanciona-sem-vetos-projeto-de-ajuste-fiscal/"
   },
   {
    "ativos": [
@@ -374,69 +466,6 @@
    "tipo": "fato",
    "titulo": "Senado conclui pacote fiscal e texto vai à Câmara",
    "url": "https://investnews.com.br/economia/pacote-fiscal-passa-no-senado/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-17",
-   "fonte": "Money Times",
-   "id": "2026-11-17-adiamento",
-   "leituras": [
-    {
-     "diz": "Adiar para negociar destaques costuma desidratar o texto; o que já era pouco pode sair menor ainda.",
-     "quem": "Críticos do pacote"
-    },
-    {
-     "diz": "Negociar os destaques evita uma derrota em plenário e aumenta a chance de o texto ser aprovado e aplicado de fato.",
-     "quem": "Defensores do pacote"
-    }
-   ],
-   "resumo": "O texto-base já havia sido aprovado em 12/11; o presidente do Senado, Davi Alcolumbre, adiou a votação dos destaques a pedido do relator, Eduardo Braga, que buscava acordo. O dólar chegou a passar de R$ 5,80 no dia, com economistas avaliando as medidas como tímidas.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Senado adia para quarta a votação dos destaques do pacote fiscal",
-   "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/#adiamento"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-17",
-   "fonte": "Money Times (Estadão Conteúdo)",
-   "id": "2026-11-17-soberano",
-   "leituras": [
-    {
-     "diz": "Crédito subsidiado pelo Tesouro em plena crise fiscal amplia o gasto, distorce o mercado de crédito e escolhe vencedores.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "As empresas foram atingidas por uma decisão de outro país; sem apoio temporário, empregos e exportações se perdem de forma permanente.",
-     "quem": "Defensores"
-    }
-   ],
-   "resumo": "A medida provisória cria linhas com juros subsidiados para exportadores afetados pela sobretaxa americana, com R$ 13,5 bilhões do Tesouro e R$ 9,1 bilhões do BNDES. O texto vai à sanção.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Senado aprova R$ 22,6 bi em crédito subsidiado a empresas atingidas pelo tarifaço",
-   "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/#soberano"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "QQQM"
-   ],
-   "confirma": false,
-   "data": "2026-11-17",
-   "fonte": "Money Times",
-   "id": "2026-11-17-bolsa",
-   "nota": "BBAS3 caiu mais 2,2% e voltou a ser o pior papel da carteira no dia; QQQM recuou 0,8%.",
-   "resumo": "O Ibovespa fechou a 169,8 mil pontos ajudado pela alta do petróleo, enquanto o dólar subiu só 0,09% depois de passar de R$ 5,80. Em Nova York, os índices caíram com pressão sobre ações de tecnologia.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Bolsa sobe 0,3% com petróleo; dólar fica perto de R$ 5,78",
-   "url": "https://www.moneytimes.com.br/tempo-real-temor-fiscal-se-soma-a-aversao-com-inteligencia-artificial-hoje-rens/"
   }
  ]
 }
