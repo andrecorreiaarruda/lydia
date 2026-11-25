@@ -5,212 +5,242 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <title>Lydia</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F4FBF'/%3E%3Cpath d='M10 9h12l-2 4H12z' fill='white'/%3E%3Cpath d='M13 13h6l1.5 13h-9z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230066cc'/%3E%3Cpath d='M10 9h12l-2 4H12z' fill='white'/%3E%3Cpath d='M13 13h6l1.5 13h-9z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>
+  // aplica o tema escolhido antes de desenhar a página, para não piscar
+  try { var t = localStorage.getItem('lydia.tema'); if (t === 'claro') document.documentElement.setAttribute('data-theme', 'light'); else if (t === 'escuro') document.documentElement.setAttribute('data-theme', 'dark'); } catch (_) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: painel de fim de dia — faixa de indicadores no topo, quatro abas, a escada do PLANO como peça central do robô */
+/* Lydia — fundo off-white, cartões brancos arredondados, um único azul de ação; modo escuro automático ou escolhido */
 :root {
-  --bg: #F1F3F6;
-  --surface: #FFFFFF;
-  --surface-2: #E7EBF0;
-  --ink: #15202B;
-  --ink-2: #4C5967;
-  --line: #D2D9E1;
-  --accent: #1F4FBF;
-  --accent-ink: #FFFFFF;
-  --accent-soft: #DCE5F9;
-  --good: #1D7748;
-  --good-soft: #DBF0E4;
-  --warn: #9C5D00;
-  --warn-soft: #FAEACF;
-  --bad: #B0261E;
-  --bad-soft: #F7DDD9;
-  --font-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --r: 10px;
+  --bg: #f5f5f7; --surface: #ffffff; --surface-2: #f5f5f7; --surface-3: #ececf0; --track: #dcdce1;
+  --seg: #e8e8ed; --seg-on: #ffffff;
+  --ink: #1d1d1f; --ink-2: #6e6e73; --line: #e0e0e0; --sep: #ececf0;
+  --accent: #0066cc; --accent-ink: #ffffff; --accent-soft: #e6f0fa;
+  --good: #1a7f37; --good-soft: #e3f3e7; --warn: #8a5300; --warn-soft: #fbf0dc; --bad: #c4231b; --bad-soft: #fbe4e2;
+  --bar: rgba(255, 255, 255, 0.88); --tab: #6e6e73;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-body);
+  --font-data: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --r: 18px; --r-sm: 14px;
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0C1218; --surface: #131B23; --surface-2: #1A242F; --ink: #E3E9EF; --ink-2: #98A6B4; --line: #253240;
-    --accent: #88A9FF; --accent-ink: #0C1218; --accent-soft: #1C2946;
-    --good: #5DC88E; --good-soft: #13301F; --warn: #E7A84A; --warn-soft: #33250E; --bad: #F08B81; --bad-soft: #3A1916;
+    --bg: #000000; --surface: #1c1c1e; --surface-2: #2c2c2e; --surface-3: #3a3a3c; --track: #48484a;
+    --seg: #1c1c1e; --seg-on: #3a3a3c;
+    --ink: #f5f5f7; --ink-2: #a1a1a6; --line: #38383a; --sep: #2c2c2e;
+    --accent: #2997ff; --accent-ink: #000000; --accent-soft: rgba(41, 151, 255, 0.16);
+    --good: #30d158; --good-soft: rgba(48, 209, 88, 0.16); --warn: #ffb340; --warn-soft: rgba(255, 179, 64, 0.16); --bad: #ff6961; --bad-soft: rgba(255, 105, 97, 0.16);
+    --bar: rgba(28, 28, 30, 0.92); --tab: #8e8e93;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0C1218; --surface: #131B23; --surface-2: #1A242F; --ink: #E3E9EF; --ink-2: #98A6B4; --line: #253240;
-  --accent: #88A9FF; --accent-ink: #0C1218; --accent-soft: #1C2946;
-  --good: #5DC88E; --good-soft: #13301F; --warn: #E7A84A; --warn-soft: #33250E; --bad: #F08B81; --bad-soft: #3A1916;
+  --bg: #000000; --surface: #1c1c1e; --surface-2: #2c2c2e; --surface-3: #3a3a3c; --track: #48484a;
+  --seg: #1c1c1e; --seg-on: #3a3a3c;
+  --ink: #f5f5f7; --ink-2: #a1a1a6; --line: #38383a; --sep: #2c2c2e;
+  --accent: #2997ff; --accent-ink: #000000; --accent-soft: rgba(41, 151, 255, 0.16);
+  --good: #30d158; --good-soft: rgba(48, 209, 88, 0.16); --warn: #ffb340; --warn-soft: rgba(255, 179, 64, 0.16); --bad: #ff6961; --bad-soft: rgba(255, 105, 97, 0.16);
+  --bar: rgba(28, 28, 30, 0.92); --tab: #8e8e93;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
-.wrap { max-width: 1080px; margin: 0 auto; padding-block: 20px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 20px; }
-h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
-h1 { font-size: 30px; font-weight: 800; }
-h2 { font-size: 19px; font-weight: 800; }
-h3 { font-size: 15px; font-weight: 600; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.47; min-height: 100vh; -webkit-text-size-adjust: 100%; padding-top: env(safe-area-inset-top, 0px); }
+[hidden] { display: none !important; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 20px max(20px, env(safe-area-inset-right, 0px)) 32px max(20px, env(safe-area-inset-left, 0px)); display: grid; gap: 16px; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display); text-wrap: balance; }
+h1 { font-size: 34px; font-weight: 600; letter-spacing: -0.8px; line-height: 1.1; }
+h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; line-height: 1.2; }
+h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.2px; line-height: 1.3; }
 p { margin: 0; }
 .muted { color: var(--ink-2); }
 .small { font-size: 13px; }
 .num { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
-.label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); font-weight: 600; }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code { font-family: var(--font-data); font-size: .92em; }
 
-/* Cabeçalho */
-.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
-.top .sub { color: var(--ink-2); font-size: 14px; }
-.pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink); white-space: nowrap; }
-.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-2); }
+/* Topo */
+.top { display: grid; gap: 10px; }
+.top-linha { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.marca { font-size: 20px; font-weight: 600; letter-spacing: -0.4px; }
+.tema-btn { appearance: none; border: 0; background: var(--surface); color: var(--ink); border-radius: 9999px; min-height: 36px; padding: 6px 12px; font: 500 13px var(--font-body); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.tema-btn svg { width: 16px; height: 16px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.pills:empty { display: none; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 9999px; background: var(--surface); color: var(--ink-2); white-space: nowrap; }
+.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-2); }
 .pill.ok .dot { background: var(--good); }
 .pill.warn { background: var(--warn-soft); color: var(--warn); }
 .pill.warn .dot { background: var(--warn); }
 .pill.bad { background: var(--bad-soft); color: var(--bad); }
 .pill.bad .dot { background: var(--bad); }
-.pill.accent { background: var(--accent-soft); color: var(--accent); }
+.pill.accent { color: var(--accent); }
 
-/* Faixa de indicadores */
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
-.kpi { background: var(--surface); padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
-.kpi .v { font-family: var(--font-data); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
-.kpi .d { font-size: 12px; color: var(--ink-2); }
-.up { color: var(--good); }
-.down { color: var(--bad); }
+/* Abas: barra fixa embaixo no celular, segmentada no alto no computador */
+.tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: var(--bar); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); }
+.tab { appearance: none; border: 0; background: none; color: var(--tab); font: 500 11px var(--font-body); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 48px; padding: 6px 2px; cursor: pointer; position: relative; white-space: nowrap; }
+.tab svg { width: 24px; height: 24px; flex: 0 0 auto; }
+.tab[aria-selected="true"] { color: var(--accent); }
+.tab .count { position: absolute; top: 2px; left: calc(50% + 6px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font: 600 11px/18px var(--font-body); }
+.tab .count:empty { display: none; }
+@media (max-width: 719px) {
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; border-top: 1px solid var(--line); padding: 4px max(4px, env(safe-area-inset-right, 0px)) calc(4px + env(safe-area-inset-bottom, 0px)) max(4px, env(safe-area-inset-left, 0px)); }
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (min-width: 720px) {
+  .tabs { position: sticky; top: 8px; z-index: 20; background: var(--seg); border-radius: 9999px; padding: 4px; gap: 2px; }
+  .tab { flex-direction: row; gap: 6px; font-size: 14px; min-height: 40px; border-radius: 9999px; color: var(--ink-2); }
+  .tab svg { width: 18px; height: 18px; }
+  .tab[aria-selected="true"] { background: var(--seg-on); color: var(--ink); }
+  .tab .count { position: static; }
+}
 
-/* Abas */
-.tabs { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--line); }
-.tab { appearance: none; border: 0; background: none; font: 600 15px var(--font-body); color: var(--ink-2); padding: 10px 14px; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; }
-.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
-.tab .count { font-family: var(--font-data); font-size: 12px; margin-left: 4px; color: var(--ink-2); }
-.view { display: grid; gap: 20px; }
-
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: grid; gap: 14px; min-width: 0; }
-.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.btn { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 14px var(--font-body); padding: 9px 14px; border-radius: 8px; cursor: pointer; }
-.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.btn:disabled { opacity: .5; cursor: default; }
+/* Conteúdo */
+.view { display: grid; gap: 16px; }
+.card { background: var(--surface); border-radius: var(--r); padding: 20px; display: grid; gap: 14px; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.pilha { display: grid; gap: 6px; }
 .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-
-/* Escada */
-.escada { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; gap: 6px; }
-.degrau { appearance: none; text-align: left; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-2); border-radius: 8px 8px 0 0; padding: 8px; cursor: pointer; display: grid; align-content: start; gap: 2px; font: inherit; min-width: 0; }
-.degrau .n { font-family: var(--font-data); font-size: 12px; }
-.degrau .t { font-size: 12px; font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
-.degrau.passada { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
-.degrau.atual { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.degrau.escolhida { outline: 2px dashed var(--accent); outline-offset: 2px; }
-.confirma { border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 14px; display: grid; gap: 10px; }
-
-/* Robô */
-.robo-ativo { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: baseline; }
-.ticker-grande { font-family: var(--font-display); font-stretch: 112%; font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.02em; }
-.trava { display: grid; gap: 8px; padding: 14px; border-radius: 8px; background: var(--warn-soft); color: var(--warn); }
-.trava strong { color: var(--ink); }
-.fila { display: grid; gap: 6px; }
-.fila-item { display: grid; grid-template-columns: 64px 1fr 74px; gap: 10px; align-items: center; font-size: 13px; }
-.barra { height: 10px; background: var(--surface-2); border-radius: 5px; position: relative; overflow: hidden; }
-.barra span { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 5px; }
-.barra i { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--ink); }
-.field { display: grid; gap: 4px; }
-.field input { font: 500 16px var(--font-data); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); width: 160px; max-width: 100%; }
-
-/* Tabelas */
-.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
-table { border-collapse: collapse; width: 100%; font-size: 14px; }
-th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
-th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); font-weight: 600; background: var(--surface-2); }
-th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: inherit; }
-tbody tr { background: var(--surface); }
-tbody tr:last-child td { border-bottom: 0; }
-td .nome { font-size: 12px; color: var(--ink-2); white-space: normal; max-width: 180px; }
-td.tk { font-weight: 600; }
-td.tk a.tk-link { color: inherit; text-decoration: none; border-bottom: 1px dashed var(--ink-2); }
-td.tk a.tk-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
-tr.grupo td { background: var(--surface-2); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); font-weight: 600; text-align: left; }
-input.qtd { width: 76px; font: 500 14px var(--font-data); text-align: right; padding: 5px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
-.chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.btn { appearance: none; border: 0; background: var(--surface-2); color: var(--accent); font: 500 15px var(--font-body); padding: 10px 18px; min-height: 44px; border-radius: 9999px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.texto { background: transparent; padding: 10px 8px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.link-btn { appearance: none; border: 0; background: none; color: var(--accent); font: inherit; padding: 0; cursor: pointer; text-decoration: underline; }
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); background: var(--seg); border-radius: 9999px; padding: 3px; gap: 2px; }
+.seg button { appearance: none; border: 0; background: transparent; color: var(--ink-2); font: 500 14px var(--font-body); min-height: 36px; padding: 0 12px; border-radius: 9999px; cursor: pointer; white-space: nowrap; }
+.seg button[aria-pressed="true"] { background: var(--seg-on); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08); }
+.chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
+.chips::-webkit-scrollbar { display: none; }
+.filtro { appearance: none; flex: 0 0 auto; border: 0; background: var(--surface); color: var(--ink); font: 500 14px var(--font-body); padding: 8px 14px; min-height: 36px; border-radius: 9999px; cursor: pointer; white-space: nowrap; }
+.filtro.num { font-family: var(--font-data); }
+.filtro[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
 .chip.good { background: var(--good-soft); color: var(--good); }
 .chip.warn { background: var(--warn-soft); color: var(--warn); }
 .chip.bad { background: var(--bad-soft); color: var(--bad); }
 .chip.accent { background: var(--accent-soft); color: var(--accent); }
-.spark { display: block; }
+.up { color: var(--good); }
+.down { color: var(--bad); }
+
+/* Indicadores */
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 720px) { .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .kpis { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.kpi { background: var(--surface); border-radius: var(--r-sm); padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
+.kpi .l { font-size: 12px; color: var(--ink-2); }
+.kpi .v { font-family: var(--font-data); font-size: 18px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; color: var(--ink-2); }
+
+/* Robô */
+.robo-topo { display: grid; gap: 4px; }
+.ticker-grande { font-size: 52px; font-weight: 600; letter-spacing: -1.4px; line-height: 1; }
+.robo-conta { font-family: var(--font-data); font-size: 16px; color: var(--ink-2); }
+.robo-conta b { color: var(--ink); font-weight: 500; }
+.painel { background: var(--surface-2); border-radius: var(--r-sm); padding: 14px; display: grid; gap: 10px; }
+.trava { display: grid; gap: 8px; padding: 14px; border-radius: var(--r-sm); background: var(--warn-soft); }
+.trava .label { color: var(--warn); }
+.fila { display: grid; gap: 8px; }
+.fila-item { display: grid; grid-template-columns: 64px 1fr 54px; gap: 10px; align-items: center; font-size: 13px; }
+.barra { height: 6px; background: var(--track); border-radius: 3px; position: relative; overflow: hidden; }
+.barra span { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 3px; }
+.barra i { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); }
+details.mais summary { cursor: pointer; color: var(--accent); font-size: 14px; }
+.registro { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; background: var(--good-soft); border-radius: 12px; padding: 10px 12px; }
+.field { display: grid; gap: 6px; }
+.field input { font: 500 16px var(--font-data); padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); width: 180px; max-width: 100%; }
+input.qtd { width: 88px; font: 500 15px var(--font-data); text-align: right; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); color: var(--ink); }
+
+/* Escada */
+.escada { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; gap: 6px; }
+.degrau { appearance: none; border: 0; text-align: left; background: var(--surface-2); color: var(--ink-2); border-radius: 10px; padding: 8px 6px; cursor: pointer; display: grid; align-content: start; gap: 2px; font: inherit; min-width: 0; }
+.degrau .n { font-family: var(--font-data); font-size: 11px; }
+.degrau .t { font-size: 12px; font-weight: 600; line-height: 1.25; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+.degrau.passada { background: var(--accent-soft); color: var(--accent); }
+.degrau.atual { background: var(--accent); color: var(--accent-ink); }
+.degrau.escolhida { outline: 2px dashed var(--accent); outline-offset: 2px; }
+.confirma { background: var(--accent-soft); border-radius: var(--r-sm); padding: 14px; display: grid; gap: 10px; }
+
+/* Listas: carteira, renda fixa, meninas */
+.grupo-titulo { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); padding: 0 4px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.lista { background: var(--surface); border-radius: var(--r); padding: 0 16px; }
+.item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--sep); }
+.item:last-child { border-bottom: 0; }
+.ico { width: 36px; height: 36px; border-radius: 50%; background: var(--surface-2); color: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; flex: 0 0 auto; text-decoration: none; }
+.ico:hover { text-decoration: none; }
+.item-meio { flex: 1 1 auto; min-width: 0; display: grid; gap: 1px; }
+.item-tit { font-size: 16px; font-weight: 600; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.item-tit a { color: inherit; }
+.item-sub { font-size: 12px; color: var(--ink-2); }
+.item-dir { display: grid; justify-items: end; gap: 1px; text-align: right; flex: 0 0 auto; }
+.item-dir .p { font-family: var(--font-data); font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.item-dir .v { font-family: var(--font-data); font-size: 13px; }
 
 /* Notícias */
-.filtros { display: flex; flex-wrap: wrap; gap: 6px; }
-.filtro { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: 600 13px var(--font-body); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
-.filtro[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .noticias { display: grid; gap: 12px; }
-.nota { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
-.nota.observar { border-left-color: var(--warn); }
-.nota.risco { border-left-color: var(--bad); }
+.nota { background: var(--surface); border-radius: var(--r); padding: 16px; display: grid; gap: 8px; min-width: 0; }
 .nota .meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; color: var(--ink-2); }
-.nota h3 { font-size: 16px; }
-.lados { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
-.lado { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; font-size: 13px; }
-.lado b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); margin-bottom: 2px; }
-.vies { background: var(--warn-soft); border-radius: 8px; padding: 10px 12px; font-size: 13px; color: var(--ink); }
+.nota .resumo { font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.para-carteira { font-size: 14px; line-height: 1.45; background: var(--surface-2); border-radius: 12px; padding: 10px 12px; }
+.lados { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.lado { background: var(--surface-2); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.4; }
+.lado b { display: block; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 4px; }
+.vies { background: var(--warn-soft); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.4; }
 .vies b { color: var(--warn); }
-.aviso { padding: 12px 14px; border-radius: 8px; background: var(--surface-2); font-size: 14px; }
+.aviso { padding: 12px 14px; border-radius: var(--r-sm); background: var(--surface); font-size: 14px; }
 .aviso.warn { background: var(--warn-soft); }
-footer { font-size: 12px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 4px; }
+footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid; gap: 4px; }
+.portao { max-width: 560px; width: 100%; margin: 12px auto; }
+.portao textarea { font: 13px/1.45 var(--font-data); width: 100%; min-height: 220px; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); color: var(--ink); resize: vertical; }
+.erro { color: var(--bad); font-size: 14px; }
+
+/* Gráfico */
+.gt-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.gt-preco-box { text-align: right; }
+.gt-preco { font-family: var(--font-data); font-size: 28px; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; }
+.gt-box { position: relative; height: 440px; border-radius: 12px; overflow: hidden; background: var(--surface); }
+.gt-legenda { position: absolute; top: 8px; left: 10px; z-index: 3; pointer-events: none; font: 12px var(--font-data); color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 10px; max-width: calc(100% - 80px); }
+.gt-legenda b { color: var(--ink); font-weight: 500; }
+.gt-mm { display: inline-flex; align-items: center; gap: 4px; }
+.gt-mm i { display: inline-block; width: 14px; height: 2px; border-radius: 1px; }
+.field.token input { width: 260px; font-size: 14px; }
 @media (max-width: 520px) {
-  h1 { font-size: 26px; }
-  .ticker-grande { font-size: 34px; }
-  .degrau .t { font-size: 11px; }
-  .kpi .v { font-size: 18px; }
+  h1 { font-size: 30px; }
+  .ticker-grande { font-size: 44px; }
+  .gt-box { height: 340px; }
+  .gt-preco { font-size: 24px; }
+  .gt-preco-box { text-align: left; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .barra span { transition: width .4s ease; }
 }
-html, body { margin: 0; }
-body { min-height: 100vh; -webkit-text-size-adjust: 100%; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-[hidden] { display: none !important; }
-code { font-family: var(--font-data); font-size: .92em; }
-.portao { max-width: 560px; width: 100%; margin: 12px auto; }
-.portao textarea { font: 13px/1.45 var(--font-data); width: 100%; min-height: 220px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); resize: vertical; }
-.erro { color: var(--bad); font-size: 14px; }
-/* Gráfico */
-.gt-lista { display: flex; flex-wrap: wrap; gap: 6px; }
-.gt-lista .filtro { font-family: var(--font-data); font-weight: 500; }
-.gt-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
-.gt-preco { font-family: var(--font-data); font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums; }
-.gt-box { position: relative; height: 440px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
-.gt-legenda { position: absolute; top: 8px; left: 10px; z-index: 3; pointer-events: none; font: 12px var(--font-data); color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 10px; max-width: calc(100% - 80px); }
-.gt-legenda b { color: var(--ink); font-weight: 500; }
-.gt-periodos { display: flex; gap: 4px; flex-wrap: wrap; }
-.gt-periodos .filtro { padding: 4px 10px; font-size: 12px; }
-.gt-mm { display: inline-flex; align-items: center; gap: 4px; }
-.gt-mm i { display: inline-block; width: 14px; height: 2px; border-radius: 1px; }
-.field.token input { width: 260px; font-size: 14px; }
-@media (max-width: 520px) { .gt-box { height: 340px; } .gt-preco { font-size: 22px; } }
-.link-btn { appearance: none; border: 0; background: none; color: var(--accent); font: inherit; padding: 0; cursor: pointer; text-decoration: underline; }
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <header class="top">
-    <div>
-      <h1>Lydia</h1>
-      <p class="sub">Fim do dia: mercado, carteira-alvo e notícias que mexem no seu dinheiro.</p>
-    </div>
+    <div class="top-linha"><span class="marca">Lydia</span><button class="tema-btn" id="btn-tema" type="button"></button></div>
     <div class="pills" id="pills"></div>
+    <h1 id="titulo" hidden></h1>
   </header>
 
-  <section class="kpis" id="kpis" aria-label="Indicadores"></section>
-
-  <nav class="tabs" role="tablist" id="tabs">
-    <button class="tab" role="tab" id="tab-aporte" data-v="aporte">Aporte</button>
-    <button class="tab" role="tab" id="tab-carteira" data-v="carteira">Carteira</button>
-    <button class="tab" role="tab" id="tab-grafico" data-v="grafico">Gráfico</button>
-    <button class="tab" role="tab" id="tab-renda-fixa" data-v="renda-fixa">Renda fixa</button>
-    <button class="tab" role="tab" id="tab-noticias" data-v="noticias">Notícias<span class="count" id="ncount"></span></button>
+  <nav class="tabs" role="tablist" id="tabs" aria-label="Seções">
+    <button class="tab" role="tab" id="tab-aporte" data-v="aporte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l5-5 4 4 7-7M14 9h6v6"/></svg><span>Aporte</span></button>
+    <button class="tab" role="tab" id="tab-carteira" data-v="carteira"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v12H3zM3 7l3-3h12l3 3M16 13h2"/></svg><span>Carteira</span></button>
+    <button class="tab" role="tab" id="tab-grafico" data-v="grafico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v18M17 3v18M5 7h4v8H5zM15 9h4v6h-4z"/></svg><span>Gráfico</span></button>
+    <button class="tab" role="tab" id="tab-renda-fixa" data-v="renda-fixa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20v-9M10 20v-9M14 20v-9M18 20v-9M3 10l9-6 9 6"/></svg><span>Renda fixa</span></button>
+    <button class="tab" role="tab" id="tab-noticias" data-v="noticias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11v16H5zM16 8h3v12h-3M8 8h5M8 12h5M8 16h3"/></svg><span>Notícias</span><span class="count" id="ncount"></span></button>
   </nav>
 
   <main id="view" class="view"></main>
@@ -252,6 +282,7 @@ code { font-family: var(--font-data); font-size: .92em; }
 
   const state = {
     view: 'aporte', filtro: 'tudo', gt: 'BBAS3', gtPeriodo: 66,
+    editando: false, cfiltro: 'tudo', rf: 'pos', ultimaCompra: null,
     mercado: null, noticias: null, carteira: null,
     confirmed: false, slow: false, err: null, readOnly: false,
     escolhida: null, saving: false, pendingRender: false,
@@ -312,26 +343,24 @@ code { font-family: var(--font-data); font-size: .92em; }
     if (!state.mercado) fresc = state.slow ? `<span class="pill warn"><span class="dot"></span>Os dados ainda não chegaram</span>` : `<span class="pill"><span class="dot"></span>Carregando…</span>`;
     else {
       const fe = M().fechamento; const n = diasUteisDesde(fe);
-      const txt = `Fechamento de ${diaSemana(fe)} ${dm(fe)}`;
+      const txt = `Fechamento de ${diaSemana(fe)}, ${dm(fe)}`;
       fresc = n > 2 ? `<span class="pill warn"><span class="dot"></span>${txt} · desatualizado</span>` : `<span class="pill ok"><span class="dot"></span>${txt}</span>`;
     }
     el.innerHTML = fresc + `<span class="pill accent">Fase ${f.n} · ${esc(f.nome)}</span>`;
   }
 
-  function renderKpis() {
-    const el = document.getElementById('kpis');
-    const s = ind('selic'), c = ind('cdi'), i = ind('ipca12m'), u = ind('usdbrl'), b = ind('ibov'), t = ind('ust10');
+  function kpisHTML() {
+    const s = ind('selic'), c = ind('cdi'), i = ind('ipca12m'), u = ind('usdbrl'), b = ind('ibov');
     const real = (isNum(s.valor) && isNum(i.valor)) ? ((1 + s.valor / 100) / (1 + i.valor / 100) - 1) * 100 : null;
-    const k = (lab, v, d) => `<div class="kpi"><span class="label">${lab}</span><span class="v">${v}</span><span class="d">${d}</span></div>`;
-    el.innerHTML = [
+    const k = (lab, v, d) => `<div class="kpi"><span class="l">${lab}</span><span class="v">${v}</span><span class="d">${d}</span></div>`;
+    return `<section class="kpis" id="kpis" aria-label="Indicadores">` + [
       k('Selic', pct(s.valor), s.data ? `Copom ${dm(s.data)}` : '—'),
-      k('CDI', pct(c.valor), c.data ? `em ${dm(c.data)}` : '—'),
       k('IPCA 12 meses', pct(i.valor), i.data ? `até ${mesAno(i.data)}` : '—'),
-      k('Juro real', pct(real), 'Selic acima do IPCA'),
-      k('Dólar', isNum(u.valor) ? 'R$ ' + nf(4).format(u.valor) : '—', isNum(u.var) ? `<span class="${cls(u.var)}">${sinal(u.var)}</span> no dia` : '—'),
-      k('Ibovespa', isNum(b.valor) ? nf(0).format(b.valor) : '—', isNum(b.var) ? `<span class="${cls(b.var)}">${sinal(b.var)}</span> no dia` : '—'),
-      k('Treasury 10 anos', pct(t.valor), t.data ? `EUA, em ${dm(t.data)}` : '—')
-    ].join('');
+      k('Juro real', pct(real, 1), 'Selic acima do IPCA'),
+      k('CDI', pct(c.valor), c.data ? `em ${dm(c.data)}` : '—'),
+      k('Dólar', isNum(u.valor) ? 'R$ ' + nf(2).format(u.valor) : '—', isNum(u.var) ? `<span class="${cls(u.var)}">${sinal(u.var)}</span> no dia` : '—'),
+      k('Ibovespa', isNum(b.valor) ? nf(0).format(b.valor) : '—', isNum(b.var) ? `<span class="${cls(b.var)}">${sinal(b.var)}</span> no dia` : '—')
+    ].join('') + `</section>`;
   }
 
   function escadaHTML() {
@@ -357,11 +386,25 @@ code { font-family: var(--font-data); font-size: .92em; }
   function filaHTML(r) {
     if (!r.fila.length) return `<p class="muted small">Sem cotações para montar a fila.</p>`;
     const meta = 1 / 12;
-    return `<div class="fila">` + r.fila.map(x => {
+    const item = x => {
       const w = r.T > 0 ? Math.min(100, (x.peso / (meta * 2)) * 100) : 0;
       return `<div class="fila-item"><span class="num">${x.a.t}</span><span class="barra" title="Peso atual ${pct(x.peso * 100, 1)} · meta 8,3%"><span style="width:${w}%"></span><i style="left:50%"></i></span><span class="num small" style="text-align:right">${r.T > 0 ? pct(x.peso * 100, 1) : '0,0%'}</span></div>`;
-    }).join('') + `</div><p class="small muted">A linha preta é a meta de cada ativo (1/12, 8,3%). Quem está mais longe dela, à esquerda, é o próximo da fila.</p>` +
+    };
+    const prim = r.fila.slice(0, 4), resto = r.fila.slice(4);
+    return `<div class="fila">${prim.map(item).join('')}</div>` +
+      (resto.length ? `<details class="mais"><summary>Ver a fila inteira (${r.fila.length})</summary><div class="fila" style="margin-top:8px">${resto.map(item).join('')}</div></details>` : '') +
+      `<p class="small muted">A linha marca a meta de cada ativo (1/12, 8,3%). Quem está mais longe dela é o próximo da fila.</p>` +
       (r.sem.length ? `<p class="small muted">Fora da fila hoje por falta de cotação: ${r.sem.map(x => x.a.t).join(', ')}.</p>` : '');
+  }
+
+  function noticiaDestaque() {
+    const itens = (state.noticias && Array.isArray(state.noticias.itens)) ? state.noticias.itens : [];
+    const n = itens.find(x => x.tese === 'risco') || itens.find(x => Array.isArray(x.ativos) && x.ativos.length) || itens[0];
+    if (!n) return '';
+    const t = TESE[n.tese] || TESE.nao;
+    const ativos = (Array.isArray(n.ativos) ? n.ativos : []).slice(0, 3).map(a => `<span class="chip accent num">${esc(a)}</span>`).join('');
+    return `<article class="nota"><div class="meta"><span>Notícia da carteira · ${esc(dm(n.data) || '')} · ${esc(n.fonte || '')}</span>${n.tese && n.tese !== 'nao' ? `<span class="chip ${t[1]}">${t[0]}</span>` : ''}${ativos}</div>
+      <h3>${esc(n.titulo)}</h3><a class="small" href="#noticias">Ver todas as notícias ›</a></article>`;
   }
 
   function renderAporte() {
@@ -369,35 +412,43 @@ code { font-family: var(--font-data); font-size: .92em; }
     const ref = trav ? FASES[2].aporte : aporteAtual();
     const r = robo(ref);
     const e = r.escolha;
-    let robôHTML;
-    if (!state.mercado) robôHTML = `<p class="muted">Assim que os preços chegarem, o robô mostra aqui qual ativo comprar este mês.</p>`;
+    let corpo;
+    if (!state.mercado) corpo = `<p class="muted">Assim que os preços chegarem, o robô mostra aqui qual ativo comprar este mês.</p>`;
     else if (trav) {
-      robôHTML = `<div class="trava"><span class="label" style="color:inherit">Aporte travado</span>
+      corpo = `<div class="trava"><span class="label">Aporte travado</span>
         <p><strong>Você está na fase ${f.n} (${esc(f.nome)}).</strong> ${esc(f.destino)}</p>
         <p class="small">${PLANO.travaRegra ? esc(PLANO.travaRegra) + ' ' : ''}Portão para sair: ${esc(f.portao)}.</p></div>
-        ${e ? `<p class="small">Quando destravar, o primeiro da fila hoje é <strong class="num">${e.a.t}</strong>: com ${brl(ref)} dariam ${r.cotas} cotas a ${brl(e.p)}.</p>` : ''}`;
+        ${e ? `<p class="small muted">Quando destravar, o primeiro da fila hoje é <strong class="num">${e.a.t}</strong>: com ${brl(ref)} dariam ${r.cotas} cotas a ${brl(e.p)}.</p>` : ''}`;
     } else if (!e) {
-      robôHTML = `<p class="muted">Nenhum ativo da fila cabe em ${brl(r.A)}. Aumente o valor do aporte ou junte para o mês que vem.</p>`;
+      corpo = `<p class="muted">Nenhum ativo da fila cabe em ${brl(r.A)}. Aumente o valor do aporte ou junte para o mês que vem.</p>`;
     } else {
-      robôHTML = `<div class="robo-ativo"><span class="ticker-grande">${e.a.t}</span><span class="muted small">${esc(e.a.nome)}<br>${esc(e.a.seg)}</span></div>
-        <p style="font-size:17px"><span class="num">${r.cotas}</span> cotas × <span class="num">${brl(e.p)}</span> = <strong class="num">${brl(r.custo)}</strong></p>
+      corpo = `<div class="robo-topo"><span class="small muted">O robô indica comprar</span><span class="ticker-grande">${e.a.t}</span><span class="small muted">${esc(e.a.nome)} · ${esc(e.a.seg)}</span></div>
+        <p class="robo-conta">${r.cotas} × ${brl(e.p)} = <b>${brl(r.custo)}</b></p>
         <p class="small muted">Sobra ${brl(r.A - r.custo)} do aporte de ${brl(r.A)}.${r.vazia ? ' Carteira ainda vazia: o robô segue a ordem da lista.' : ''} Regra 6: compro o mais abaixo da meta.</p>`;
     }
+    const fila = state.mercado ? `<div class="painel"><span class="small muted">Fila do robô · peso de cada ativo e a meta de 8,3%</span>${filaHTML(r)}</div>` : '';
+    const u = state.ultimaCompra;
+    const registro = u ? `<div class="registro" role="status">Registrado: +${u.q} ${u.q === 1 ? 'cota' : 'cotas'} de <b class="num">${esc(u.t)}</b> na carteira. <button class="link-btn" id="btn-desfazer-compra">Desfazer</button></div>` : '';
+    const acoes = (!trav && e && state.mercado)
+      ? `<div class="row"><button class="btn primary" id="btn-registrar" style="flex:1 1 auto"${state.readOnly ? ' disabled' : ''}>Registrar compra de ${r.cotas} ${r.cotas === 1 ? 'cota' : 'cotas'}</button><button class="btn texto" id="btn-ver-escada">Ver escada ›</button></div>`
+      : `<div class="row"><button class="btn texto" id="btn-ver-escada">Ver escada ›</button></div>`;
+    const ap = f.n >= 2 ? `<div class="field"><label class="label" for="in-aporte">Aporte da aposentadoria este mês</label><input id="in-aporte" inputmode="decimal" value="${nf(2).format(aporteAtual())}"><span class="small muted">Padrão da fase ${f.n}: ${brl(f.aporte)}. Se a sobra for menor, divida na mesma proporção.</span></div>` : '';
     const meninas = f.n >= 2 ? f.meninas : FASES[2].meninas;
     const pN = preco('NASD11'), pQ = preco('QQQM'), dol = ind('usdbrl').valor;
     const cN = isNum(pN) ? Math.floor(meninas / pN) : null;
-    const meninasHTML = `<div class="card"><div class="row" style="justify-content:space-between"><h2>Para as meninas</h2><span class="chip ${f.n >= 2 ? 'accent' : 'warn'}">${f.n >= 2 ? 'ativo' : 'começa na fase 2'}</span></div>
+    const meninasHTML = `<section class="card" aria-label="Para as meninas"><div class="row" style="justify-content:space-between"><h2>Para as meninas</h2><span class="chip ${f.n >= 2 ? 'accent' : 'warn'}">${f.n >= 2 ? 'ativo' : 'começa na fase 2'}</span></div>
       <p class="small muted">${brl(meninas)} por mês${PLANO.meninasNota ? ' (' + esc(PLANO.meninasNota) + ')' : ''}. QQQM ou NASD11 ainda é ponto em aberto no PLANO.</p>
-      <div class="scroll"><table><thead><tr><th>Opção</th><th>Preço</th><th>Com ${brl(meninas)}</th></tr></thead><tbody>
-      <tr><td class="tk">NASD11<div class="nome">na B3, em reais</div></td><td class="num">${brl(pN)}</td><td class="num">${cN !== null ? cN + ' cotas (' + brl(cN * pN) + ')' : '—'}</td></tr>
-      <tr><td class="tk">QQQM<div class="nome">nos EUA, em dólar</div></td><td class="num">${usd(pQ)}</td><td class="num">${isNum(dol) ? '≈ ' + usd(meninas / dol) : '—'}</td></tr>
-      </tbody></table></div></div>`;
-    const ap = f.n >= 2 ? `<div class="field"><label class="label" for="in-aporte">Aporte da aposentadoria este mês</label><input id="in-aporte" inputmode="decimal" value="${nf(2).format(aporteAtual())}"><span class="small muted">Padrão da fase ${f.n}: ${brl(f.aporte)}. Se a sobra for menor, divida na mesma proporção.</span></div>` : '';
-    return `<div class="grid2">
-      <div class="card"><div class="row" style="justify-content:space-between"><h2>Robô do aporte</h2>${state.mercado ? `<span class="small muted">preços de ${dm(M().fechamento)}</span>` : ''}</div>${robôHTML}${ap}</div>
-      <div class="card"><h2>A escada</h2>${escadaHTML()}<p class="small"><strong>Agora:</strong> ${esc(f.destino)}</p>${f.n < 4 ? `<p class="small muted">Para subir: ${esc(f.portao)}. Toque num degrau para mudar de fase.</p>` : ''}${confirmaHTML()}</div>
-    </div>
-    <div class="grid2"><div class="card"><h2>Fila do robô</h2>${state.mercado ? filaHTML(r) : '<p class="muted small">Aguardando preços.</p>'}<p class="small muted">As quantidades vêm da aba Carteira.</p></div>${meninasHTML}</div>`;
+      <div>
+        <div class="item"><a class="ico" href="#grafico/NASD11" aria-label="Gráfico de NASD11">NASD</a><span class="item-meio"><span class="item-tit">NASD11</span><span class="item-sub">na B3, em reais · ${brl(pN)}</span></span><span class="item-dir"><span class="p">${cN !== null ? cN + ' cotas' : '—'}</span><span class="v muted">${cN !== null ? brl(cN * pN) : ''}</span></span></div>
+        <div class="item"><a class="ico" href="#grafico/QQQM" aria-label="Gráfico de QQQM">QQQM</a><span class="item-meio"><span class="item-tit">QQQM</span><span class="item-sub">nos EUA, em dólar · ${usd(pQ)}</span></span><span class="item-dir"><span class="p">${isNum(dol) ? '≈ ' + usd(meninas / dol) : '—'}</span><span class="v muted">por mês</span></span></div>
+      </div></section>`;
+    return `<section class="card" aria-label="Robô do aporte">${corpo}${fila}${registro}${acoes}${ap}</section>
+      ${kpisHTML()}
+      ${noticiaDestaque()}
+      <div class="grid2">
+        <section class="card" id="escada" aria-label="A escada"><div class="row" style="justify-content:space-between"><h2>A escada</h2><span class="small muted">fase ${f.n} de 4</span></div>${escadaHTML()}<p class="small"><strong>Agora:</strong> ${esc(f.destino)}</p>${f.n < 4 ? `<p class="small muted">Para subir: ${esc(f.portao)}. Toque num degrau para mudar de fase.</p>` : ''}${confirmaHTML()}</section>
+        ${meninasHTML}
+      </div>`;
   }
 
   function spark(hist) {
@@ -418,77 +469,83 @@ code { font-family: var(--font-data); font-size: .92em; }
   }
 
   function renderCarteira() {
-    if (!state.mercado) return `<div class="card"><h2>Carteira-alvo</h2><p class="muted">Os 15 ativos do PLANO aparecem aqui com preço, dividend yield e P/VP assim que a primeira atualização chegar.</p></div>`;
+    if (!state.mercado) return `<div class="card"><p class="muted">Os 15 ativos do PLANO aparecem aqui com preço, dividend yield e P/VP assim que a primeira atualização chegar.</p></div>`;
     const base = ATIVOS.filter(a => a.meta === 1);
     let T = 0; base.forEach(a => { const p = preco(a.t); const q = +local.qtd[a.t] || 0; if (isNum(p)) T += p * q; });
+    const ed = state.editando; const filt = state.cfiltro;
     const linha = a => {
       const d = dadosAtivo(a.t) || {}; const p = preco(a.t); const q = +local.qtd[a.t] || 0;
       const v = isNum(p) ? p * q : null; const peso = a.meta === 1 && T > 0 && isNum(v) ? v / T * 100 : null;
-      const rend = d.ultimoRend && isNum(d.ultimoRend.valor) ? `<span class="num">${brl(d.ultimoRend.valor)}</span><div class="nome">paga ${dm(d.ultimoRend.pagamento) || '—'}</div>` : '—';
-      const precoTxt = a.usd ? usd(p) : brl(p);
-      const dataTxt = d.data ? dm(d.data) : 'sem data';
-      return `<tr><td class="tk"><a class="tk-link" href="#grafico/${a.t}" title="Abrir o gráfico de ${a.t}">${a.t}</a><div class="nome">${esc(a.nome)} · ${esc(a.seg)}</div></td>
-        <td class="num">${precoTxt}<div class="nome">${esc(dataTxt)}${d.obs ? ' · ' + esc(d.obs) : ''}</div></td>
-        <td class="num ${cls(d.var)}">${sinal(d.var)}</td>
-        <td>${spark(d.hist)}</td>
-        <td class="num">${pct(d.dy)}</td>
-        <td>${pvpChip(a, d)}</td>
-        <td class="num">${a.tipo === 'acao' && isNum(d.pl) ? nf(2).format(d.pl) : '—'}</td>
-        <td>${a.tipo === 'fii' ? rend : '—'}</td>
-        <td><input class="qtd" id="qtd-${a.t}" data-t="${a.t}" inputmode="numeric" value="${q || ''}" placeholder="0" aria-label="Quantidade de ${a.t}"${state.readOnly ? ' disabled' : ''}></td>
-        <td class="num">${q ? (a.usd ? usd(v) : brl(v)) : '—'}</td>
-        <td class="num">${isNum(peso) ? pct(peso, 1) : (a.meta === 1 ? '—' : a.meta === 0 ? 'meta 0' : '')}</td></tr>`;
+      const fmt = a.usd ? usd : brl;
+      const info = [];
+      if (a.tipo === 'acao') { if (isNum(d.dy)) info.push('DY ' + pct(d.dy, 1)); if (isNum(d.pl)) info.push('P/L ' + nf(1).format(d.pl)); }
+      if (a.tipo === 'fii') {
+        if (isNum(d.pvp)) info.push('P/VP ' + nf(2).format(d.pvp));
+        if (isNum(d.dy)) info.push('DY ' + pct(d.dy, 1));
+        if (d.ultimoRend && isNum(d.ultimoRend.valor)) info.push(`último ${brl(d.ultimoRend.valor)}${d.ultimoRend.pagamento ? ' em ' + dm(d.ultimoRend.pagamento) : ''}`);
+      }
+      const posicao = q ? `${nf(0).format(q)} ${q === 1 ? 'cota' : 'cotas'} · ${fmt(v)}${isNum(peso) ? ' · ' + pct(peso, 1) + ' da fila' : ''}` : (a.meta === 0 ? 'meta 0 até decidir' : '');
+      const chip = a.tipo === 'fii' && isNum(d.pvp) ? (d.pvp < 0.95 ? '<span class="chip good">desconto</span>' : d.pvp > 1.05 ? '<span class="chip warn">ágio</span>' : '<span class="chip">no valor</span>') : '';
+      const quando = d.obs ? esc(d.obs) : (d.data && d.data !== M().fechamento ? 'preço de ' + dm(d.data) : (!d.data && isNum(p) ? 'sem data' : ''));
+      const dir = ed
+        ? `<input class="qtd" id="qtd-${a.t}" data-t="${a.t}" inputmode="numeric" value="${q || ''}" placeholder="0" aria-label="Quantidade de ${a.t}"${state.readOnly ? ' disabled' : ''}>`
+        : `<span class="p">${fmt(p)}</span><span class="v ${cls(d.var)}">${sinal(d.var)}</span>`;
+      return `<div class="item"><a class="ico" href="#grafico/${a.t}" aria-label="Gráfico de ${a.t}">${a.t.slice(0, 4)}</a>
+        <span class="item-meio"><span class="item-tit"><a href="#grafico/${a.t}">${a.t}</a>${chip}</span>
+        <span class="item-sub">${esc(a.nome)}${info.length ? ' · ' + info.join(' · ') : ''}</span>${posicao ? `<span class="item-sub">${posicao}</span>` : ''}${quando ? `<span class="item-sub">${quando}</span>` : ''}</span>
+        <span class="item-dir">${dir}</span></div>`;
     };
-    const head = `<tr><th>Ativo</th><th>Preço</th><th>Dia</th><th>30 dias</th><th>DY 12m</th><th>P/VP</th><th>P/L</th><th>Último rend.</th><th>Qtd</th><th>Valor</th><th>Peso</th></tr>`;
-    const grupo = (t, arr) => `<tr class="grupo"><td colspan="11">${t}</td></tr>` + arr.map(linha).join('');
-    return `<div class="card"><div class="row" style="justify-content:space-between"><h2>Carteira-alvo</h2><span class="num">Total na fila: ${brl(T)}</span></div>
-      <p class="small muted">Digite quantas cotas você tem de cada ativo. Só muda quando você comprar. Nada aqui está ligado à corretora. Toque no código do ativo para abrir o gráfico.</p>
-      ${state.readOnly ? '<p class="aviso warn small">Esta visualização não pode salvar quantidades.</p>' : ''}
-      <div class="scroll"><table><thead>${head}</thead><tbody>
-      ${grupo('Ações · meta 8,3% cada', ATIVOS.filter(a => a.tipo === 'acao'))}
-      ${grupo('Fundos imobiliários · meta 8,3% cada', ATIVOS.filter(a => a.tipo === 'fii'))}
-      ${grupo('Para as meninas', ATIVOS.filter(a => a.tipo === 'etf'))}
-      </tbody></table></div>
-      <p class="small muted">P/VP nos FIIs: abaixo de 0,95 a cota está com desconto sobre o patrimônio; acima de 1,05, com ágio. Nas ações o P/VP depende do setor e não recebe cor. DY e P/VP vêm de sites diferentes e às vezes divergem.</p>
-      <p class="small muted">${state.saving ? 'Salvando…' : 'Salva sozinho depois que você para de digitar.'}</p></div>`;
+    const grupos = [['acao', 'Ações · meta 8,3% cada'], ['fii', 'Fundos imobiliários · meta 8,3% cada'], ['etf', 'Para as meninas']].filter(([k]) => filt === 'tudo' || filt === k);
+    const seg = [['tudo', 'Tudo'], ['acao', 'Ações'], ['fii', 'FIIs'], ['etf', 'Meninas']].map(([k, l]) => `<button data-cf="${k}" aria-pressed="${filt === k}">${l}</button>`).join('');
+    return `<section class="card" style="gap:10px"><div class="row" style="justify-content:space-between"><div><span class="small muted">Valor na fila (12 ativos da meta)</span><div class="num" style="font-size:26px;font-weight:500">${brl(T)}</div></div><button class="btn${ed ? ' primary' : ''}" id="btn-editar">${ed ? 'Pronto' : 'Editar cotas'}</button></div>
+        ${ed ? '<p class="small muted">Digite quantas cotas você tem de cada ativo. Só muda quando você comprar. Salva sozinho depois que você para de digitar.</p>' : ''}
+        ${state.readOnly ? '<p class="aviso warn small">Esta visualização não pode salvar quantidades.</p>' : ''}
+        <p class="small muted">${state.saving ? 'Salvando…' : `Preços do fechamento de ${dm(M().fechamento)}. Toque no ativo para abrir o gráfico. Nada aqui está ligado à corretora.`}</p></section>
+      <div class="seg" role="group" aria-label="Filtrar ativos">${seg}</div>
+      ${grupos.map(([k, t]) => `<div class="pilha"><div class="grupo-titulo">${t}</div><div class="lista">${ATIVOS.filter(a => a.tipo === k).map(linha).join('')}</div></div>`).join('')}
+      <p class="small muted" style="padding:0 4px">P/VP nos FIIs: abaixo de 0,95 a cota está com desconto sobre o patrimônio; acima de 1,05, com ágio. Nas ações o P/VP depende do setor. DY e P/VP vêm de sites diferentes e às vezes divergem.</p>`;
   }
 
   function renderRendaFixa() {
-    if (!state.mercado) return `<div class="card"><h2>Renda fixa</h2><p class="muted">CDB, LCI/LCA e Tesouro Direto aparecem aqui, já com o imposto descontado, quando a primeira atualização chegar.</p></div>`;
-    const cdi = ind('cdi').valor, ipca = ind('ipca12m').valor; const td = M().tesouro || {}; const tit = Array.isArray(td.titulos) ? td.titulos : [];
+    if (!state.mercado) return `<div class="card"><p class="muted">CDB, LCI/LCA e Tesouro Direto aparecem aqui, já com o imposto descontado, quando a primeira atualização chegar.</p></div>`;
+    const cdi = ind('cdi').valor, ipca = ind('ipca12m').valor, selic = ind('selic').valor; const td = M().tesouro || {}; const tit = Array.isArray(td.titulos) ? td.titulos : [];
     const ir = dias => dias <= 180 ? 0.225 : dias <= 360 ? 0.20 : dias <= 720 ? 0.175 : 0.15;
     const liq1 = g => g * (1 - ir(365));
     const liq2 = g => (Math.pow(1 + ((1 + g) ** 2 - 1) * (1 - 0.15), 0.5) - 1);
-    const real = n => isNum(ipca) ? (1 + n) / (1 + ipca / 100) - 1 : null;
+    const real = n => isNum(ipca) && isNum(n) ? (1 + n) / (1 + ipca / 100) - 1 : null;
     const P = v => isNum(v) ? pct(v * 100) : '—';
-    const rows = [];
-    const add = (nome, obs, taxaTxt, g, isento, garantia, longo) => {
-      const n1 = isNum(g) ? (isento ? g : liq1(g)) : null; const n2 = isNum(g) ? (isento ? g : liq2(g)) : null;
-      rows.push(`<tr><td class="tk">${esc(nome)}<div class="nome">${esc(obs)}</div></td><td class="num">${taxaTxt}</td><td class="num">${longo ? '—' : P(n1)}</td><td class="num">${P(n2)}</td><td class="num">${P(real(n2))}</td><td>${esc(garantia)}</td></tr>`);
+    const G = { pos: [], pre: [], ipca: [] };
+    const add = (g, nome, obs, taxaTxt, gr, isento, garantia, longo) => {
+      const n1 = isNum(gr) ? (isento ? gr : liq1(gr)) : null; const n2 = isNum(gr) ? (isento ? gr : liq2(gr)) : null; const rr = real(n2);
+      G[g].push(`<div class="item"><span class="item-meio"><span class="item-tit" style="font-size:15px">${esc(nome)}</span><span class="item-sub">${esc(taxaTxt)} · ${esc(obs)}</span><span class="item-sub">${esc(garantia)}${longo ? '' : ' · em 1 ano: ' + P(n1)}</span></span>
+        <span class="item-dir"><span class="p">${P(n2)}</span><span class="v ${isNum(rr) ? (rr >= 0 ? 'up' : 'down') : ''}">${isNum(rr) ? (rr >= 0 ? '+' : '−') + P(Math.abs(rr)) : '—'}</span></span></div>`);
     };
     const c = isNum(cdi) ? cdi / 100 : null;
-    const grupo = t => rows.push(`<tr class="grupo"><td colspan="6">${t}</td></tr>`);
-    grupo('Pós-fixados · bons para o colchão');
-    add('CDB 100% do CDI', 'liquidez diária em bancos grandes', pct(cdi), c, false, 'FGC até R$ 250 mil');
-    add('CDB 110% do CDI', 'exemplo de cálculo, não é oferta', isNum(cdi) ? pct(cdi * 1.1) : '—', c && c * 1.1, false, 'FGC até R$ 250 mil');
-    add('CDB 120% do CDI', 'exemplo de cálculo, não é oferta', isNum(cdi) ? pct(cdi * 1.2) : '—', c && c * 1.2, false, 'FGC até R$ 250 mil');
-    add('LCI/LCA 90% do CDI', 'isenta de IR; exemplo de cálculo', isNum(cdi) ? pct(cdi * 0.9) : '—', c && c * 0.9, true, 'FGC até R$ 250 mil');
-    add('LCI/LCA 95% do CDI', 'isenta de IR; exemplo de cálculo', isNum(cdi) ? pct(cdi * 0.95) : '—', c && c * 0.95, true, 'FGC até R$ 250 mil');
+    add('pos', 'LCI/LCA 95% do CDI', 'isenta de IR; exemplo de cálculo', isNum(cdi) ? pct(cdi * 0.95) : '—', c && c * 0.95, true, 'FGC até R$ 250 mil');
+    add('pos', 'LCI/LCA 90% do CDI', 'isenta de IR; exemplo de cálculo', isNum(cdi) ? pct(cdi * 0.9) : '—', c && c * 0.9, true, 'FGC até R$ 250 mil');
+    add('pos', 'CDB 120% do CDI', 'exemplo de cálculo, não é oferta', isNum(cdi) ? pct(cdi * 1.2) : '—', c && c * 1.2, false, 'FGC até R$ 250 mil');
+    add('pos', 'CDB 110% do CDI', 'exemplo de cálculo, não é oferta', isNum(cdi) ? pct(cdi * 1.1) : '—', c && c * 1.1, false, 'FGC até R$ 250 mil');
+    add('pos', 'CDB 100% do CDI', 'liquidez diária em bancos grandes', pct(cdi), c, false, 'FGC até R$ 250 mil');
     tit.filter(t => t.tipo === 'selic' || t.tipo === 'selic100').forEach(t => {
       const g = c !== null ? (1 + c) * (1 + (t.taxa || 0) / 100) - 1 : null;
-      add(t.nome, t.tipo === 'selic' ? 'Selic efetiva ≈ CDI' : '100% da Selic', t.tipo === 'selic' ? `Selic + ${nf(4).format(t.taxa || 0)}%` : '100% Selic', g, false, 'Tesouro Nacional');
+      add('pos', t.nome, t.tipo === 'selic' ? 'Selic efetiva ≈ CDI' : '100% da Selic', t.tipo === 'selic' ? `Selic + ${nf(4).format(t.taxa || 0)}%` : '100% Selic', g, false, 'Tesouro Nacional');
     });
-    const pre = tit.filter(t => t.tipo === 'pre'), ip = tit.filter(t => t.tipo === 'ipca');
-    if (pre.length) { grupo('Prefixados · levar até o vencimento'); pre.forEach(t => add(t.nome, 'taxa travada até o vencimento', pct(t.taxa), t.taxa / 100, false, 'Tesouro Nacional', true)); }
-    if (ip.length) { grupo('Inflação + juro real · longo prazo'); ip.forEach(t => { const g = isNum(ipca) ? (1 + ipca / 100) * (1 + t.taxa / 100) - 1 : null; add(t.nome, 'estimado com o IPCA dos últimos 12 meses', `IPCA + ${pct(t.taxa)}`, g, false, 'Tesouro Nacional', true); }); }
+    tit.filter(t => t.tipo === 'pre').forEach(t => add('pre', t.nome, 'taxa travada até o vencimento', pct(t.taxa), t.taxa / 100, false, 'Tesouro Nacional', true));
+    tit.filter(t => t.tipo === 'ipca').forEach(t => { const g = isNum(ipca) ? (1 + ipca / 100) * (1 + t.taxa / 100) - 1 : null; add('ipca', t.nome, 'estimado com o IPCA dos últimos 12 meses', `IPCA + ${pct(t.taxa)}`, g, false, 'Tesouro Nacional', true); });
+    const tituloG = { pos: 'Pós-fixados · bons para o colchão', pre: 'Prefixados · levar até o vencimento', ipca: 'Inflação + juro real · longo prazo' };
+    const rf = G[state.rf] ? state.rf : 'pos';
+    const seg = [['pos', 'Pós-fixados'], ['pre', 'Prefixados'], ['ipca', 'IPCA+']].map(([k, l]) => `<button data-rf="${k}" aria-pressed="${rf === k}">${l}</button>`).join('');
+    const jr = (isNum(selic) && isNum(ipca)) ? ((1 + selic / 100) / (1 + ipca / 100) - 1) * 100 : null;
     const ust = ind('ust10');
-    return `<div class="card"><h2>Renda fixa comparada</h2>
-      <p class="small muted">CDI ${pct(cdi)} (${dm(ind('cdi').data) || '—'}) · IPCA 12 meses ${pct(ipca)} · taxas do Tesouro de ${dm(td.data) || '—'}${td.fonte ? ' (' + esc(td.fonte) + ')' : ''}.</p>
-      <div class="scroll"><table><thead><tr><th>Produto</th><th>Taxa bruta</th><th>Líquido em 1 ano</th><th>Líquido ao ano, 2+ anos</th><th>Acima da inflação</th><th>Garantia</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>
-      <p class="small muted">"Líquido" já desconta o IR da tabela regressiva (17,5% entre 1 e 2 anos; 15% acima de 2 anos). Prefixados e IPCA+ vendidos antes do vencimento saem a preço de mercado e podem render menos ou até dar perda. O Tesouro cobra custódia de 0,20% ao ano (o Tesouro Selic é isento até R$ 10 mil), que não está na conta.</p></div>
-      <div class="card"><h2>Tesouro americano</h2>
-      <p>Treasury de 10 anos: <strong class="num">${pct(ust.valor)}</strong> ao ano em dólar${ust.data ? ', em ' + dm(ust.data) : ''}.</p>
-      <p class="small muted">Para quem vive em reais, o resultado também depende do câmbio. Dólar hoje: ${isNum(ind('usdbrl').valor) ? 'R$ ' + nf(4).format(ind('usdbrl').valor) : '—'}.</p></div>`;
+    return `<section class="card" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:8px" aria-label="Taxas de referência">
+        <div><span class="small muted">CDI</span><div class="num" style="font-size:18px;font-weight:500">${pct(cdi)}</div></div>
+        <div><span class="small muted">IPCA 12 meses</span><div class="num" style="font-size:18px;font-weight:500">${pct(ipca)}</div></div>
+        <div><span class="small muted">Juro real</span><div class="num" style="font-size:18px;font-weight:500">${pct(jr, 1)}</div></div></section>
+      <div class="seg" role="group" aria-label="Tipo de título">${seg}</div>
+      <div class="pilha"><div class="grupo-titulo"><span>${tituloG[rf]}</span><span>líquido a.a. · acima da inflação</span></div>
+        <div class="lista">${G[rf].length ? G[rf].join('') : '<p class="small muted" style="padding:14px 0">Sem títulos deste tipo na última atualização.</p>'}</div></div>
+      <div class="lista"><div class="item"><span class="item-meio"><span class="item-tit" style="font-size:15px">Tesouro americano 10 anos</span><span class="item-sub">em dólar${ust.data ? ', em ' + dm(ust.data) : ''} · dólar a ${isNum(ind('usdbrl').valor) ? 'R$ ' + nf(2).format(ind('usdbrl').valor) : '—'}</span></span><span class="item-dir"><span class="p">${pct(ust.valor)} a.a.</span></span></div></div>
+      <p class="small muted" style="padding:0 4px">"Líquido a.a." vale para quem fica 2 anos ou mais (IR de 15%); "em 1 ano" usa o IR de 17,5%. Prefixados e IPCA+ vendidos antes do vencimento saem a preço de mercado e podem render menos ou até dar perda. A custódia do Tesouro (0,20% ao ano; o Tesouro Selic é isento até R$ 10 mil) não está na conta. CDI ${pct(cdi)} (${dm(ind('cdi').data) || '—'}) · taxas do Tesouro de ${dm(td.data) || '—'}${td.fonte ? ' (' + esc(td.fonte) + ')' : ''}.</p>`;
   }
 
   // ---------- gráfico de velas (Lightweight Charts, do TradingView) ----------
@@ -565,8 +622,7 @@ code { font-family: var(--font-data); font-size: .92em; }
     const v = velasDe(t); const ult = v[v.length - 1], ant = v[v.length - 2];
     const varDia = ult && ant ? (ult.c / ant.c - 1) * 100 : null;
     const c = brapiCache[t]; const tok = tokenBrapi();
-    const grupos = [['acao', 'Ações'], ['fii', 'FIIs'], ['etf', 'Meninas']];
-    const lista = grupos.map(([k, n]) => `<span class="label" style="align-self:center">${n}</span>` + ATIVOS.filter(x => x.tipo === k).map(x => `<button class="filtro" data-gt="${x.t}" aria-pressed="${x.t === t}">${x.t}</button>`).join('')).join('');
+    const lista = ATIVOS.map(x => `<button class="filtro num" data-gt="${x.t}" aria-pressed="${x.t === t}">${x.t}</button>`).join('');
     let origem;
     if (c && c.quote && !c.erro) origem = `brapi.dev · cotação de ${dm(c.quote.d)} às ${c.quote.hora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' })} (atraso de ~15 min)${pregaoAberto() ? ' · atualiza a cada minuto' : ''}`;
     else if (ult) origem = `velas diárias gravadas às 18h43 · última de ${dm(ult.d)}`;
@@ -575,18 +631,18 @@ code { font-family: var(--font-data); font-size: .92em; }
       ? `<p class="small muted">Token da brapi guardado só neste aparelho. <button class="link-btn" id="btn-token-remover">Remover</button></p>`
       : `<div class="row" style="align-items:flex-end"><div class="field token"><label class="label" for="in-token">Token da brapi.dev (opcional)</label><input id="in-token" type="password" autocomplete="off" spellcheck="false" placeholder="cole o token aqui"></div><button class="btn" id="btn-token-salvar">Guardar neste aparelho</button></div>
         <p class="small muted">Com o token, o gráfico mostra a vela de hoje se formando, com atraso de uns 15 minutos. Ele fica só no navegador deste aparelho, fora do código público. Sem ele, o gráfico usa as velas diárias que a tarefa das 18h43 grava.</p>`;
-    return `<div class="card"><div class="gt-lista" role="group" aria-label="Escolher ativo">${lista}</div></div>
-      <div class="card">
-        <div class="gt-head"><div><h2>${a.t} <span class="muted small" style="font-family:var(--font-body);font-weight:500">${esc(a.nome)}</span></h2><p class="small muted">${esc(a.seg)}</p></div>
-          <div style="text-align:right"><span class="gt-preco">${ult ? fmt(ult.c) : '—'}</span> <span class="num ${cls(varDia)}">${sinal(varDia)}</span><p class="small muted">${esc(origem)}</p></div></div>
-        <div class="row" style="justify-content:space-between"><div class="gt-periodos" role="group" aria-label="Período">${PERIODOS.map(([n, l]) => `<button class="filtro" data-per="${n}" aria-pressed="${state.gtPeriodo === n}">${l}</button>`).join('')}</div>
-          <span class="small muted"><span class="gt-mm"><i style="background:var(--warn)"></i>Média 20</span> &nbsp; <span class="gt-mm"><i style="background:var(--accent)"></i>Média 50</span></span></div>
+    return `<div class="chips" role="group" aria-label="Escolher ativo">${lista}</div>
+      <section class="card">
+        <div class="gt-head"><div><h2>${a.t} <span class="muted small" style="font-weight:500">${esc(a.nome)}</span></h2><p class="small muted">${esc(a.seg)}</p></div>
+          <div class="gt-preco-box"><span class="gt-preco">${ult ? fmt(ult.c) : '—'}</span> <span class="num ${cls(varDia)}">${sinal(varDia)}</span><p class="small muted">${esc(origem)}</p></div></div>
         ${c && c.erro ? `<p class="aviso warn small">A brapi não respondeu (${esc(c.erro)}). Mostrando as velas do arquivo do painel.</p>` : ''}
         ${window.LightweightCharts ? `<div class="gt-box"><div class="gt-legenda" id="gt-legenda"></div><div id="gt-chart" style="position:absolute;inset:0"></div></div>` : '<p class="aviso warn">Não consegui carregar a biblioteca do gráfico. Confira a conexão e recarregue a página.</p>'}
+        <div class="row" style="justify-content:space-between"><div class="seg" role="group" aria-label="Período">${PERIODOS.map(([n, l]) => `<button data-per="${n}" aria-pressed="${state.gtPeriodo === n}">${l}</button>`).join('')}</div>
+          <span class="small muted"><span class="gt-mm"><i style="background:var(--warn)"></i>Média 20</span> &nbsp; <span class="gt-mm"><i style="background:var(--accent)"></i>Média 50</span></span></div>
         ${v.length < 2 ? '<p class="small muted">Ainda há poucas velas para este ativo; o histórico cresce a cada dia útil.</p>' : ''}
         ${tokenHTML}
         <p class="small muted">Velas diárias: corpo verde quando fechou acima da abertura, vermelho quando fechou abaixo; o pavio vai da mínima à máxima do dia. As barras de baixo são o volume. Gráfico feito com Lightweight Charts, do TradingView.</p>
-      </div>`;
+      </section>`;
   }
   function cor(nome) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim(); }
   let gtFaixa = null;           // mantém o zoom quando a página redesenha o mesmo ativo
@@ -654,24 +710,25 @@ code { font-family: var(--font-data); font-size: .92em; }
 
   function renderNoticias() {
     const itens = (state.noticias && Array.isArray(state.noticias.itens)) ? state.noticias.itens : [];
-    if (!itens.length) return `<div class="card"><h2>Notícias</h2><p class="muted">As notícias do dia aparecem aqui depois da atualização das 18h43: o que mexe nos seus 15 ativos, nos juros, na inflação e no dólar, além de política e economia, sempre com os dois lados.</p></div>`;
+    if (!itens.length) return `<div class="card"><p class="muted">As notícias do dia aparecem aqui depois da atualização das 18h43: o que mexe nos seus 15 ativos, nos juros, na inflação e no dólar, além de política e economia, sempre com os dois lados.</p></div>`;
     const lista = itens.filter(n => state.filtro === 'tudo' || n.tema === state.filtro || (state.filtro === 'carteira' && Array.isArray(n.ativos) && n.ativos.length));
     const chips = Object.entries(TEMAS).map(([k, v]) => `<button class="filtro" id="f-${k}" data-f="${k}" aria-pressed="${state.filtro === k}">${v}</button>`).join('');
     const card = n => {
       const t = TESE[n.tese] || TESE.nao; const u = safeUrl(n.url);
-      const ativos = (Array.isArray(n.ativos) ? n.ativos : []).map(a => `<span class="chip accent">${esc(a)}</span>`).join(' ');
+      const ativos = (Array.isArray(n.ativos) ? n.ativos : []).map(a => `<span class="chip accent num">${esc(a)}</span>`).join('');
       const lados = Array.isArray(n.leituras) && n.leituras.length ? `<div class="lados">${n.leituras.slice(0, 2).map(l => `<div class="lado"><b>${esc(l.quem)}</b>${esc(l.diz)}</div>`).join('')}</div>` : '';
-      const vies = n.confirma ? `<div class="vies"><b>⚠ Confirma o que você já pensa.</b> ${n.contraponto ? 'O melhor argumento do outro lado: ' + esc(n.contraponto) : 'Leia o fato antes da opinião.'}</div>` : '';
-      return `<article class="nota ${n.tese === 'observar' ? 'observar' : n.tese === 'risco' ? 'risco' : ''}">
-        <div class="meta"><span class="num">${esc(dm(n.data) || '')}</span><span>·</span><span>${esc(n.fonte || '')}</span><span class="chip">${esc(TIPO[n.tipo] || 'Fato')}</span><span class="chip ${t[1]}">${t[0]}</span>${ativos}</div>
-        <h3>${esc(n.titulo)}</h3><p class="small">${esc(n.resumo)}</p>${n.nota ? `<p class="small muted">${esc(n.nota)}</p>` : ''}${lados}${vies}
-        ${u ? `<a class="small" href="${esc(u)}" target="_blank" rel="noopener">Ler na fonte</a>` : ''}</article>`;
+      const vies = n.confirma ? `<div class="vies"><b>Confirma o que você já pensa.</b> ${n.contraponto ? 'O melhor argumento do outro lado: ' + esc(n.contraponto) : 'Leia o fato antes da opinião.'}</div>` : '';
+      const tipo = n.tipo && n.tipo !== 'fato' ? `<span class="chip">${esc(TIPO[n.tipo] || n.tipo)}</span>` : '';
+      const tese = n.tese && n.tese !== 'nao' ? `<span class="chip ${t[1]}">${t[0]}</span>` : '';
+      return `<article class="nota">
+        <div class="meta"><span class="num">${esc(dm(n.data) || '')}</span><span>·</span><span>${esc(n.fonte || '')}</span>${tipo}${tese}${ativos}</div>
+        <h3>${esc(n.titulo)}</h3><p class="resumo">${esc(n.resumo)}</p>${n.nota ? `<p class="para-carteira"><b>Para a carteira:</b> ${esc(n.nota)}</p>` : ''}${lados}${vies}
+        ${u ? `<a class="small" href="${esc(u)}" target="_blank" rel="noopener">Ler na fonte ›</a>` : ''}</article>`;
     };
-    return `<div class="card"><h2>Notícias</h2>
-      <p class="small muted">A sua tendência decide quais temas entram, não qual lado aparece. Quando uma notícia bate com o seu perfil político, ela vem marcada, junto com o melhor argumento de quem pensa diferente.</p>
-      <div class="filtros" role="group" aria-label="Filtrar notícias">${chips}</div></div>
+    return `<p class="small muted" style="padding:0 4px">A sua tendência decide quais temas entram, não qual lado aparece. Quando uma notícia bate com o seu perfil político, ela vem marcada, junto com o melhor argumento de quem pensa diferente.</p>
+      <div class="chips" role="group" aria-label="Filtrar notícias">${chips}</div>
       <div class="noticias">${lista.length ? lista.map(card).join('') : '<p class="muted">Nada neste filtro hoje.</p>'}</div>
-      <p class="small muted">Atualizado em ${state.noticias.atualizadoEm ? esc(dm(state.noticias.atualizadoEm)) : '—'}. Resumos escritos pelo Claude; o texto completo está na fonte.</p>`;
+      <p class="small muted" style="padding:0 4px">Atualizado em ${state.noticias.atualizadoEm ? esc(dm(state.noticias.atualizadoEm)) : '—'}. Resumos escritos pelo Claude; o texto completo está na fonte.</p>`;
   }
 
   function renderView() {
@@ -687,10 +744,14 @@ code { font-family: var(--font-data); font-size: .92em; }
     if (state.view === 'grafico') montarGrafico();
   }
 
+  const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
   function renderTabs() {
     document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.v === state.view)));
     const n = state.noticias && Array.isArray(state.noticias.itens) ? state.noticias.itens.length : 0;
     document.getElementById('ncount').textContent = n ? String(n) : '';
+    const tit = document.getElementById('titulo');
+    const nomes = { aporte: 'Aporte de ' + MESES[new Date().getMonth()], carteira: 'Carteira', grafico: 'Gráfico', 'renda-fixa': 'Renda fixa', noticias: 'Notícias' };
+    tit.textContent = nomes[state.view] || 'Lydia';
   }
 
   function portaoHTML() {
@@ -722,10 +783,10 @@ code { font-family: var(--font-data); font-size: .92em; }
 
   function renderAll() {
     const ok = state.acesso === 'ok';
-    document.getElementById('kpis').hidden = !ok;
     document.getElementById('tabs').hidden = !ok;
+    document.getElementById('titulo').hidden = !ok;
     renderConta();
-    if (ok) { renderPills(); renderKpis(); renderTabs(); } else document.getElementById('pills').innerHTML = '';
+    if (ok) { renderPills(); renderTabs(); } else document.getElementById('pills').innerHTML = '';
     renderView();
   }
 
@@ -756,6 +817,20 @@ code { font-family: var(--font-data); font-size: .92em; }
     if (e.target.id === 'btn-entrar') { entrar(); return; }
     if (e.target.id === 'btn-sair2') { sair(); return; }
     if (e.target.id === 'btn-salvar-plano') { salvarPlano(); return; }
+    if (e.target.id === 'btn-registrar') {
+      const r = robo(aporteAtual());
+      if (r.escolha && r.cotas > 0 && !state.readOnly) { const t = r.escolha.a.t; local.qtd[t] = (+local.qtd[t] || 0) + r.cotas; state.ultimaCompra = { t, q: r.cotas }; agendarSalvar(); renderView(); }
+      return;
+    }
+    if (e.target.id === 'btn-desfazer-compra') {
+      const u = state.ultimaCompra;
+      if (u) { local.qtd[u.t] = Math.max(0, (+local.qtd[u.t] || 0) - u.q); state.ultimaCompra = null; agendarSalvar(); renderView(); }
+      return;
+    }
+    if (e.target.id === 'btn-ver-escada') { const el = document.getElementById('escada'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    if (e.target.id === 'btn-editar') { state.editando = !state.editando; renderView(); return; }
+    const cf = e.target.closest('[data-cf]'); if (cf) { state.cfiltro = cf.dataset.cf; renderView(); return; }
+    const rf = e.target.closest('[data-rf]'); if (rf) { state.rf = rf.dataset.rf; renderView(); return; }
     const d = e.target.closest('.degrau');
     if (d) { const n = +d.dataset.fase; state.escolhida = n === fase().n ? null : n; renderView(); return; }
     if (e.target.id === 'btn-cancela-fase') { state.escolhida = null; renderView(); return; }
@@ -901,6 +976,31 @@ code { font-family: var(--font-data); font-size: .92em; }
     }, falhou));
   }
   document.getElementById('conta').addEventListener('click', e => { if (e.target.id === 'btn-sair') sair(); });
+
+  // ---------- tema: automático (segue o aparelho), escuro ou claro ----------
+  const TEMA_KEY = 'lydia.tema';
+  const TEMA_ICONE = {
+    auto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>',
+    escuro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>',
+    claro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+  };
+  const TEMA_NOME = { auto: 'Automático', escuro: 'Escuro', claro: 'Claro' };
+  function lerTema() { try { const t = localStorage.getItem(TEMA_KEY); return TEMA_NOME[t] ? t : 'auto'; } catch (_) { return 'auto'; } }
+  function aplicarTema(t) {
+    const r = document.documentElement;
+    if (t === 'claro') r.setAttribute('data-theme', 'light'); else if (t === 'escuro') r.setAttribute('data-theme', 'dark'); else r.removeAttribute('data-theme');
+    const b = document.getElementById('btn-tema');
+    b.innerHTML = TEMA_ICONE[t] + TEMA_NOME[t];
+    b.setAttribute('aria-label', `Tema: ${TEMA_NOME[t]}. Toque para trocar.`);
+  }
+  document.getElementById('btn-tema').addEventListener('click', () => {
+    const ordem = ['auto', 'escuro', 'claro'];
+    const t = ordem[(ordem.indexOf(lerTema()) + 1) % ordem.length];
+    try { if (t === 'auto') localStorage.removeItem(TEMA_KEY); else localStorage.setItem(TEMA_KEY, t); } catch (_) {}
+    aplicarTema(t);
+    if (state.view === 'grafico' && state.acesso === 'ok') renderView();
+  });
+  aplicarTema(lerTema());
 
   function boot() {
     lerHash(); renderAll();
