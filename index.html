@@ -122,6 +122,13 @@ code { font-family: var(--font-data); font-size: .92em; }
 .seg button[aria-pressed="true"] { background: var(--seg-on); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08); }
 .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
 .chips::-webkit-scrollbar { display: none; }
+@media (min-width: 720px) { .chips { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; } }
+.form-rf { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.form-rf .field { gap: 4px; }
+.form-rf .field input, .form-rf .field select { width: 100%; font: 500 15px var(--font-body); padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); color: var(--ink); min-height: 44px; }
+.form-rf .field input[inputmode="decimal"] { font-family: var(--font-data); }
+.item-dir .spark { margin-top: 2px; }
+.secao { padding: 8px 4px 0; }
 .filtro { appearance: none; flex: 0 0 auto; border: 0; background: var(--surface); color: var(--ink); font: 500 14px var(--font-body); padding: 8px 14px; min-height: 36px; border-radius: 9999px; cursor: pointer; white-space: nowrap; }
 .filtro.num { font-family: var(--font-data); }
 .filtro[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
@@ -283,6 +290,7 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
   const state = {
     view: 'aporte', filtro: 'tudo', gt: 'BBAS3', gtPeriodo: 66,
     editando: false, cfiltro: 'tudo', rf: 'pos', ultimaCompra: null,
+    rfForm: null, rfErro: null, rfRemover: false, idx: null, idxIni: null, idxEm: 0, idxErro: null, idxCarregando: false,
     mercado: null, noticias: null, carteira: null,
     confirmed: false, slow: false, err: null, readOnly: false,
     escolhida: null, saving: false, pendingRender: false,
@@ -290,7 +298,7 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
     planoDoc: null, planoTexto: '', planoErro: '', planoProblema: '', salvandoPlano: false, carregadoEm: 0
   };
   let db = null;
-  let local = { qtd: {}, fase: 0, aporte: null };
+  let local = { qtd: {}, fase: 0, aporte: null, rf: [] };
   let saveTimer = null, saveChain = Promise.resolve();
 
   // ---------- formatação ----------
@@ -537,7 +545,9 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
     const seg = [['pos', 'Pós-fixados'], ['pre', 'Prefixados'], ['ipca', 'IPCA+']].map(([k, l]) => `<button data-rf="${k}" aria-pressed="${rf === k}">${l}</button>`).join('');
     const jr = (isNum(selic) && isNum(ipca)) ? ((1 + selic / 100) / (1 + ipca / 100) - 1) * 100 : null;
     const ust = ind('ust10');
-    return `<section class="card" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:8px" aria-label="Taxas de referência">
+    return `${minhaRfHTML()}
+      <h2 class="secao">Comparar as taxas de hoje</h2>
+      <section class="card" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:8px" aria-label="Taxas de referência">
         <div><span class="small muted">CDI</span><div class="num" style="font-size:18px;font-weight:500">${pct(cdi)}</div></div>
         <div><span class="small muted">IPCA 12 meses</span><div class="num" style="font-size:18px;font-weight:500">${pct(ipca)}</div></div>
         <div><span class="small muted">Juro real</span><div class="num" style="font-size:18px;font-weight:500">${pct(jr, 1)}</div></div></section>
@@ -546,6 +556,179 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
         <div class="lista">${G[rf].length ? G[rf].join('') : '<p class="small muted" style="padding:14px 0">Sem títulos deste tipo na última atualização.</p>'}</div></div>
       <div class="lista"><div class="item"><span class="item-meio"><span class="item-tit" style="font-size:15px">Tesouro americano 10 anos</span><span class="item-sub">em dólar${ust.data ? ', em ' + dm(ust.data) : ''} · dólar a ${isNum(ind('usdbrl').valor) ? 'R$ ' + nf(2).format(ind('usdbrl').valor) : '—'}</span></span><span class="item-dir"><span class="p">${pct(ust.valor)} a.a.</span></span></div></div>
       <p class="small muted" style="padding:0 4px">"Líquido a.a." vale para quem fica 2 anos ou mais (IR de 15%); "em 1 ano" usa o IR de 17,5%. Prefixados e IPCA+ vendidos antes do vencimento saem a preço de mercado e podem render menos ou até dar perda. A custódia do Tesouro (0,20% ao ano; o Tesouro Selic é isento até R$ 10 mil) não está na conta. CDI ${pct(cdi)} (${dm(ind('cdi').data) || '—'}) · taxas do Tesouro de ${dm(td.data) || '—'}${td.fonte ? ' (' + esc(td.fonte) + ')' : ''}.</p>`;
+  }
+
+  // ---------- minha renda fixa: aplicações do André, guardadas em painel/carteira (campo rf) ----------
+  const RF_TIPOS = {
+    cdb: { nome: 'CDB', ico: 'CDB', idx: ['cdi', 'pre', 'ipca'], isento: false },
+    lci: { nome: 'LCI', ico: 'LCI', idx: ['cdi', 'pre', 'ipca'], isento: true },
+    lca: { nome: 'LCA', ico: 'LCA', idx: ['cdi', 'pre', 'ipca'], isento: true },
+    poup: { nome: 'Poupança', ico: 'POUP', idx: ['poup'], isento: true },
+    tsel: { nome: 'Tesouro Selic', ico: 'TD', idx: ['selic'], isento: false, tesouro: ['selic', 'selic100'] },
+    tpre: { nome: 'Tesouro Prefixado', ico: 'TD', idx: ['pre'], isento: false, tesouro: ['pre'] },
+    tipca: { nome: 'Tesouro IPCA+', ico: 'TD', idx: ['ipca'], isento: false, tesouro: ['ipca'] },
+    outro: { nome: 'Outro (LC, fundo DI, debênture…)', ico: 'RF', idx: ['cdi', 'pre', 'ipca'], isento: false }
+  };
+  const IDX_LABEL = { cdi: '% do CDI', pre: 'Prefixado', ipca: 'IPCA +' };
+  const IDX_TAXA = { cdi: 'Quanto do CDI (%)', pre: 'Taxa ao ano (%)', ipca: 'Juro acima do IPCA (% ao ano)', selic: 'Acima da Selic (% ao ano)' };
+  const IDX_PH = { cdi: '100', pre: '12,5', ipca: '6', selic: '0,10' };
+  const BANCOS = ['Banco do Brasil', 'Banrisul', 'Bradesco', 'BTG Pactual', 'BV', 'C6 Bank', 'Caixa', 'Daycoval', 'Inter', 'Itaú', 'Mercado Pago', 'Modal', 'Nubank', 'Original', 'PagBank', 'PicPay', 'Rico', 'Safra', 'Santander', 'Sicoob', 'Sicredi', 'XP'];
+  const hojeISO = () => new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
+  const dmy = iso => iso ? iso.slice(0, 10).split('-').reverse().join('/') : '—';
+  function parseTaxa(v) {
+    let t = String(v ?? '').trim().replace(/%|R\$|\s/g, '');
+    if (t.includes(',')) t = t.replace(/\./g, '').replace(',', '.');
+    else if (/\.\d{3}$/.test(t) && (t.match(/\./g) || []).length >= 1 && !/^0\./.test(t)) t = t.replace(/\./g, '');
+    const n = parseFloat(t); return isFinite(n) ? n : null;
+  }
+  function rfValido(x) {
+    return x && typeof x === 'object' && RF_TIPOS[x.tipo] && isNum(x.valor) && x.valor > 0 && typeof x.data === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x.data) && typeof x.idx === 'string';
+  }
+  const fmtTaxa = n => isNum(n) ? nf(n % 1 === 0 ? 0 : (Math.round(n * 100) === n * 100 ? 2 : 4)).format(n) : '—';
+  function rfNome(x) { const T = RF_TIPOS[x.tipo]; return T.tesouro ? (x.titulo || T.nome) : `${T.nome.split(' (')[0]} ${x.emissor || ''}`.trim(); }
+  function rfTaxaTxt(x) {
+    if (x.idx === 'cdi') return `${fmtTaxa(x.taxa)}% do CDI`;
+    if (x.idx === 'pre') return `${fmtTaxa(x.taxa)}% ao ano`;
+    if (x.idx === 'ipca') return `IPCA + ${fmtTaxa(x.taxa)}%`;
+    if (x.idx === 'selic') return x.taxa ? `Selic + ${fmtTaxa(x.taxa)}%` : '100% da Selic';
+    return '0,5% ao mês, sem a TR';
+  }
+  function mesesCompletos(ini, fim) {
+    const [y1, m1, d1] = ini.split('-').map(Number), [y2, m2, d2] = fim.split('-').map(Number);
+    let n = (y2 - y1) * 12 + (m2 - m1); if (d2 < d1) n--; return Math.max(0, n);
+  }
+  function rfCalc(x) {
+    const hoje = hojeISO(); const ini = x.data; const ix = state.idx;
+    const dias = Math.max(0, Math.round((Date.parse(hoje) - Date.parse(ini)) / 864e5));
+    const uteis = ix && ix.cdi ? ix.cdi.filter(p => p.d >= ini && p.d < hoje) : null;
+    const du = uteis ? uteis.length : dias * 252 / 365;
+    const tx = isNum(x.taxa) ? x.taxa : 0;
+    let fator = 1, serie = [], estimado = !uteis;
+    if (x.idx === 'cdi' || x.idx === 'selic') {
+      const base = ix && (x.idx === 'cdi' ? ix.cdi : ix.selic);
+      if (base && base.length) {
+        const sp = x.idx === 'selic' ? Math.pow(1 + tx / 100, 1 / 252) : 1;
+        base.forEach(p => { if (p.d < ini || p.d >= hoje) return; fator *= x.idx === 'cdi' ? 1 + p.v / 100 * tx / 100 : (1 + p.v / 100) * sp; serie.push({ d: p.d, f: fator }); });
+        estimado = false;
+      } else {
+        const anual = x.idx === 'cdi' ? (ind('cdi').valor || 0) * tx / 100 : ((1 + (ind('selic').valor || 0) / 100) * (1 + tx / 100) - 1) * 100;
+        fator = Math.pow(1 + anual / 100, dias / 365); estimado = true;
+      }
+    } else if (x.idx === 'pre') {
+      fator = Math.pow(1 + tx / 100, du / 252);
+      if (uteis) { let k = 0; serie = uteis.map(p => ({ d: p.d, f: Math.pow(1 + tx / 100, ++k / 252) })); }
+    } else if (x.idx === 'ipca') {
+      let fi = 1; const meses = ix && ix.ipca ? ix.ipca.filter(m => m.d >= ini.slice(0, 7) && m.d < hoje.slice(0, 7)) : null;
+      if (meses) meses.forEach(m => { fi *= 1 + m.v / 100; }); else fi = Math.pow(1 + (ind('ipca12m').valor || 0) / 100, dias / 365);
+      fator = fi * Math.pow(1 + tx / 100, du / 252); estimado = true;
+    } else {
+      fator = Math.pow(1.005, mesesCompletos(ini, hoje)); estimado = true;
+    }
+    const bruto = x.valor * fator; const ganho = bruto - x.valor;
+    const aliq = RF_TIPOS[x.tipo].isento ? 0 : dias <= 180 ? 0.225 : dias <= 360 ? 0.20 : dias <= 720 ? 0.175 : 0.15;
+    const ir = Math.max(0, ganho) * aliq;
+    const passo = Math.max(1, Math.ceil(serie.length / 40));
+    const amostra = serie.filter((p, i) => i % passo === 0 || i === serie.length - 1).map(p => ({ p: x.valor * p.f }));
+    return { bruto, ganho, ir, liquido: bruto - ir, serie: amostra, estimado, dias, aliq };
+  }
+  async function carregarIndices(forcar) {
+    const itens = local.rf || []; if (!itens.length || state.idxCarregando) return;
+    const ini = itens.map(x => x.data).sort()[0]; const hoje = hojeISO();
+    if (!forcar && state.idx && state.idxIni <= ini && Date.now() - state.idxEm < 6 * 3600e3) return;
+    if (ini >= hoje) { state.idx = { cdi: [], selic: [], ipca: [] }; state.idxIni = ini; state.idxEm = Date.now(); return; }
+    state.idxCarregando = true; state.idxErro = null;
+    const br = iso => iso.split('-').reverse().join('/');
+    const serie = async (n, desde) => {
+      const r = await fetch(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${n}/dados?formato=json&dataInicial=${br(desde)}&dataFinal=${br(hoje)}`);
+      if (r.status === 404) return [];
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      return (Array.isArray(j) ? j : []).map(p => ({ d: String(p.data).split('/').reverse().join('-'), v: parseFloat(p.valor) })).filter(p => isFinite(p.v));
+    };
+    try {
+      const [cdi, selic, ipca] = await Promise.all([serie(12, ini), serie(11, ini), serie(433, ini.slice(0, 8) + '01').catch(() => null)]);
+      state.idx = { cdi, selic, ipca: ipca ? ipca.map(m => ({ d: m.d.slice(0, 7), v: m.v })) : null };
+      state.idxIni = ini; state.idxEm = Date.now();
+    } catch (e) { state.idxErro = String((e && e.message) || e).slice(0, 120); }
+    state.idxCarregando = false;
+    if (state.view === 'renda-fixa') renderView();
+  }
+  function rfFormNovo() { return { id: null, tipo: 'cdb', idx: 'cdi', taxa: '100', emissor: '', titulo: '', valor: '', data: hojeISO(), venc: '' }; }
+  function rfFormHTML() {
+    const f = state.rfForm; const T = RF_TIPOS[f.tipo] || RF_TIPOS.cdb;
+    const idx = T.idx.includes(f.idx) ? f.idx : T.idx[0];
+    const titulos = T.tesouro ? ((M().tesouro || {}).titulos || []).filter(t => T.tesouro.includes(t.tipo)) : [];
+    const tituloTxt = t => t.tipo === 'selic' ? `Selic + ${fmtTaxa(t.taxa)}%` : t.tipo === 'selic100' ? '100% da Selic' : t.tipo === 'pre' ? `${fmtTaxa(t.taxa)}% ao ano` : `IPCA + ${fmtTaxa(t.taxa)}%`;
+    const campoOrigem = T.tesouro
+      ? `<label class="field"><span class="label">Título</span><select data-rff="titulo"><option value="">Escolha o título</option>${titulos.map(t => `<option value="${esc(t.nome)}"${t.nome === f.titulo ? ' selected' : ''}>${esc(t.nome)} · hoje ${tituloTxt(t)}</option>`).join('')}${f.titulo && !titulos.some(t => t.nome === f.titulo) ? `<option value="${esc(f.titulo)}" selected>${esc(f.titulo)}</option>` : ''}</select></label>`
+      : `<label class="field"><span class="label">Banco ou emissor</span><input data-rff="emissor" list="rf-bancos" value="${esc(f.emissor || '')}" placeholder="Ex.: Itaú" autocomplete="off"><datalist id="rf-bancos">${BANCOS.map(b => `<option value="${esc(b)}"></option>`).join('')}</datalist></label>`;
+    return `<section class="card" aria-label="${f.id ? 'Editar aplicação' : 'Nova aplicação'}"><h2>${f.id ? 'Editar aplicação' : 'Nova aplicação'}</h2>
+      <div class="form-rf">
+        <label class="field"><span class="label">Tipo</span><select data-rff="tipo">${Object.entries(RF_TIPOS).map(([k, v]) => `<option value="${k}"${k === f.tipo ? ' selected' : ''}>${esc(v.nome)}</option>`).join('')}</select></label>
+        ${campoOrigem}
+        ${T.idx.length > 1 ? `<label class="field"><span class="label">Rende</span><select data-rff="idx">${T.idx.map(k => `<option value="${k}"${k === idx ? ' selected' : ''}>${IDX_LABEL[k]}</option>`).join('')}</select></label>` : ''}
+        ${idx !== 'poup' ? `<label class="field"><span class="label">${IDX_TAXA[idx]}</span><input data-rff="taxa" inputmode="decimal" value="${esc(f.taxa ?? '')}" placeholder="${IDX_PH[idx]}" autocomplete="off"></label>` : ''}
+        <label class="field"><span class="label">Valor aplicado (R$)</span><input data-rff="valor" inputmode="decimal" value="${esc(f.valor ?? '')}" placeholder="100,00" autocomplete="off"></label>
+        <label class="field"><span class="label">Data da aplicação</span><input data-rff="data" type="date" value="${esc(f.data || '')}" max="${hojeISO()}"></label>
+        <label class="field"><span class="label">Vencimento (opcional)</span><input data-rff="venc" type="date" value="${esc(f.venc || '')}"></label>
+      </div>
+      ${T.tesouro ? '<p class="small muted">A taxa vem preenchida com a de hoje. Se você comprou com outra taxa, troque pela do seu extrato.</p>' : idx === 'poup' ? '<p class="small muted">Poupança: 0,5% a cada mês completo (regra para Selic acima de 8,5%), sem somar a TR.</p>' : ''}
+      ${state.rfErro ? `<p class="erro">${esc(state.rfErro)}</p>` : ''}
+      <div class="row"><button class="btn primary" id="btn-rf-salvar"${state.readOnly ? ' disabled' : ''}>Salvar</button><button class="btn texto" id="btn-rf-cancelar">Cancelar</button>${f.id ? `<button class="btn texto" id="btn-rf-remover" style="color:var(--bad);margin-left:auto">${state.rfRemover ? 'Toque de novo para remover' : 'Remover'}</button>` : ''}</div></section>`;
+  }
+  function rfMudouCampo(campo, valor) {
+    const f = state.rfForm; if (!f) return;
+    if (campo === 'tipo') {
+      const T = RF_TIPOS[valor] || RF_TIPOS.cdb; f.idx = T.idx[0]; f.titulo = '';
+      f.taxa = f.idx === 'cdi' ? (valor === 'cdb' || valor === 'outro' ? '100' : '90') : f.idx === 'selic' || f.idx === 'poup' ? '' : f.taxa;
+    } else if (campo === 'idx') {
+      f.taxa = valor === 'cdi' ? '100' : '';
+    } else if (campo === 'titulo') {
+      const t = ((M().tesouro || {}).titulos || []).find(z => z.nome === valor);
+      if (t) f.taxa = String(t.taxa).replace('.', ',');
+    }
+  }
+  function salvarRf() {
+    const f = state.rfForm; const T = RF_TIPOS[f && f.tipo]; if (!T) return;
+    const idx = T.idx.includes(f.idx) ? f.idx : T.idx[0];
+    const valor = parseTaxa(f.valor); const taxa = idx === 'poup' ? 0 : (idx === 'selic' && String(f.taxa ?? '').trim() === '' ? 0 : parseTaxa(f.taxa));
+    let erro = null;
+    if (T.tesouro && !f.titulo) erro = 'Escolha o título do Tesouro.';
+    else if (!T.tesouro && !String(f.emissor || '').trim()) erro = 'Informe o banco ou emissor.';
+    else if (!(isNum(taxa) && taxa >= 0 && taxa < 1000)) erro = 'Informe a taxa (só o número, por exemplo 100 ou 12,5).';
+    else if (!(isNum(valor) && valor > 0)) erro = 'Informe o valor aplicado.';
+    else if (!/^\d{4}-\d{2}-\d{2}$/.test(f.data || '') || f.data > hojeISO()) erro = 'Informe a data da aplicação (hoje ou antes).';
+    else if (f.venc && (!/^\d{4}-\d{2}-\d{2}$/.test(f.venc) || f.venc <= f.data)) erro = 'O vencimento precisa ser depois da aplicação.';
+    if (erro) { state.rfErro = erro; renderView(); return; }
+    const item = { id: f.id || ('rf' + Date.now().toString(36)), tipo: f.tipo, emissor: T.tesouro ? 'Tesouro Nacional' : String(f.emissor).trim().slice(0, 60), titulo: T.tesouro ? String(f.titulo).slice(0, 60) : null, idx, taxa, valor: Math.round(valor * 100) / 100, data: f.data, venc: f.venc || null };
+    local.rf = (local.rf || []).filter(x => x.id !== item.id).concat(item).sort((a, b) => a.data < b.data ? -1 : a.data > b.data ? 1 : 0);
+    state.rfForm = null; state.rfErro = null; state.rfRemover = false;
+    agendarSalvar(); carregarIndices(); renderView();
+  }
+  function minhaRfHTML() {
+    if (state.rfForm) return rfFormHTML();
+    const itens = local.rf || [];
+    if (!itens.length) return `<section class="card"><div><h2>Minha renda fixa</h2><p class="small muted">Cadastre o que você tem em CDB, LCI, LCA, poupança ou Tesouro. O painel calcula quanto cada aplicação já rendeu com o CDI, a Selic e o IPCA oficiais do Banco Central.</p></div><div class="row"><button class="btn primary" id="btn-rf-novo"${state.readOnly ? ' disabled' : ''}>Adicionar aplicação</button></div></section>`;
+    if (!state.idx && !state.idxErro && !state.idxCarregando) setTimeout(() => carregarIndices(), 0);
+    const calc = itens.map(x => ({ x, c: rfCalc(x) }));
+    const ap = calc.reduce((s, { x }) => s + x.valor, 0), br = calc.reduce((s, { c }) => s + c.bruto, 0), lq = calc.reduce((s, { c }) => s + c.liquido, 0);
+    const ganho = br - ap;
+    const ult = state.idx && state.idx.cdi && state.idx.cdi.length ? state.idx.cdi[state.idx.cdi.length - 1].d : null;
+    const status = state.idxCarregando ? 'Buscando CDI, Selic e IPCA no Banco Central…'
+      : state.idxErro ? 'Não consegui falar com o Banco Central agora. Os valores abaixo são estimativas com as taxas de hoje.'
+      : ult ? `Calculado com o CDI, a Selic e o IPCA oficiais do Banco Central, até ${dmy(ult)}. Valores antes de impostos, com o IR estimado ao lado.` : '';
+    const sinalR = v => (v >= 0 ? '+' : '−') + brl(Math.abs(v));
+    const item = ({ x, c }) => `<div class="item"><span class="ico">${RF_TIPOS[x.tipo].ico}</span>
+      <span class="item-meio"><span class="item-tit" style="font-size:15px">${esc(rfNome(x))}</span>
+        <span class="item-sub">${esc(rfTaxaTxt(x))} · ${brl(x.valor)} em ${dmy(x.data)}${x.venc ? ' · vence ' + dmy(x.venc) : ''}</span>
+        <span class="item-sub">${c.estimado ? 'estimativa · ' : ''}líquido ≈ ${brl(c.liquido)}${c.aliq ? ` (IR de ${pct(c.aliq * 100, 1)})` : ' (isento de IR)'} · <button class="link-btn" data-rf-edit="${esc(x.id)}">Editar</button></span></span>
+      <span class="item-dir"><span class="p">${brl(c.bruto)}</span><span class="v ${cls(c.ganho)}">${sinalR(c.ganho)}</span>${c.serie.length > 1 ? spark(c.serie) : ''}</span></div>`;
+    return `<section class="card" aria-label="Minha renda fixa"><div class="row" style="justify-content:space-between;align-items:flex-start">
+        <div><span class="small muted">Minha renda fixa · valor hoje</span><div class="num" style="font-size:28px;font-weight:500">${brl(br)}</div>
+          <span class="num small ${cls(ganho)}">${sinalR(ganho)} sobre ${brl(ap)} aplicados</span><div class="small muted">Se resgatasse tudo hoje: ≈ ${brl(lq)} depois do IR</div></div>
+        <button class="btn" id="btn-rf-novo"${state.readOnly ? ' disabled' : ''}>Adicionar</button></div>
+        <p class="small muted">${status}</p></section>
+      <div class="lista">${calc.map(item).join('')}</div>`;
   }
 
   // ---------- gráfico de velas (Lightweight Charts, do TradingView) ----------
@@ -733,7 +916,7 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
 
   function renderView() {
     const v = document.getElementById('view');
-    if (v.contains(document.activeElement) && document.activeElement.matches('input, textarea')) { state.pendingRender = true; return; }
+    if (v.contains(document.activeElement) && document.activeElement.matches('input, textarea, select')) { state.pendingRender = true; return; }
     state.pendingRender = false;
     if (state.acesso !== 'ok') { v.innerHTML = portaoHTML(); return; }
     let html = '';
@@ -798,7 +981,7 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
     saveTimer = setTimeout(() => {
       if (!db || state.readOnly) { dirty = 0; return; }
       const marca = dirty;
-      const body = { qtd: { ...local.qtd }, fase: local.fase, aporte: isNum(local.aporte) ? local.aporte : null, atualizadoEm: new Date().toISOString() };
+      const body = { qtd: { ...local.qtd }, fase: local.fase, aporte: isNum(local.aporte) ? local.aporte : null, rf: (local.rf || []).map(x => ({ ...x })), atualizadoEm: new Date().toISOString() };
       state.saving = true;
       saveChain = saveChain.then(() => db.doc('painel/carteira').set(body)).then(() => {
         state.saving = false; if (dirty === marca) dirty = 0; renderView();
@@ -831,6 +1014,20 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
     if (e.target.id === 'btn-editar') { state.editando = !state.editando; renderView(); return; }
     const cf = e.target.closest('[data-cf]'); if (cf) { state.cfiltro = cf.dataset.cf; renderView(); return; }
     const rf = e.target.closest('[data-rf]'); if (rf) { state.rf = rf.dataset.rf; renderView(); return; }
+    if (e.target.id === 'btn-rf-novo') { state.rfForm = rfFormNovo(); state.rfErro = null; state.rfRemover = false; renderView(); return; }
+    if (e.target.id === 'btn-rf-cancelar') { state.rfForm = null; state.rfErro = null; state.rfRemover = false; renderView(); return; }
+    if (e.target.id === 'btn-rf-salvar') { salvarRf(); return; }
+    if (e.target.id === 'btn-rf-remover') {
+      if (!state.rfRemover) { state.rfRemover = true; renderView(); return; }
+      const id = state.rfForm && state.rfForm.id; local.rf = (local.rf || []).filter(x => x.id !== id);
+      state.rfForm = null; state.rfRemover = false; agendarSalvar(); renderView(); return;
+    }
+    const ed = e.target.closest('[data-rf-edit]');
+    if (ed) {
+      const x = (local.rf || []).find(z => z.id === ed.dataset.rfEdit);
+      if (x) { state.rfForm = { ...x, emissor: x.emissor || '', titulo: x.titulo || '', taxa: x.idx === 'poup' ? '' : fmtTaxa(x.taxa), valor: nf(2).format(x.valor), venc: x.venc || '' }; state.rfErro = null; state.rfRemover = false; renderView(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      return;
+    }
     const d = e.target.closest('.degrau');
     if (d) { const n = +d.dataset.fase; state.escolhida = n === fase().n ? null : n; renderView(); return; }
     if (e.target.id === 'btn-cancela-fase') { state.escolhida = null; renderView(); return; }
@@ -846,6 +1043,11 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
   document.getElementById('view').addEventListener('input', e => {
     const i = e.target;
     if (i.id === 'in-plano') { state.planoTexto = i.value; return; }
+    if (i.dataset && i.dataset.rff && state.rfForm) {
+      const campo = i.dataset.rff; state.rfForm[campo] = i.value;
+      if (campo === 'tipo' || campo === 'idx' || campo === 'titulo') { rfMudouCampo(campo, i.value); i.blur(); renderView(); }
+      return;
+    }
     if (i.matches('input.qtd')) { const n = parseNum(i.value); local.qtd[i.dataset.t] = n && n > 0 ? n : 0; agendarSalvar(); }
     if (i.id === 'in-aporte') { const n = parseNum(i.value); local.aporte = n && n > 0 ? n : null; agendarSalvar(); }
   });
@@ -970,7 +1172,7 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
     desligar.push(db.doc('painel/carteira').onSnapshot(s => {
       state.carteira = s.exists ? s.data() : null;
       if (!s.metadata.hasPendingWrites && !dirty && state.carteira) {
-        const c = state.carteira; local = { qtd: { ...(c.qtd || {}) }, fase: isNum(c.fase) ? c.fase : 0, aporte: isNum(c.aporte) ? c.aporte : null };
+        const c = state.carteira; local = { qtd: { ...(c.qtd || {}) }, fase: isNum(c.fase) ? c.fase : 0, aporte: isNum(c.aporte) ? c.aporte : null, rf: Array.isArray(c.rf) ? c.rf.filter(rfValido) : [] };
       }
       got.carteira = true; decidir();
     }, falhou));
@@ -1014,7 +1216,7 @@ footer { font-size: 12px; color: var(--ink-2); padding: 8px 4px 0; display: grid
     auth.onAuthStateChanged(u => {
       state.user = u || null;
       if (!u) {
-        desligarBanco(); FASES = []; PLANO = {}; local = { qtd: {}, fase: 0, aporte: null };
+        desligarBanco(); FASES = []; PLANO = {}; local = { qtd: {}, fase: 0, aporte: null, rf: [] }; state.idx = null; state.idxIni = null; state.rfForm = null;
         state.carteira = null; state.planoDoc = null; state.escolhida = null; state.readOnly = false;
         if (state.acesso !== 'entrando') state.acesso = 'deslogado';
         renderAll(); return;
