@@ -241,6 +241,22 @@ def conferir_noticias(n):
                 erro(f"{nome}.leituras: dois lados [{{quem, diz}}, {{quem, diz}}]")
 
 
+def conferir_sessoes(s):
+    if not isinstance(s, dict):
+        return erro("sessions.json: precisa ser um objeto")
+    for k in ("hoje", "ultimoPregao"):
+        if not dia(s.get(k), nulo=False):
+            erro(f"sessions.{k}: AAAA-MM-DD obrigatória")
+    if not isinstance(s.get("pregaoHoje"), bool):
+        erro("sessions.pregaoHoje: true ou false")
+    pr = s.get("proximosPregoes")
+    if not isinstance(pr, list) or not all(dia(x, nulo=False) for x in pr):
+        erro("sessions.proximosPregoes: lista de datas AAAA-MM-DD")
+    fe = s.get("feriados")
+    if not isinstance(fe, list) or not all(isinstance(x, dict) and dia(x.get("d"), nulo=False) and texto(x.get("nome")) for x in fe):
+        erro("sessions.feriados: lista de {d, nome}")
+
+
 def main():
     raiz = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent)
     m = ler(raiz / "data" / "mercado.json")
@@ -249,6 +265,10 @@ def main():
         conferir_mercado(m)
     if n is not None:
         conferir_noticias(n)
+    if (raiz / "data" / "sessions.json").exists():
+        s = ler(raiz / "data" / "sessions.json")
+        if s is not None:
+            conferir_sessoes(s)
     for a in avisos:
         print("⚠", a)
     if erros:

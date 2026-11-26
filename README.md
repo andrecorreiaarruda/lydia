@@ -34,6 +34,10 @@ Velas diárias com volume e médias de 20 e 50 dias, feitas com [Lightweight Cha
 - Sem token: usa as velas de `data/mercado.json`, gravadas nos dias úteis às 18h43.
 - Com token da brapi guardado no aparelho (campo no fim da aba, fica só no `localStorage` daquele navegador): junta os últimos 3 meses e a vela de hoje se formando, com atraso de uns 15 minutos, e atualiza a cada minuto durante o pregão. Tempo real sem atraso exige dado pago da B3.
 
+`data/sessions.json` (calendário de pregões da B3, gerado por `python3 scripts/sessoes.py`)
+- `hoje`, `pregaoHoje`, `motivoSemPregao`, `ultimoPregao`, `proximosPregoes[]` (10 datas), `feriados[]: {d, nome, diaUtil}`
+- Calculado a partir dos feriados nacionais (inclusive Carnaval, Sexta-feira Santa e Corpus Christi, que dependem da Páscoa), da Consciência Negra e de 24/12 e 31/12, quando a B3 não abre. Exceções do calendário oficial da B3 não entram.
+
 Antes de cada commit:
 
 ```bash
