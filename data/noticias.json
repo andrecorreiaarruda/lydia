@@ -1,6 +1,71 @@
 {
- "atualizadoEm": "2026-11-25T18:45:49-03:00",
+ "atualizadoEm": "2026-11-26T18:45:07-03:00",
  "itens": [
+  {
+   "ativos": [
+    "BBAS3",
+    "BPAC11",
+    "ITUB4",
+    "CXSE3",
+    "BBSE3",
+    "VALE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-26",
+   "fonte": "InfoMoney",
+   "id": "2026-11-26-bolsa",
+   "nota": "Recuperação forte na carteira: BBAS3 +12,6%, BPAC11 +11,5%, ITUB4 +6,4%, CXSE3 +3,8%; o QQQM não negociou por causa do feriado nos EUA.",
+   "resumo": "O índice fechou a 176.800 pontos, ganho de mais de 10 mil pontos, e o dólar caiu 1,25%, a R$ 5,744, com os juros futuros em queda. Quase todas as ações do índice subiram, puxadas pelos bancos.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Ibovespa dispara 6,1%, maior alta desde o 1º turno",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-26112026/"
+  },
+  {
+   "ativos": [
+    "BBAS3",
+    "BBSE3",
+    "CXSE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-26",
+   "fonte": "Bloomberg Línea",
+   "id": "2026-11-26-trabuco",
+   "leituras": [
+    {
+     "diz": "Um nome com trânsito no setor privado sinaliza compromisso com as contas públicas e ajuda a baixar dólar e juros.",
+     "quem": "Mercado"
+    },
+    {
+     "diz": "Entregar a economia a um banqueiro pode privilegiar o setor financeiro, e o ajuste depende mais da disposição do presidente do que do nome do ministro.",
+     "quem": "Críticos da escolha"
+    }
+   ],
+   "resumo": "Segundo fontes ouvidas pela Bloomberg, Lula deve anunciar Luiz Carlos Trabuco, presidente do conselho do Bradesco, como ministro da Fazenda; o banqueiro se reuniu com o presidente no fim da tarde. Não há anúncio oficial, e o ICL Notícias informa que, se ele recusar, Alckmin pode ir para a pasta.",
+   "tema": "politica",
+   "tese": "observar",
+   "tipo": "rumor",
+   "titulo": "Lula convida Trabuco para a Fazenda; resposta ainda pendente",
+   "url": "https://www.bloomberglinea.com.br/brasil/lula-deve-anunciar-luiz-carlos-trabuco-como-ministro-da-fazenda-dizem-fontes/"
+  },
+  {
+   "ativos": [
+    "KNCR11",
+    "KNSC11"
+   ],
+   "confirma": false,
+   "data": "2026-11-26",
+   "fonte": "InfoMoney",
+   "id": "2026-11-26-ipca15",
+   "nota": "Selic alta por mais tempo mantém o CDI favorável para KNCR11, KNSC11 e para a renda fixa.",
+   "resumo": "O IPCA-15 veio abaixo da projeção de 0,36%, com alimentos subindo e combustível e passagem aérea aliviando; em 12 meses foi a 4,64%. O ministro da Fazenda, Dario Durigan, disse que a Selic não vai cair à força e que não se discute mudar a meta de inflação.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Prévia da inflação sobe 0,22% em novembro, abaixo do esperado",
+   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-26112026/#ipca15"
+  },
   {
    "ativos": [
     "BPAC11",
@@ -370,102 +435,6 @@
    "tipo": "fato",
    "titulo": "Lula assina decreto que regulamenta o fim da escala 6x1",
    "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#6x1"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "BPAC11",
-    "CXSE3",
-    "BBSE3",
-    "ITUB4"
-   ],
-   "confirma": false,
-   "data": "2026-11-18",
-   "fonte": "InfoMoney",
-   "id": "2026-11-18-goldman",
-   "nota": "Bancos e seguradoras da carteira caíram de 1,7% a 3,7% no dia; NASD11 subiu 1,8% com a Nvidia.",
-   "resumo": "O banco americano citou crescimento fraco e pouco espaço para cortar juros, e o Ibovespa caiu 1,34%, a 167,5 mil pontos. O dólar subiu 1,46% mesmo com o Banco Central vendendo US$ 1 bilhão em leilões de linha, e os juros futuros passaram de 15% na maior parte da curva.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Goldman rebaixa Brasil para venda; dólar sobe pela quinta vez e vai a R$ 5,87",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-18",
-   "fonte": "InfoMoney",
-   "id": "2026-11-18-durigan",
-   "leituras": [
-    {
-     "diz": "Promessa sem medida concreta não muda a trajetória da dívida; o mercado precisa ver corte de despesa aprovado.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "O ajuste está em andamento, com texto-base aprovado, e novas medidas mostram disposição de cumprir a meta sem cortar programas sociais.",
-     "quem": "Governo e apoiadores"
-    }
-   ],
-   "resumo": "O ministro da Fazenda disse que o governo vai adotar medidas adicionais para melhorar as contas e abrir espaço para juros menores. O primeiro pacote ainda não terminou de tramitar no Senado, e o mercado segue à espera do nome da equipe econômica do novo mandato.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Durigan promete novas medidas fiscais no curto prazo",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/#durigan"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-18",
-   "fonte": "InfoMoney",
-   "id": "2026-11-18-nvidia",
-   "nota": "Boa notícia para QQQM e NASD11, que têm a Nvidia entre as maiores posições.",
-   "resumo": "Os resultados trimestrais da Nvidia vieram acima do esperado apesar da disputa sobre o comando da empresa. Em Nova York, o Nasdaq foi o único grande índice a fechar em alta.",
-   "tema": "carteira",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Balanço da Nvidia supera expectativas e segura o Nasdaq",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/#nvidia"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-18",
-   "fonte": "InfoMoney (FGV Ibre)",
-   "id": "2026-11-18-pib",
-   "resumo": "A estimativa da FGV mostra a economia encolhendo entre julho e setembro na comparação com o trimestre anterior. O dado reforça o quadro de desaceleração já indicado pelo IBC-Br.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Monitor do PIB aponta queda de 0,2% no terceiro trimestre",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-18112026/#pib"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-18",
-   "fonte": "InvestNews",
-   "id": "2026-11-18-pacote",
-   "leituras": [
-    {
-     "diz": "Apertar o limite de despesas de 2,5% para 2% é uma trava real, e rever benefícios fiscais corta privilégios de setores específicos.",
-     "quem": "A favor"
-    },
-    {
-     "diz": "Limitar créditos tributários e apostar em receitas incertas transfere o ajuste para as empresas sem reduzir o tamanho do Estado.",
-     "quem": "Contra"
-    }
-   ],
-   "resumo": "O texto limita o crescimento real das despesas a 2% a partir de 2027, dobra para 20% o corte de benefícios fiscais e mantém a permissão para limitar o uso de créditos tributários por empresas; a Câmara deve votar na terça (24). A IFI, órgão do Senado, avaliou que cerca de 70% do ajuste depende de receitas incertas.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Senado conclui pacote fiscal e texto vai à Câmara",
-   "url": "https://investnews.com.br/economia/pacote-fiscal-passa-no-senado/"
   }
  ]
 }
