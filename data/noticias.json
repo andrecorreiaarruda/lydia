@@ -1,6 +1,26 @@
 {
- "atualizadoEm": "2026-11-26T18:45:07-03:00",
+ "atualizadoEm": "2026-11-27T18:45:49-03:00",
  "itens": [
+  {
+   "ativos": [
+    "QQQM",
+    "VALE3",
+    "BBAS3",
+    "BPAC11",
+    "CXSE3"
+   ],
+   "confirma": false,
+   "data": "2026-11-27",
+   "fonte": "Money Times",
+   "id": "2026-11-27-dolar",
+   "nota": "Dólar mais barato reduz o custo em reais do aporte em QQQM; na carteira, VALE3 caiu 2,6% e CXSE3 2,6%, enquanto BBAS3 e BPAC11 subiram cerca de 2%.",
+   "resumo": "A moeda caiu pela quinta sessão seguida e acumulou recuo de 7,07% na semana. O Ibovespa abriu em alta de quase 4%, mas fechou em leve queda de 0,13% com realização de lucros e a baixa de Petrobras e Vale, ainda com ganho de 6,13% na semana.",
+   "tema": "macro",
+   "tese": "nao",
+   "tipo": "fato",
+   "titulo": "Dólar despenca 4% a R$ 5,52 com Trabuco confirmado na Fazenda",
+   "url": "https://www.moneytimes.com.br/ibovespa-fecha-em-queda-apos-euforia-com-trabuco-na-fazenda-mas-acumula-ganhos-de-mais-de-6-na-semana-davs/"
+  },
   {
    "ativos": [
     "BBAS3",
@@ -30,7 +50,7 @@
    ],
    "confirma": false,
    "data": "2026-11-26",
-   "fonte": "Bloomberg Línea",
+   "fonte": "InfoMoney",
    "id": "2026-11-26-trabuco",
    "leituras": [
     {
@@ -42,12 +62,12 @@
      "quem": "Críticos da escolha"
     }
    ],
-   "resumo": "Segundo fontes ouvidas pela Bloomberg, Lula deve anunciar Luiz Carlos Trabuco, presidente do conselho do Bradesco, como ministro da Fazenda; o banqueiro se reuniu com o presidente no fim da tarde. Não há anúncio oficial, e o ICL Notícias informa que, se ele recusar, Alckmin pode ir para a pasta.",
+   "resumo": "O presidente do conselho do Bradesco aceitou o convite na noite de 26/11, no Palácio da Alvorada, e é o primeiro nome confirmado do novo ministério. O líder do PT na Câmara disse horas antes que ele não seria a melhor opção.",
    "tema": "politica",
    "tese": "observar",
-   "tipo": "rumor",
-   "titulo": "Lula convida Trabuco para a Fazenda; resposta ainda pendente",
-   "url": "https://www.bloomberglinea.com.br/brasil/lula-deve-anunciar-luiz-carlos-trabuco-como-ministro-da-fazenda-dizem-fontes/"
+   "tipo": "fato",
+   "titulo": "Lula anuncia Trabuco como ministro da Fazenda a partir de 2027",
+   "url": "https://www.infomoney.com.br/politica/governo-lula-anuncia-luiz-carlos-trabuco-para-ministerio-da-fazenda/"
   },
   {
    "ativos": [
@@ -353,88 +373,6 @@
    "tipo": "rumor",
    "titulo": "Lula prepara plano fiscal para 2027–2030 com Alckmin e Moretti",
    "url": "https://www.brasil247.com/economia/lula-prepara-novo-plano-fiscal-para-2027-a-2030-e-quer-alckmin-na-elaboracao-das-medidas/"
-  },
-  {
-   "ativos": [
-    "BBAS3",
-    "ITUB4",
-    "BPAC11",
-    "VALE3"
-   ],
-   "confirma": false,
-   "data": "2026-11-19",
-   "fonte": "InfoMoney",
-   "id": "2026-11-19-bolsa",
-   "nota": "Sexta (20/11) é feriado da Consciência Negra e não tem pregão; a próxima atualização de preços é na segunda.",
-   "resumo": "O Ibovespa caiu 0,69% na quinta e acumulou perda de 3,53% na semana; o dólar subiu 1,15% mesmo com o Banco Central vendendo US$ 1 bilhão. Goldman Sachs, Itaú BBA, Morgan Stanley, UBS, JPMorgan, BTG e Citi reduziram recomendações para ações brasileiras nas últimas semanas.",
-   "tema": "macro",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Bolsa fecha a semana em queda de 3,5% e dólar vai a R$ 5,93",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-19",
-   "fonte": "InfoMoney",
-   "id": "2026-11-19-lula",
-   "leituras": [
-    {
-     "diz": "Sem tocar em gastos obrigatórios e sem equipe econômica definida, o compromisso fiscal soa vago e o custo aparece no dólar e nos juros.",
-     "quem": "Críticos"
-    },
-    {
-     "diz": "O governo já entregou metas fiscais antes e não precisa ceder ao calendário do mercado; proteger direitos sociais é escolha legítima de quem venceu a eleição.",
-     "quem": "Governo e apoiadores"
-    }
-   ],
-   "resumo": "O presidente afirmou que quem deseja controle fiscal é o governo, mas que não haverá redução de direitos conquistados enquanto ele estiver no cargo. Também circulou a notícia de um novo pacote com travas de gasto para os próximos quatro anos.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Lula diz não ter pressa para escolher ministros e promete não cortar direitos",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#lula"
-  },
-  {
-   "ativos": [
-    "QQQM",
-    "NASD11"
-   ],
-   "confirma": false,
-   "data": "2026-11-19",
-   "fonte": "InfoMoney",
-   "id": "2026-11-19-anthropic",
-   "nota": "O QQQM caiu 2,2% no dia; uma ação recém-listada não entra de imediato no Nasdaq 100.",
-   "resumo": "A abertura de capital da Anthropic, dona da IA Claude, foi a maior estreia já registrada em bolsa, mas os índices americanos viraram e fecharam em forte queda. Um diretor do Fed disse que a inteligência artificial pressiona a inflação no curto prazo.",
-   "tema": "carteira",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Wall Street cai mesmo com estreia recorde da Anthropic na Nasdaq",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#wallstreet"
-  },
-  {
-   "ativos": [],
-   "confirma": false,
-   "data": "2026-11-19",
-   "fonte": "InfoMoney",
-   "id": "2026-11-19-6x1",
-   "leituras": [
-    {
-     "diz": "Impor a jornada por lei, em vez de negociar empresa a empresa, eleva o custo do trabalho e pode reduzir contratações formais.",
-     "quem": "Empresas e críticos"
-    },
-    {
-     "diz": "Mais tempo de descanso melhora a vida das famílias e a produtividade, e a transição gradual dá tempo para as empresas se ajustarem.",
-     "quem": "Defensores"
-    }
-   ],
-   "resumo": "O decreto detalha a aplicação da emenda constitucional promulgada em outubro, que troca a escala de seis dias de trabalho por cinco e reduz a jornada de 44 para 40 horas de forma gradual. CNI e CNC pediram ao STF que suspenda as mudanças.",
-   "tema": "politica",
-   "tese": "nao",
-   "tipo": "fato",
-   "titulo": "Lula assina decreto que regulamenta o fim da escala 6x1",
-   "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-19112026/#6x1"
   }
  ]
 }
